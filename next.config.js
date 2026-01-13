@@ -1,12 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // For Vercel: Comment out 'output: export' to use Vercel's Next.js features
+  // For Vercel: Remove 'output: export' to use Vercel's Next.js features
   // For static hosting (S3): Uncomment the line below
-  output: 'export',
+  // output: 'export',
   images: {
-    // For static export, MUST set unoptimized: true
-    // For Vercel, you can use optimized images (set unoptimized: false)
-    unoptimized: true, // Required for static export
+    // For Vercel: optimized images work (unoptimized: false)
+    // For static export: MUST set unoptimized: true
+    unoptimized: false, // Vercel can optimize images
     remotePatterns: [
       {
         protocol: 'https',
@@ -18,7 +18,7 @@ const nextConfig = {
       },
     ],
   },
-  trailingSlash: true, // Better for S3 hosting
+  trailingSlash: true,
 };
 
 module.exports = nextConfig;
