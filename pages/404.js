@@ -6,32 +6,24 @@ const NotFound = () => {
   const router = useRouter();
 
   useEffect(() => {
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       router.push("/");
     }, 4000);
-  }, []);
+    
+    return () => clearTimeout(timer);
+  }, [router]);
   return (
     <>
         <main className="custom-pad">
           <div className="container">
             <div className="mar-top-lg">
               <div className="row">
-                <div className="col-lg-6 col-md-12">
-                  <div className="mar-bot-xs">
-                    <div className="page-content-image">
-                      <img src="/img/error404.jpg" alt="Error" />
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-5 offset-lg-1 col-md-10">
-                  <div className="page-content">
-                    <h1>404!</h1>
-                    <p className="lead">Seems like you are lost.</p>
-                    <h2>
-                      Lets get you {""}
-                      <Link href="/">
-                        <a>Home</a>
-                      </Link>
+                <div className="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
+                  <div className="page-content text-center">
+                    <h1 className="bangla">৪০৪!</h1>
+                    <p className="lead bangla">দুঃখিত, এই পৃষ্ঠাটি পাওয়া যায়নি।</p>
+                    <h2 className="bangla">
+                      <Link href="/">হোমপেজে ফিরে যান</Link>
                     </h2>
                   </div>
                 </div>

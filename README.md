@@ -1,54 +1,168 @@
-## Getting Started 🥱
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-First, run the development server:
+# Althean News - বাংলা নিউজ
+
+A modern Bangla news blog site built with Next.js, Tailwind CSS, Shadcn UI, and Strapi CMS.
+
+## Features
+
+- 🚀 **Next.js 14** ready for Vercel deployment
+- 🎨 **Tailwind CSS** for styling
+- 🧩 **Shadcn UI** components
+- 📱 **Client-side rendering** for dynamic content
+- 🌐 **Bangla language support** with Noto Sans Bengali font
+- 📰 **Strapi CMS** integration
+- ☁️ **Vercel** ready for deployment (also supports AWS S3 + CloudFront)
+
+## Tech Stack
+
+- **Framework**: Next.js 14
+- **Styling**: Tailwind CSS
+- **UI Components**: Shadcn UI
+- **CMS**: Strapi
+- **Deployment**: Vercel (recommended) or AWS S3 + CloudFront
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 18+ installed
+- npm or yarn package manager
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd althean-news-nextjs
+```
+
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+```
+
+3. Create a `.env.local` file in the root directory:
+```env
+NEXT_PUBLIC_STRAPI_API_URL=https://brilliant-dream-c3f2fe8788.strapiapp.com/api
+```
+
+4. Run the development server:
 ```bash
 npm run dev
 # or
 yarn dev
 ```
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
+5. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## Dark Mode 🌚
-![image](https://user-images.githubusercontent.com/23277339/116543111-165f2280-a90b-11eb-8aa5-bf79d5b107f6.png)
+## Building for Production
 
+### Deploy to Vercel (Recommended)
 
-## Light Mode 🌞
-![image](https://user-images.githubusercontent.com/23277339/116542004-c2a00980-a909-11eb-8de8-d2d0c52d6564.png)
+Vercel is the easiest way to deploy Next.js applications. Follow these steps:
 
+1. **Install Vercel CLI** (optional, you can also use the web interface):
+```bash
+npm i -g vercel
+```
 
-## Grid Layout 🚀
+2. **Deploy using Vercel CLI**:
+```bash
+vercel
+```
 
-![image](https://user-images.githubusercontent.com/23277339/116542365-35a98000-a90a-11eb-8cee-aeb01d7d7237.png)
+Or deploy using the **Vercel Dashboard**:
+1. Go to [vercel.com](https://vercel.com) and sign up/login
+2. Click "Add New Project"
+3. Import your Git repository (GitHub, GitLab, or Bitbucket)
+4. Vercel will auto-detect Next.js
+5. Add environment variable: `NEXT_PUBLIC_STRAPI_API_URL` = `https://brilliant-dream-c3f2fe8788.strapiapp.com/api`
+6. Click "Deploy"
 
+**Environment Variables in Vercel:**
+- Go to Project Settings → Environment Variables
+- Add: `NEXT_PUBLIC_STRAPI_API_URL` = `https://brilliant-dream-c3f2fe8788.strapiapp.com/api`
 
+### Static Export (for AWS S3 + CloudFront)
 
-## Inner Page
-![image](https://user-images.githubusercontent.com/23277339/116542654-84efb080-a90a-11eb-85f6-5a3d98de6aa0.png)
+If you need static export for S3, uncomment `output: 'export'` in `next.config.js`:
 
+```bash
+npm run build
+```
 
+This will create an `out` directory with all static files ready for deployment to S3.
 
-![image](https://user-images.githubusercontent.com/23277339/116542642-80c39300-a90a-11eb-92a1-d8fb2bb66f08.png)
+### Deploy to AWS S3 + CloudFront
 
+1. Build the project:
+```bash
+npm run build
+```
 
+2. Upload the `out` directory contents to your S3 bucket:
+```bash
+aws s3 sync out/ s3://your-bucket-name/ --delete
+```
 
+3. Configure CloudFront to serve from your S3 bucket.
 
+## Project Structure
 
+```
+althean-news-nextjs/
+├── components/          # React components
+│   ├── BlogCard.js     # Blog card component
+│   ├── Footer.js       # Footer component
+│   ├── Layout.js       # Layout wrapper
+│   ├── Navbar.js       # Navigation bar
+│   └── Skeleton.js     # Loading skeleton
+├── lib/                # Utility functions
+│   ├── strapi.js      # Strapi API client
+│   └── utils.js        # Utility functions
+├── pages/              # Next.js pages
+│   ├── _app.js        # App wrapper
+│   ├── index.js       # Home page
+│   ├── [slug].js      # Dynamic article page
+│   └── 404.js         # 404 error page
+├── public/             # Static assets
+├── styles/             # CSS files
+│   ├── globals.css    # Tailwind CSS
+│   └── style.css      # Custom styles
+└── next.config.js      # Next.js configuration
+```
 
-## Learn More 😪
+## Strapi CMS Setup
 
-To learn more about Next.js, take a look at the following resources:
+The project is configured to work with Strapi CMS. Make sure your Strapi instance has:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- An `articles` content type with the following fields:
+  - `title` (Text)
+  - `slug` (UID)
+  - `description` (Text)
+  - `content` (Rich text or Text)
+  - `thumbnail` (Media)
+  - `publishedAt` (DateTime)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- API permissions set to allow public access to articles
 
-## Deploy on Vercel 🚀
+## Environment Variables
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `NEXT_PUBLIC_STRAPI_API_URL`: Your Strapi API URL (default: https://brilliant-dream-c3f2fe8788.strapiapp.com/api)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License.
+
+## Support
+
+For support, email info@altheannews.com or open an issue in the repository.

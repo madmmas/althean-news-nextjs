@@ -1,13 +1,16 @@
 import Head from "next/head";
+import Script from "next/script";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 const Layout = ({ children }) => {
   return (
     <>
       <Head>
-        <script type="text/javascript" src="/js/plugins.min.js" />
-        <script type="text/javascript" src="/js/functions.js" />
+        {/* Scripts moved to Script component below */}
       </Head>
+
+      <Script src="/js/plugins.min.js" strategy="lazyOnload" />
+      <Script src="/js/functions.js" strategy="lazyOnload" />
 
       <div className="wrap">
         <Navbar />

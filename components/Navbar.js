@@ -6,37 +6,36 @@ const Navbar = () => {
       <div className="container">
         <div className="row">
           <div className="col-md-12">
-            <a className="logo" href="/"></a>
+            <Link href="/" className="logo-link">
+              <img
+                src="/img/logo.svg"
+                alt="Althean News Logo"
+                className="logo-image"
+              />
+            </Link>
             <nav>
               <ul>
                 <li>
-                  <Link href="/">
-                    <a>About</a>
-                  </Link>
+                  <Link href="/">হোম</Link>
                 </li>
                 <li>
-                  <Link href="/">
-                    <a>Services</a>
-                  </Link>
+                  <Link href="/">রাজনীতি</Link>
                 </li>
                 <li>
-                  <Link href="/">
-                    <a>Work</a>
-                  </Link>
+                  <Link href="/">খেলাধুলা</Link>
                 </li>
                 <li>
-                  <Link href="/">
-                    <a>Blog</a>
-                  </Link>
+                  <Link href="/">বিনোদন</Link>
                 </li>
                 <li>
-                  <Link href="/">
-                    <a>Contact</a>
-                  </Link>
+                  <Link href="/">বিজ্ঞান</Link>
+                </li>
+                <li>
+                  <Link href="/">যোগাযোগ</Link>
                 </li>
               </ul>
             </nav>
-            <span className="nav-toggle">Menu</span>
+            <span className="nav-toggle">মেনু</span>
           </div>
         </div>
       </div>
