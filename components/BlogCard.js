@@ -3,11 +3,13 @@ import Image from "next/image";
 import { getStrapiImageUrl } from "../lib/strapi";
 
 const BlogCard = ({ blog }) => {
-  // Strapi data structure: blog.attributes contains the fields
-  const attributes = blog.attributes || blog;
-  const { thumbnail, title, description, publishedAt, slug } = attributes;
+  // Strapi data structure: data is directly on blog object (not wrapped in attributes)
+  const article = blog.attributes || blog;
+  const { cover, thumbnail, title, description, publishedAt, slug } = article;
   
-  const imageUrl = getStrapiImageUrl(thumbnail, true); // Always use placeholder if no image
+  // Use cover if available, otherwise fallback to thumbnail
+  const imageField = cover || thumbnail;
+  const imageUrl = getStrapiImageUrl(imageField, true); // Always use placeholder if no image
   const formattedDate = publishedAt 
     ? new Date(publishedAt).toLocaleDateString('bn-BD', {
         year: 'numeric',

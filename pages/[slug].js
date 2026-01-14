@@ -100,8 +100,9 @@ const BlogDetails = () => {
     );
   }
 
-  const attributes = blog.attributes || blog;
-  const { title, description, content, publishedAt, thumbnail } = attributes;
+  // Strapi data structure: data is directly on blog object (not wrapped in attributes)
+  const article = blog.attributes || blog;
+  const { title, description, blocks, publishedAt, cover, thumbnail } = article;
   
   const formattedDate = publishedAt
     ? new Date(publishedAt).toLocaleDateString("bn-BD", {
@@ -111,68 +112,74 @@ const BlogDetails = () => {
       })
     : "";
 
-  const imageUrl = getStrapiImageUrl(thumbnail, true); // Always use placeholder if no image
+  // Use cover if available, otherwise fallback to thumbnail
+  const imageField = cover || thumbnail;
+  const imageUrl = getStrapiImageUrl(imageField, true); // Always use placeholder if no image
 
-  // Render Strapi rich text content
-  const renderContent = (content) => {
-    if (!content) return null;
+  // Render Strapi blocks content
+  const renderContent = (blocks) => {
+    if (!blocks || !Array.isArray(blocks)) return null;
 
-    // If content is a string (HTML), render it directly
-    if (typeof content === "string") {
-      return (
-        <div
-          className="article-content bangla"
-          dangerouslySetInnerHTML={{ __html: content }}
-        />
-      );
-    }
-
-    // If content is an array (Strapi blocks), render each block
-    if (Array.isArray(content)) {
-      return content.map((block, index) => {
-        if (block.type === "paragraph") {
-          return (
-            <p key={index} className="bangla">
-              {block.children?.map((child, childIndex) => {
-                if (child.type === "text") {
-                  return <span key={childIndex}>{child.text}</span>;
-                }
-                return null;
-              })}
-            </p>
-          );
-        }
-        if (block.type === "heading") {
-          const HeadingTag = `h${block.level || 2}`;
-          return (
-            <HeadingTag key={index} className="bangla">
-              {block.children?.map((child, childIndex) => {
-                if (child.type === "text") {
-                  return <span key={childIndex}>{child.text}</span>;
-                }
-                return null;
-              })}
-            </HeadingTag>
-          );
-        }
-        if (block.type === "image") {
-          const imgUrl = getStrapiImageUrl(block.image, true); // Use placeholder if no image
-          return (
-            <div key={index} className="article-content-image">
-              <Image
-                src={imgUrl}
-                width={800}
-                height={600}
-                alt={block.caption || title || 'Article Image'}
-              />
-            </div>
-          );
-        }
-        return null;
-      });
-    }
-
-    return null;
+    return blocks.map((block, index) => {
+      // Handle shared.rich-text component
+      if (block.__component === "shared.rich-text" && block.body) {
+        return (
+          <div
+            key={index}
+            className="article-content bangla"
+            dangerouslySetInnerHTML={{ __html: block.body }}
+          />
+        );
+      }
+      
+      // Handle shared.quote component
+      if (block.__component === "shared.quote") {
+        return (
+          <blockquote key={index} className="bangla">
+            {block.body && <p>{block.body}</p>}
+            {block.title && <cite>— {block.title}</cite>}
+          </blockquote>
+        );
+      }
+      
+      // Handle shared.media component
+      if (block.__component === "shared.media" && block.file) {
+        const imgUrl = getStrapiImageUrl(block.file, true);
+        return (
+          <div key={index} className="article-content-image">
+            <Image
+              src={imgUrl}
+              width={800}
+              height={600}
+              alt={block.alternativeText || title || 'Article Image'}
+            />
+          </div>
+        );
+      }
+      
+      // Handle shared.slider component
+      if (block.__component === "shared.slider" && block.files && Array.isArray(block.files)) {
+        return (
+          <div key={index} className="article-slider">
+            {block.files.map((file, fileIndex) => {
+              const imgUrl = getStrapiImageUrl(file, true);
+              return (
+                <div key={fileIndex} className="article-content-image">
+                  <Image
+                    src={imgUrl}
+                    width={800}
+                    height={600}
+                    alt={file.alternativeText || title || 'Article Image'}
+                  />
+                </div>
+              );
+            })}
+          </div>
+        );
+      }
+      
+      return null;
+    });
   };
 
   return (
@@ -210,7 +217,7 @@ const BlogDetails = () => {
               </div>
               <div className="row">
                 <div className="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
-                  {renderContent(content)}
+                  {renderContent(blocks)}
                 </div>
               </div>
             </div>
