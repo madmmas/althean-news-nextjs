@@ -1,0 +1,4231 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+/* Note: CSS files from public/assets are linked in layout.tsx head section
+   because Next.js CSS imports don't support absolute paths to public directory */
+
+/* Tailwind CSS removed - not being used in this project
+   Project uses Bootstrap 5 and custom template CSS instead */
+
+/* Custom styles will be added here */
+body {
+  font-family: 'SpartanRegular', sans-serif;
+}
+
+/* ============================================================
+   Logo Sizing - Matching Original HTML
+   ============================================================ */
+
+/* Header Logo */
+.back-header .logo img {
+  height: 40px !important;
+  width: auto !important;
+}
+
+/* Footer Logo */
+.back-footer .footer-logo img {
+  height: 45px !important;
+  width: auto !important;
+}
+
+/* Offcanvas Logo */
+.back-canvas .offback-logo img {
+  height: 45px !important;
+  width: auto !important;
+}
+
+/* Preloader Logo */
+.back__loader_logo img {
+  width: 40px !important;
+  height: auto !important;
+}
+
+/* ============================================================
+   Header Topbar Slider (LATEST NEWS) - Slick Slider
+   ============================================================ */
+
+/* Ensure toolbar-text maintains flex layout */
+.back-header .toolbar-area .toolbar-text {
+  display: flex !important;
+  align-items: center !important;
+  overflow: hidden !important;
+}
+
+.back-header .toolbar-area .toolbar-text .latest-news-title {
+  flex: 0 0 112px !important;
+  font-size: 13px !important;
+  font-family: 'SpartanMedium' !important;
+  border-right: 1px solid #f9f9f9 !important;
+  margin-right: 10px !important;
+  padding-right: 10px !important;
+  line-height: 18px !important;
+}
+
+.back-header .toolbar-area .toolbar-text .latest-news {
+  flex: 1 !important;
+  font-size: 13px !important;
+  overflow: hidden !important;
+}
+
+/* Topbar Slider Container - Must fit in flex container */
+.latest-news .back-topbar-slider.slick-slider {
+  position: relative !important;
+  display: block !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.latest-news .back-topbar-slider .slick-list {
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: relative !important;
+  display: block !important;
+}
+
+.latest-news .back-topbar-slider .slick-track {
+  display: flex !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: relative !important;
+  left: 0 !important;
+  top: 0 !important;
+}
+
+.latest-news .back-topbar-slider .slick-slide {
+  float: none !important;
+  height: auto !important;
+  min-height: 18px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.latest-news .back-topbar-slider .slick-slide > div {
+  width: 100% !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: 13px !important;
+  line-height: 18px !important;
+  color: #ffffff !important;
+}
+
+/* Hide default Slick arrows and dots */
+.latest-news .back-topbar-slider .slick-arrow,
+.latest-news .back-topbar-slider .slick-dots {
+  display: none !important;
+}
+
+/* ============================================================
+   Index-Two Page Sliders - Slick Slider Styles
+   ============================================================ */
+
+/* HomeTwoSlider - 30px gaps between slides */
+.back-home2-slider-area .slick-list {
+  overflow: hidden !important;
+  margin: 0 -15px !important;
+  padding: 0 !important;
+}
+
+.back-home2-slider-area .slick-slide {
+  padding: 0 !important;
+}
+
+.back-home2-slider-area .slick-slide > div {
+  margin: 0 15px !important;
+}
+
+.back-home2-slider-area .slick-slide > div > li {
+  margin: 0 !important;
+  width: 100% !important;
+}
+
+/* Trending Posts (back-hero-home2) - Hero style slider */
+.back-hero-home2 .back-hero-slider.slick-slider .slick-slide > li {
+  list-style: none !important;
+}
+
+/* Recent Posts - Home2 style (with 30px gaps) */
+.back-trending-stories-home2:not(.back-trending-stories-weekend) {
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.back-trending-stories-home2:not(.back-trending-stories-weekend) .container {
+  overflow: hidden !important;
+}
+
+.back-trending-stories-home2:not(.back-trending-stories-weekend) .slick-slider {
+  width: 100% !important;
+  overflow: hidden !important;
+}
+
+.back-trending-stories-home2:not(.back-trending-stories-weekend) .slick-list {
+  overflow: hidden !important;
+  margin: 0 -15px !important;
+  padding: 0 !important;
+}
+
+.back-trending-stories-home2:not(.back-trending-stories-weekend) .slick-track {
+  display: flex !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.back-trending-stories-home2:not(.back-trending-stories-weekend) .slick-slide {
+  padding: 0 15px !important;
+  box-sizing: border-box !important;
+}
+
+.back-trending-stories-home2:not(.back-trending-stories-weekend) .slick-slide > div {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+}
+
+.back-trending-stories-home2:not(.back-trending-stories-weekend) .slick-slide > div > li {
+  margin: 0 !important;
+  list-style: none !important;
+  background: #ffffff !important;
+  width: 100% !important;
+}
+
+/* Weekend Top - 30px gaps between slides */
+.back-trending-stories-weekend {
+  position: relative !important;
+  padding-top: 70px !important;
+}
+
+.back-trending-stories-weekend .container {
+  max-width: 1350px !important;
+  overflow: visible !important;
+}
+
+.back-trending-stories-weekend .slick-slider {
+  width: 100% !important;
+}
+
+.back-trending-stories-weekend .slick-list {
+  overflow: hidden !important;
+  margin: 0 -15px !important;
+  padding: 0 !important;
+}
+
+.back-trending-stories-weekend .slick-track {
+  display: flex !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.back-trending-stories-weekend .slick-slide {
+  padding: 0 !important;
+  box-sizing: border-box !important;
+}
+
+.back-trending-stories-weekend .slick-slide > div {
+  margin: 0 15px !important;
+  box-sizing: border-box !important;
+}
+
+.back-trending-stories-weekend .slick-slide > div > li {
+  margin: 0 !important;
+  list-style: none !important;
+  background: #ffffff !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Weekend Top - Navigation arrows styling */
+.back-trending-stories-weekend .slick-prev,
+.back-trending-stories-weekend .slick-next {
+  position: absolute !important;
+  top: -88px !important;
+  width: 50px !important;
+  height: 50px !important;
+  line-height: 47px !important;
+  background: #e5e5e5 !important;
+  border-radius: 100% !important;
+  color: #0a0a0a !important;
+  font-size: 0 !important;
+  z-index: 999 !important;
+  transition: all 0.5s ease 0s !important;
+}
+
+.back-trending-stories-weekend .slick-prev {
+  right: 77px !important;
+  left: auto !important;
+}
+
+.back-trending-stories-weekend .slick-next {
+  right: 12px !important;
+  left: auto !important;
+}
+
+.back-trending-stories-weekend .slick-prev:before,
+.back-trending-stories-weekend .slick-next:before {
+  font-family: "uicons-regular-rounded" !important;
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  font-size: 18px !important;
+  font-weight: 400 !important;
+  color: #0a0a0a !important;
+}
+
+.back-trending-stories-weekend .slick-prev:before {
+  content: "\f11d" !important;
+}
+
+.back-trending-stories-weekend .slick-next:before {
+  content: "\f11e" !important;
+}
+
+.back-trending-stories-weekend .slick-prev:hover,
+.back-trending-stories-weekend .slick-next:hover {
+  background: #0088cb !important;
+}
+
+.back-trending-stories-weekend .slick-prev:hover:before,
+.back-trending-stories-weekend .slick-next:hover:before {
+  color: #ffffff !important;
+}
+
+/* ============================================================
+   Latest Posts Slider - Container Fix (index-three)
+   ============================================================ */
+
+.back-latest-posts-slider .container {
+  max-width: 1350px !important;
+  overflow: hidden !important;
+}
+
+.back-latest-posts-slider .slick-slider {
+  width: 100% !important;
+  overflow: hidden !important;
+}
+
+.back-latest-posts-slider .slick-list {
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.back-latest-posts-slider .slick-track {
+  display: flex !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.back-latest-posts-slider .slick-slide {
+  padding: 0 !important;
+  box-sizing: border-box !important;
+}
+
+.back-latest-posts-slider .slick-slide > div {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+}
+
+.back-latest-posts-slider .slick-slide > div > li {
+  margin: 0 !important;
+  list-style: none !important;
+  background: #ffffff !important;
+  width: 100% !important;
+}
+
+/* Latest Posts - Content styling */
+.back-latest-posts-slider ul li .back-btm-content {
+  padding: 25px 0 35px !important;
+}
+
+.back-latest-posts-slider ul li .back-btm-content .back-cates {
+  font-size: 12px !important;
+  color: #777 !important;
+  text-transform: uppercase !important;
+  display: block !important;
+  margin: 0 0 10px !important;
+}
+
+.back-latest-posts-slider ul li .image-areas img {
+  border-radius: 5px !important;
+}
+
+.back-latest-posts-slider ul li .back-btm-content .back-cates {
+  margin: 0 0 5px !important;
+}
+
+.back-latest-posts-slider ul li .back-btm-content h3 {
+  margin: 0px 0 8px !important;
+  font-size: 18px !important;
+  line-height: 28px !important;
+}
+
+/* Latest Posts - Navigation arrows styling */
+.back-latest-posts-slider .slick-prev,
+.back-latest-posts-slider .slick-next {
+  position: absolute !important;
+  top: -88px !important;
+  width: 50px !important;
+  height: 50px !important;
+  line-height: 47px !important;
+  background: #e5e5e5 !important;
+  border-radius: 100% !important;
+  color: #0a0a0a !important;
+  font-size: 0 !important;
+  z-index: 999 !important;
+  transition: all 0.5s ease 0s !important;
+}
+
+.back-latest-posts-slider .slick-prev {
+  right: 77px !important;
+  left: auto !important;
+}
+
+.back-latest-posts-slider .slick-next {
+  right: 12px !important;
+  left: auto !important;
+}
+
+.back-latest-posts-slider .slick-prev:before,
+.back-latest-posts-slider .slick-next:before {
+  font-family: "uicons-regular-rounded" !important;
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  font-size: 18px !important;
+  font-weight: 400 !important;
+  color: #0a0a0a !important;
+}
+
+.back-latest-posts-slider .slick-prev:before {
+  content: "\f11d" !important;
+}
+
+.back-latest-posts-slider .slick-next:before {
+  content: "\f11e" !important;
+}
+
+.back-latest-posts-slider .slick-prev:hover,
+.back-latest-posts-slider .slick-next:hover {
+  background: #0088cb !important;
+}
+
+.back-latest-posts-slider .slick-prev:hover:before,
+.back-latest-posts-slider .slick-next:hover:before {
+  color: #ffffff !important;
+}
+
+/* ============================================================
+   Index-Three Page Sliders - Slick Slider Styles
+   ============================================================ */
+
+/* HomeThreeSlider - No gaps, with navigation arrows */
+.back-home3-slider-area {
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.back-home3-slider-area .container {
+  overflow: hidden !important;
+}
+
+.back-home3-slider-area .slick-slider {
+  width: 100% !important;
+  overflow: hidden !important;
+}
+
+.back-home3-slider-area .slick-list {
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.back-home3-slider-area .slick-track {
+  display: flex !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.back-home3-slider-area .slick-slide {
+  padding: 0 !important;
+  box-sizing: border-box !important;
+}
+
+.back-home3-slider-area .slick-slide > div {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+}
+
+.back-home3-slider-area .slick-slide > div > li {
+  margin: 0 !important;
+  list-style: none !important;
+  width: 100% !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+}
+
+/* Image styling - border-radius: 4px for index-three */
+.back-home3-slider-area .back-hero-bottom-two li .image-areas {
+  flex: 0 0 35% !important;
+  max-width: 35% !important;
+  padding-right: 20px !important;
+}
+
+.back-home3-slider-area .back-hero-bottom-two li .image-areas img {
+  border-radius: 4px !important;
+  width: 100% !important;
+  display: block !important;
+}
+
+/* Content styling */
+.back-home3-slider-area .back-hero-bottom-two li .back-btm-content {
+  flex: 0 0 65% !important;
+  max-width: 65% !important;
+  padding-right: 20px !important;
+}
+
+.back-home3-slider-area .back-hero-bottom-two li .back-btm-content .back-cates {
+  display: inline-block !important;
+  font-size: 11px !important;
+  text-transform: uppercase !important;
+  font-family: 'SpartanMedium' !important;
+  color: #777 !important;
+}
+
+.back-home3-slider-area .back-hero-bottom-two li .back-btm-content h3 {
+  font-size: 14px !important;
+  line-height: 24px !important;
+  margin: 4px 0 7px !important;
+}
+
+.back-home3-slider-area .back-hero-bottom-two li .back-btm-content h3 a {
+  color: #000 !important;
+  text-decoration: none !important;
+  display: inline !important;
+  background-image: linear-gradient(to bottom, #000000 0%, #000000 100%) !important;
+  background-size: 0 1px !important;
+  background-repeat: no-repeat !important;
+  background-position: left 100% !important;
+  transition: all 0.7s !important;
+}
+
+.back-home3-slider-area .back-hero-bottom-two li .back-btm-content h3 a:hover {
+  color: #000 !important;
+  background-size: 100% 1px !important;
+}
+
+.back-home3-slider-area .back-hero-bottom-two li .back-btm-content ul li {
+  font-size: 12px !important;
+  color: #777 !important;
+}
+
+.back-home3-slider-area .back-hero-bottom-two li .back-btm-content ul li svg {
+  width: 17px !important;
+  position: relative !important;
+  top: -2px !important;
+  margin-right: 8px !important;
+}
+
+/* Navigation arrows for home3-slider */
+.back-home3-slider-area .slick-prev,
+.back-home3-slider-area .slick-next {
+  position: absolute !important;
+  top: 30% !important;
+  display: inline-block !important;
+  font-size: 0 !important;
+  width: 60px !important;
+  height: 60px !important;
+  line-height: 57px !important;
+  color: #0a0a0a !important;
+  background: #e5e5e5 !important;
+  border-radius: 100% !important;
+  transition: all 0.5s ease 0s !important;
+  z-index: 999 !important;
+}
+
+.back-home3-slider-area .slick-prev {
+  left: 20px !important;
+}
+
+.back-home3-slider-area .slick-next {
+  left: 100px !important;
+  right: auto !important;
+}
+
+.back-home3-slider-area .slick-prev:before,
+.back-home3-slider-area .slick-next:before {
+  font-family: "uicons-regular-rounded" !important;
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  font-size: 22px !important;
+  font-weight: 400 !important;
+  color: #0a0a0a !important;
+}
+
+.back-home3-slider-area .slick-prev:before {
+  content: "\f11e" !important;
+}
+
+.back-home3-slider-area .slick-next:before {
+  content: "\f11e" !important;
+}
+
+.back-home3-slider-area .slick-prev:hover,
+.back-home3-slider-area .slick-next:hover {
+  background: #0088cb !important;
+  color: #ffffff !important;
+}
+
+.back-home3-slider-area .slick-prev:hover:before,
+.back-home3-slider-area .slick-next:hover:before {
+  color: #ffffff !important;
+}
+
+/* ============================================================
+   HomeThreeHero Grid - back-trending-stories-home3
+   ============================================================ */
+.back-trending-stories.back-trending-stories-home2.back-trending-stories-home3 {
+  background: #ffffff !important;
+  padding: 0px !important;
+}
+
+.back-trending-stories.back-trending-stories-home2.back-trending-stories-home3 ul {
+  margin: 23px 0 0 -23px !important;
+  padding: 0 !important;
+  list-style: none !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+}
+
+.back-trending-stories.back-trending-stories-home2.back-trending-stories-home3 ul li {
+  margin: 0 !important;
+  padding: 0 0 0 23px !important;
+  list-style: none !important;
+}
+
+.back-trending-stories.back-trending-stories-home2.back-trending-stories-home3 ul li .image-areas img {
+  border-radius: 5px !important;
+  width: 100% !important;
+  display: block !important;
+}
+
+.back-trending-stories.back-trending-stories-home2.back-trending-stories-home3 ul li .back-btm-content .back-cates {
+  font-size: 12px !important;
+  color: #777 !important;
+  text-transform: uppercase !important;
+  display: block !important;
+  margin: 0 0 5px !important;
+  text-decoration: none !important;
+}
+
+.back-trending-stories.back-trending-stories-home2.back-trending-stories-home3 ul li .back-btm-content h3 {
+  font-size: 14px !important;
+  line-height: 24px !important;
+  margin: 0 !important;
+  font-weight: 700 !important;
+}
+
+.back-trending-stories.back-trending-stories-home2.back-trending-stories-home3 ul li .back-btm-content h3 a {
+  color: #000 !important;
+  text-decoration: none !important;
+  display: inline !important;
+  background-image: linear-gradient(to bottom, #000000 0%, #000000 100%) !important;
+  background-size: 0 1px !important;
+  background-repeat: no-repeat !important;
+  background-position: left 100% !important;
+  transition: all 0.7s !important;
+}
+
+.back-trending-stories.back-trending-stories-home2.back-trending-stories-home3 ul li .back-btm-content h3 a:hover {
+  color: #000 !important;
+  background-size: 100% 1px !important;
+}
+
+/* ============================================================
+   Index-Four Page Sliders - Slick Slider Styles
+   ============================================================ */
+
+/* HomeFourHero - No gaps, with navigation arrows */
+.back-home4-hero-area {
+  position: relative !important;
+  overflow: visible !important;
+}
+
+.back-home4-hero-area .container {
+  overflow: visible !important;
+  position: relative !important;
+}
+
+.back-home4-hero-area .slick-slider {
+  width: 100% !important;
+  overflow: hidden !important;
+}
+
+.back-home4-hero-area .slick-list {
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.back-home4-hero-area .slick-slide {
+  padding: 0 !important;
+}
+
+.back-home4-hero-area .slick-slide > div {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+}
+
+.back-home4-hero-area .slick-slide > div > li {
+  margin: 0 !important;
+  list-style: none !important;
+  background: #ffffff !important;
+  width: 100% !important;
+}
+
+/* HomeFourHero - Navigation arrows styling */
+.back-home4-hero-area .slick-prev,
+.back-home4-hero-area .slick-next {
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  display: inline-block !important;
+  font-size: 0 !important;
+  width: 50px !important;
+  height: 50px !important;
+  line-height: 47px !important;
+  text-align: center !important;
+  background: #e5e5e5 !important;
+  border-radius: 100% !important;
+  color: #0a0a0a !important;
+  z-index: 999 !important;
+  transition: all 0.5s ease 0s !important;
+}
+
+.back-home4-hero-area .slick-prev {
+  left: -65px !important;
+}
+
+.back-home4-hero-area .slick-next {
+  right: -65px !important;
+  left: auto !important;
+}
+
+.back-home4-hero-area .slick-prev:before,
+.back-home4-hero-area .slick-next:before {
+  font-family: "uicons-regular-rounded" !important;
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  font-size: 18px !important;
+  font-weight: 400 !important;
+  color: #0a0a0a !important;
+}
+
+.back-home4-hero-area .slick-prev:before {
+  content: "\f11d" !important;
+}
+
+.back-home4-hero-area .slick-next:before {
+  content: "\f11e" !important;
+}
+
+.back-home4-hero-area .slick-prev:hover,
+.back-home4-hero-area .slick-next:hover {
+  background: #0088cb !important;
+}
+
+.back-home4-hero-area .slick-prev:hover:before,
+.back-home4-hero-area .slick-next:hover:before {
+  color: #ffffff !important;
+}
+
+/* ============================================================
+   Related Posts Slider (Blog/Post Pages) - Slick Slider
+   ============================================================ */
+.back-blog-related {
+  padding-top: 60px !important;
+}
+
+.back-blog-related .container {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.back-blog-related .back-blog-slider-slick.slick-slider {
+  margin: 0 -15px !important;
+}
+
+.back-blog-related .back-blog-slider-slick .slick-list {
+  overflow: hidden !important;
+}
+
+.back-blog-related .back-blog-slider-slick .slick-slide {
+  padding: 0 15px !important;
+  box-sizing: border-box !important;
+}
+
+.back-blog-related .back-blog-slider-slick .slick-slide > div {
+  margin: 0 !important;
+}
+
+.back-blog-related .back-blog-slider-slick li {
+  list-style: none !important;
+}
+
+.back-blog-related .back-blog-slider-slick li .back-inner {
+  box-shadow: -6px 30px 30px -6px rgba(10, 0, 45, 0.05) !important;
+  margin-bottom: 40px !important;
+  border-radius: 5px !important;
+  background: #ffffff !important;
+}
+
+.back-blog-related .back-blog-slider-slick li .back-inner .back-blog-image img {
+  border-radius: 5px 5px 0 0 !important;
+  width: 100% !important;
+  display: block !important;
+}
+
+.back-blog-related .back-blog-slider-slick li .back-inner .back-blog-content {
+  padding: 20px !important;
+}
+
+.back-blog-related .back-blog-slider-slick li .back-inner .back-blog-content em {
+  font-size: 13px !important;
+  color: #777 !important;
+  font-style: normal !important;
+  display: block !important;
+}
+
+.back-blog-related .back-blog-slider-slick li .back-inner .back-blog-content h3 {
+  margin: 6px 0 25px !important;
+  font-family: 'SpartanSemiBold' !important;
+  font-size: 14px !important;
+  line-height: 24px !important;
+}
+
+.back-blog-related .back-blog-slider-slick li .back-inner .back-blog-content h3 a {
+  color: #0a0a0a !important;
+  text-decoration: none !important;
+}
+
+.back-blog-related .back-blog-slider-slick li .back-inner .back-blog-content h3 a:hover {
+  color: #0088cb !important;
+}
+
+.back-blog-related .back-blog-slider-slick li .back-inner .back-blog-content ul {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+}
+
+.back-blog-related .back-blog-slider-slick li .back-inner .back-blog-content ul li {
+  color: #777 !important;
+  font-size: 14px !important;
+  display: flex !important;
+  align-items: center !important;
+  padding-right: 30px !important;
+}
+
+.back-blog-related .back-blog-slider-slick li .back-inner .back-blog-content ul li:last-child {
+  padding-right: 0 !important;
+}
+
+.back-blog-related .back-blog-slider-slick li .back-inner .back-blog-content ul li a {
+  color: #000 !important;
+  text-decoration: none !important;
+}
+
+.back-blog-related .back-blog-slider-slick li .back-inner .back-blog-content ul li a:hover {
+  color: #0088cb !important;
+}
+
+.back-blog-related .back-blog-slider-slick li .back-inner .back-blog-content ul li span {
+  margin-right: 10px !important;
+}
+
+.back-blog-related .back-blog-slider-slick li .back-inner .back-blog-content ul li.back-author img {
+  width: 35px !important;
+  height: 35px !important;
+  border-radius: 50% !important;
+}
+
+/* TrendingStoriesFour - 30px gaps between slides */
+.back-trending-stories-four {
+  position: relative !important;
+  padding-top: 70px !important;
+}
+
+.back-trending-stories-four .container {
+  max-width: 1350px !important;
+  overflow: visible !important;
+}
+
+.back-trending-stories-four .slick-slider {
+  width: 100% !important;
+}
+
+.back-trending-stories-four .slick-list {
+  overflow: hidden !important;
+  margin: 0 -15px !important;
+  padding: 0 !important;
+}
+
+.back-trending-stories-four .slick-track {
+  display: flex !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.back-trending-stories-four .slick-slide {
+  padding: 0 !important;
+  box-sizing: border-box !important;
+}
+
+.back-trending-stories-four .slick-slide > div {
+  margin: 0 15px !important;
+  box-sizing: border-box !important;
+}
+
+.back-trending-stories-four .slick-slide > div > li {
+  margin: 0 !important;
+  list-style: none !important;
+  background: #ffffff !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* TrendingStoriesFour - Navigation arrows */
+.back-trending-stories-four .slick-prev,
+.back-trending-stories-four .slick-next {
+  position: absolute !important;
+  top: -88px !important;
+  width: 50px !important;
+  height: 50px !important;
+  line-height: 47px !important;
+  background: #e5e5e5 !important;
+  border-radius: 100% !important;
+  color: #0a0a0a !important;
+  font-size: 0 !important;
+  z-index: 999 !important;
+  transition: all 0.5s ease 0s !important;
+}
+
+.back-trending-stories-four .slick-prev {
+  right: 77px !important;
+  left: auto !important;
+}
+
+.back-trending-stories-four .slick-next {
+  right: 12px !important;
+  left: auto !important;
+}
+
+.back-trending-stories-four .slick-prev:before,
+.back-trending-stories-four .slick-next:before {
+  font-family: "uicons-regular-rounded" !important;
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  font-size: 18px !important;
+  font-weight: 400 !important;
+  color: #0a0a0a !important;
+}
+
+.back-trending-stories-four .slick-prev:before {
+  content: "\f11d" !important;
+}
+
+.back-trending-stories-four .slick-next:before {
+  content: "\f11e" !important;
+}
+
+.back-trending-stories-four .slick-prev:hover,
+.back-trending-stories-four .slick-next:hover {
+  background: #0088cb !important;
+}
+
+.back-trending-stories-four .slick-prev:hover:before,
+.back-trending-stories-four .slick-next:hover:before {
+  color: #ffffff !important;
+}
+
+/* ============================================================
+   Component Utility Styles (moved from inline styles)
+   ============================================================ */
+
+/* Video Modal Styles */
+.video-modal-wrap {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 1045 !important;
+  overflow: hidden !important;
+  outline: 0 !important;
+}
+
+.video-modal-container {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 40px !important;
+}
+
+.video-modal-content {
+  position: relative !important;
+  display: inline-block !important;
+  vertical-align: middle !important;
+  margin: 0 auto !important;
+  text-align: left !important;
+  z-index: 1045 !important;
+}
+
+.video-modal-close {
+  position: absolute !important;
+  right: -6px !important;
+  top: -40px !important;
+  z-index: 1046 !important;
+}
+
+.video-modal-iframe {
+  display: block !important;
+  width: 100% !important;
+  height: 400px !important;
+  border: none !important;
+}
+
+.video-modal-bg {
+  top: 0 !important;
+  left: 0 !important;
+  position: fixed !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: rgba(0, 0, 0, 0.8) !important;
+  z-index: 1042 !important;
+}
+
+/* Logo Images - Auto sizing */
+.logo-image-auto {
+  width: auto !important;
+  height: auto !important;
+}
+
+/* Comment Section - Avatar placeholder */
+.comment-avatar-placeholder {
+  width: 50px !important;
+  height: 50px !important;
+  background: #0088cb !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 18px !important;
+  font-weight: bold !important;
+  color: #ffffff !important;
+}
+
+/* Comment Section - Messages */
+.comment-error-message {
+  color: #dc3545 !important;
+  margin-bottom: 15px !important;
+  padding: 10px !important;
+  background: #f8d7da !important;
+  border: 1px solid #f5c6cb !important;
+  border-radius: 4px !important;
+}
+
+.comment-success-message {
+  color: #155724 !important;
+  margin-bottom: 15px !important;
+  padding: 10px !important;
+  background: #d4edda !important;
+  border: 1px solid #c3e6cb !important;
+  border-radius: 4px !important;
+}
+
+/* Slick Slider Styles - Compatibility with Owl Carousel */
+/* Make Slick Slider look and behave like Owl Carousel */
+
+/* CRITICAL: Ensure base ul styles from .back-hero-area ul apply */
+/* Original CSS: .back-hero-area ul { margin: 0; padding: 0; } */
+/* Since Slick Slider renders as div, we need to apply these styles to div.slick-slider as well */
+.back-hero-area ul,
+.back-hero-area ul.slick-slider,
+.back-hero-area ul.owl-carousel.slick-slider,
+.back-hero-area .owl-carousel.slick-slider,
+.back-hero-area .slick-slider,
+.back-hero-area div.slick-slider,
+.back-hero-area div.owl-carousel.slick-slider,
+.back-hero-area .back-hero-slider.slick-slider,
+.back-hero-area .back-hero-slider2.slick-slider,
+.back-hero-area .back-hero-bottom.slick-slider {
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+}
+
+/* Ensure the original selector .back-hero-area ul .image-area works with Slick Slider */
+/* We need to make it work for both ul and slick slider with li elements */
+/* This ensures the root class .back-hero-area ul styles apply */
+.back-hero-area ul .image-area,
+.back-hero-area .slick-slider li .image-area,
+.back-hero-area .slick-slider .slick-slide > li .image-area,
+.back-hero-area .owl-carousel.slick-slider .slick-slide > li .image-area,
+.back-hero-area div.slick-slider .slick-slide > li .image-area,
+.back-hero-area .back-hero-slider.slick-slider .slick-slide > li .image-area,
+.back-hero-area .back-hero-slider.slick-slider li .image-area,
+.back-hero-area .back-hero-slider2.slick-slider li .image-area {
+  position: relative !important;
+}
+
+.back-hero-area ul .image-area .back-btm-content,
+.back-hero-area .slick-slider li .image-area .back-btm-content,
+.back-hero-area .slick-slider .slick-slide > li .image-area .back-btm-content,
+.back-hero-area .owl-carousel.slick-slider .slick-slide > li .image-area .back-btm-content,
+.back-hero-area div.slick-slider .slick-slide > li .image-area .back-btm-content,
+.back-hero-area .back-hero-slider.slick-slider .slick-slide > li .image-area .back-btm-content,
+.back-hero-area .back-hero-slider.slick-slider li .image-area .back-btm-content,
+.back-hero-area .back-hero-slider2.slick-slider li .image-area .back-btm-content,
+.back-hero-area .slick-slide li .image-area .back-btm-content {
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  padding: 40px !important;
+  padding: 40px;
+  z-index: 2;
+}
+
+/* Apply all child element styles from original .back-hero-area ul .image-area .back-btm-content */
+.back-hero-area ul .image-area .back-btm-content h3,
+.back-hero-area .swiper .swiper-slide > li .image-area .back-btm-content h3,
+.back-hero-area .owl-carousel.swiper .swiper-slide > li .image-area .back-btm-content h3,
+.back-hero-area div.swiper .swiper-slide > li .image-area .back-btm-content h3,
+.back-hero-area .back-hero-slider.swiper .swiper-slide > li .image-area .back-btm-content h3 {
+  font-family: 'SpartanSemiBold';
+  font-size: 36px;
+  line-height: 46px;
+  margin: 20px 0 16px;
+}
+
+.back-hero-area ul .image-area .back-btm-content h3 a,
+.back-hero-area .swiper .swiper-slide > li .image-area .back-btm-content h3 a,
+.back-hero-area .owl-carousel.swiper .swiper-slide > li .image-area .back-btm-content h3 a,
+.back-hero-area div.swiper .swiper-slide > li .image-area .back-btm-content h3 a,
+.back-hero-area .back-hero-slider.swiper .swiper-slide > li .image-area .back-btm-content h3 a {
+  color: #ffffff;
+  text-decoration: none;
+  display: inline;
+  background-image: linear-gradient(to bottom, #ffffff 0%, #ffffff 100%);
+  background-size: 0 1px;
+  background-repeat: no-repeat;
+  background-position: left 100%;
+  transition: all 0.7s;
+}
+
+.back-hero-area ul .image-area .back-btm-content h3 a:hover,
+.back-hero-area .swiper .swiper-slide > li .image-area .back-btm-content h3 a:hover,
+.back-hero-area .owl-carousel.swiper .swiper-slide > li .image-area .back-btm-content h3 a:hover,
+.back-hero-area div.swiper .swiper-slide > li .image-area .back-btm-content h3 a:hover,
+.back-hero-area .back-hero-slider.swiper .swiper-slide > li .image-area .back-btm-content h3 a:hover {
+  color: #ffffff;
+  background-size: 100% 1px;
+}
+
+.back-hero-area ul .image-area .back-btm-content ul,
+.back-hero-area .swiper .swiper-slide > li .image-area .back-btm-content ul,
+.back-hero-area .owl-carousel.swiper .swiper-slide > li .image-area .back-btm-content ul,
+.back-hero-area div.swiper .swiper-slide > li .image-area .back-btm-content ul,
+.back-hero-area .back-hero-slider.swiper .swiper-slide > li .image-area .back-btm-content ul {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.back-hero-area ul .image-area .back-btm-content ul li,
+.back-hero-area .swiper .swiper-slide > li .image-area .back-btm-content ul li,
+.back-hero-area .owl-carousel.swiper .swiper-slide > li .image-area .back-btm-content ul li,
+.back-hero-area div.swiper .swiper-slide > li .image-area .back-btm-content ul li,
+.back-hero-area .back-hero-slider.swiper .swiper-slide > li .image-area .back-btm-content ul li {
+  color: #ffffff;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  padding-right: 30px;
+}
+
+.back-hero-area ul .image-area .back-btm-content ul li a,
+.back-hero-area .swiper .swiper-slide > li .image-area .back-btm-content ul li a,
+.back-hero-area .owl-carousel.swiper .swiper-slide > li .image-area .back-btm-content ul li a,
+.back-hero-area div.swiper .swiper-slide > li .image-area .back-btm-content ul li a,
+.back-hero-area .back-hero-slider.swiper .swiper-slide > li .image-area .back-btm-content ul li a {
+  color: #ffffff;
+}
+
+.back-hero-area ul .image-area .back-btm-content ul li a:hover,
+.back-hero-area .swiper .swiper-slide > li .image-area .back-btm-content ul li a:hover,
+.back-hero-area .owl-carousel.swiper .swiper-slide > li .image-area .back-btm-content ul li a:hover,
+.back-hero-area div.swiper .swiper-slide > li .image-area .back-btm-content ul li a:hover,
+.back-hero-area .back-hero-slider.swiper .swiper-slide > li .image-area .back-btm-content ul li a:hover {
+  color: #0088cb;
+}
+
+.back-hero-area ul .image-area .back-btm-content ul li svg,
+.back-hero-area .swiper .swiper-slide > li .image-area .back-btm-content ul li svg,
+.back-hero-area .owl-carousel.swiper .swiper-slide > li .image-area .back-btm-content ul li svg,
+.back-hero-area div.swiper .swiper-slide > li .image-area .back-btm-content ul li svg,
+.back-hero-area .back-hero-slider.swiper .swiper-slide > li .image-area .back-btm-content ul li svg {
+  width: 18px;
+  position: relative;
+  top: -2px;
+}
+
+.back-hero-area ul .image-area .back-btm-content ul li span,
+.back-hero-area .swiper .swiper-slide > li .image-area .back-btm-content ul li span,
+.back-hero-area .owl-carousel.swiper .swiper-slide > li .image-area .back-btm-content ul li span,
+.back-hero-area div.swiper .swiper-slide > li .image-area .back-btm-content ul li span,
+.back-hero-area .back-hero-slider.swiper .swiper-slide > li .image-area .back-btm-content ul li span {
+  margin-right: 10px;
+}
+
+.back-hero-area ul .image-area .back-btm-content ul li.back-author img,
+.back-hero-area .swiper .swiper-slide > li .image-area .back-btm-content ul li.back-author img,
+.back-hero-area .owl-carousel.swiper .swiper-slide > li .image-area .back-btm-content ul li.back-author img,
+.back-hero-area div.swiper .swiper-slide > li .image-area .back-btm-content ul li.back-author img,
+.back-hero-area .back-hero-slider.swiper .swiper-slide > li .image-area .back-btm-content ul li.back-author img {
+  width: 30px;
+  border-radius: 50%;
+  height: 30px;
+}
+
+.back-hero-area ul .image-area .back-btm-content ul li:last-child,
+.back-hero-area .swiper .swiper-slide > li .image-area .back-btm-content ul li:last-child,
+.back-hero-area .owl-carousel.swiper .swiper-slide > li .image-area .back-btm-content ul li:last-child,
+.back-hero-area div.swiper .swiper-slide > li .image-area .back-btm-content ul li:last-child,
+.back-hero-area .back-hero-slider.swiper .swiper-slide > li .image-area .back-btm-content ul li:last-child {
+  padding-right: 0;
+}
+
+.back-hero-area ul .image-area:before,
+.back-hero-area .swiper .swiper-slide > li .image-area:before,
+.back-hero-area .owl-carousel.swiper .swiper-slide > li .image-area:before,
+.back-hero-area div.swiper .swiper-slide > li .image-area:before,
+.back-hero-area .back-hero-slider.swiper .swiper-slide > li .image-area:before {
+  content: "";
+  position: absolute;
+  background: linear-gradient(transparent, transparent, transparent, #000000, #000000);
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0.8;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.owl-carousel.swiper {
+  display: block !important;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  -webkit-tap-highlight-color: transparent;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Ensure the ul element itself has no default list styles */
+.back-hero-area > .container > .row > .col-lg-6 > ul.swiper,
+.back-hero-area > .container > ul.swiper {
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+}
+
+.owl-carousel.swiper .swiper-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  display: flex;
+  transition-property: transform;
+  box-sizing: content-box;
+}
+
+.owl-carousel.swiper .swiper-slide {
+  position: relative;
+  min-height: 1px;
+  width: 100%;
+  height: 100%;
+  flex-shrink: 0;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  display: flex;
+  align-items: stretch;
+}
+
+.owl-carousel.swiper .swiper-slide > li {
+  list-style: none;
+  width: 100%;
+  display: block;
+  position: relative;
+}
+
+.owl-carousel.swiper .swiper-slide img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Hide Swiper's default navigation and pagination when not needed */
+/* Hide ALL Swiper navigation arrows globally first - BUT NOT when swiper-has-nav is present */
+/* EXCEPT for trending stories which has its own positioning */
+.swiper:not(.swiper-has-nav):not(.back-trending-slider) .swiper-button-next,
+.swiper:not(.swiper-has-nav):not(.back-trending-slider) .swiper-button-prev,
+.owl-carousel.swiper:not(.swiper-has-nav):not(.back-trending-slider) .swiper-button-next,
+.owl-carousel.swiper:not(.swiper-has-nav):not(.back-trending-slider) .swiper-button-prev,
+.swiper:not(.swiper-has-nav):not(.back-trending-slider) .swiper-button-next.swiper-navigation-icon,
+.swiper:not(.swiper-has-nav):not(.back-trending-slider) .swiper-button-prev.swiper-navigation-icon {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  width: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.owl-carousel.swiper .swiper-pagination,
+.swiper-pagination {
+  display: none !important;
+}
+
+/* Hide Swiper's default ::after pseudo-element (default arrow icon) - BUT NOT when swiper-has-nav is present */
+.swiper:not(.swiper-has-nav) .swiper-button-next::after,
+.swiper:not(.swiper-has-nav) .swiper-button-prev::after,
+.owl-carousel.swiper:not(.swiper-has-nav) .swiper-button-next::after,
+.owl-carousel.swiper:not(.swiper-has-nav) .swiper-button-prev::after,
+.swiper:not(.swiper-has-nav) .swiper-button-next.swiper-navigation-icon::after,
+.swiper:not(.swiper-has-nav) .swiper-button-prev.swiper-navigation-icon::after {
+  display: none !important;
+  content: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Hide any Swiper navigation icon elements - BUT NOT when swiper-has-nav is present */
+.swiper:not(.swiper-has-nav) .swiper-navigation-icon,
+.swiper:not(.swiper-has-nav) .swiper-button-next .swiper-navigation-icon,
+.swiper:not(.swiper-has-nav) .swiper-button-prev .swiper-navigation-icon {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Show custom arrows when explicitly enabled with swiper-has-nav class */
+.swiper.swiper-has-nav .swiper-button-next,
+.swiper.swiper-has-nav .swiper-button-prev,
+.owl-carousel.swiper.swiper-has-nav .swiper-button-next,
+.owl-carousel.swiper.swiper-has-nav .swiper-button-prev {
+  display: flex !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Hide default ::after icon even when navigation is enabled (we use ::before for custom icons) */
+.swiper.swiper-has-nav .swiper-button-next::after,
+.swiper.swiper-has-nav .swiper-button-prev::after,
+.owl-carousel.swiper.swiper-has-nav .swiper-button-next::after,
+.owl-carousel.swiper.swiper-has-nav .swiper-button-prev::after {
+  display: none !important;
+  content: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+/* CRITICAL: Match original Owl Carousel navigation arrow styles */
+/* Original CSS: .back-hero-area .owl-nav */
+/* Swiper doesn't create an .owl-nav container, so we position buttons directly */
+.back-hero-area .swiper.swiper-has-nav .swiper-button-next,
+.back-hero-area .swiper.swiper-has-nav .swiper-button-prev,
+.back-hero-area .owl-carousel.swiper.swiper-has-nav .swiper-button-next,
+.back-hero-area .owl-carousel.swiper.swiper-has-nav .swiper-button-prev {
+  position: absolute !important;
+  top: 30% !important;
+  width: 60px !important;
+  height: 60px !important;
+  margin: 0 !important;
+  color: #0a0a0a !important;
+  background: #e5e5e5 !important;
+  border-radius: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.5s ease 0s !important;
+  font-size: 0 !important;
+  line-height: 57px !important;
+  z-index: 10 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  cursor: pointer !important;
+}
+
+/* Position next button */
+.back-hero-area .swiper.swiper-has-nav .swiper-button-next,
+.back-hero-area .owl-carousel.swiper.swiper-has-nav .swiper-button-next {
+  left: 100px;
+  right: auto;
+}
+
+/* Position prev button */
+.back-hero-area .swiper.swiper-has-nav .swiper-button-prev,
+.back-hero-area .owl-carousel.swiper.swiper-has-nav .swiper-button-prev {
+  left: 20px;
+  right: auto;
+}
+
+/* Hide Swiper's default ::after icon completely */
+/* We use ::before for our custom icons, so hide ::after */
+.back-hero-area .swiper.swiper-has-nav .swiper-button-next::after,
+.back-hero-area .swiper.swiper-has-nav .swiper-button-prev::after,
+.back-hero-area .owl-carousel.swiper.swiper-has-nav .swiper-button-next::after,
+.back-hero-area .owl-carousel.swiper.swiper-has-nav .swiper-button-prev::after {
+  display: none !important;
+  content: "" !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+/* Hide Swiper's default ::after icon first */
+.back-hero-area .swiper.swiper-has-nav .swiper-button-next::after,
+.back-hero-area .swiper.swiper-has-nav .swiper-button-prev::after,
+.back-hero-area .owl-carousel.swiper.swiper-has-nav .swiper-button-next::after,
+.back-hero-area .owl-carousel.swiper.swiper-has-nav .swiper-button-prev::after {
+  content: "" !important;
+  display: none !important;
+}
+
+/* Add custom icon using :before pseudo-element */
+/* CRITICAL: Ensure ::before is visible and properly styled */
+/* Use maximum specificity to override Swiper defaults */
+.back-hero-area .swiper.swiper-has-nav .swiper-button-next::before,
+.back-hero-area .owl-carousel.swiper.swiper-has-nav .swiper-button-next::before,
+.back-hero-area .swiper.swiper-has-nav .swiper-button-next::before,
+.back-hero-area .owl-carousel.swiper.swiper-has-nav .swiper-button-next::before {
+  content: "\f11e" !important;
+  font-family: "uicons-regular-rounded", uicons-regular-rounded !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  font-size: 22px !important;
+  line-height: 3px !important;
+  color: #0a0a0a !important;
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  z-index: 2 !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  speak: none !important;
+  width: auto !important;
+  height: auto !important;
+}
+
+.back-hero-area .swiper.swiper-has-nav .swiper-button-prev::before,
+.back-hero-area .owl-carousel.swiper.swiper-has-nav .swiper-button-prev::before,
+.back-hero-area .swiper.swiper-has-nav .swiper-button-prev::before,
+.back-hero-area .owl-carousel.swiper.swiper-has-nav .swiper-button-prev::before {
+  content: "\f11d" !important;
+  font-family: "uicons-regular-rounded", uicons-regular-rounded !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  font-size: 22px !important;
+  line-height: 3px !important;
+  color: #0a0a0a !important;
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  z-index: 2 !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  speak: none !important;
+  width: auto !important;
+  height: auto !important;
+}
+
+/* Hover styles */
+.back-hero-area .swiper.swiper-has-nav .swiper-button-next:hover,
+.back-hero-area .swiper.swiper-has-nav .swiper-button-prev:hover,
+.back-hero-area .owl-carousel.swiper.swiper-has-nav .swiper-button-next:hover,
+.back-hero-area .owl-carousel.swiper.swiper-has-nav .swiper-button-prev:hover {
+  color: #ffffff !important;
+  background: #0088cb !important;
+}
+
+/* Update icon color on hover */
+.back-hero-area .swiper.swiper-has-nav .swiper-button-next:hover::before,
+.back-hero-area .swiper.swiper-has-nav .swiper-button-prev:hover::before,
+.back-hero-area .owl-carousel.swiper.swiper-has-nav .swiper-button-next:hover::before,
+.back-hero-area .owl-carousel.swiper.swiper-has-nav .swiper-button-prev:hover::before {
+  color: #ffffff !important;
+}
+
+.back-hero-area .back-hero-bottom.swiper.swiper-has-nav .swiper-button-next:hover,
+.back-hero-area .back-hero-bottom.swiper.swiper-has-nav .swiper-button-prev:hover,
+.back-hero-area .back-hero-slider2.swiper.swiper-has-nav .swiper-button-next:hover,
+.back-hero-area .back-hero-slider2.swiper.swiper-has-nav .swiper-button-prev:hover {
+  color: #ffffff !important;
+  background: #0088cb !important;
+}
+
+.back-hero-area .back-hero-bottom.swiper.swiper-has-nav .swiper-button-next:hover::before,
+.back-hero-area .back-hero-bottom.swiper.swiper-has-nav .swiper-button-prev:hover::before,
+.back-hero-area .back-hero-slider2.swiper.swiper-has-nav .swiper-button-next:hover::before,
+.back-hero-area .back-hero-slider2.swiper.swiper-has-nav .swiper-button-prev:hover::before {
+  color: #ffffff !important;
+}
+
+/* Navigation for .back-hero-bottom.back-hero-slider2 */
+/* Original CSS: .back-hero-area .back-hero-bottom .owl-nav */
+.back-hero-area .back-hero-bottom.swiper.swiper-has-nav .swiper-button-next,
+.back-hero-area .back-hero-bottom.swiper.swiper-has-nav .swiper-button-prev,
+.back-hero-area .back-hero-slider2.swiper.swiper-has-nav .swiper-button-next,
+.back-hero-area .back-hero-slider2.swiper.swiper-has-nav .swiper-button-prev {
+  position: absolute;
+  top: -88px;
+  width: 50px;
+  height: 50px;
+  line-height: 47px;
+  margin: 0;
+  color: #0a0a0a;
+  background: #e5e5e5 !important;
+  border-radius: 100%;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s ease 0s;
+  font-size: 0 !important;
+  z-index: 10;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none;
+}
+
+.back-hero-area .back-hero-bottom.swiper.swiper-has-nav .swiper-button-next,
+.back-hero-area .back-hero-slider2.swiper.swiper-has-nav .swiper-button-next {
+  right: 12px;
+  left: auto;
+}
+
+.back-hero-area .back-hero-bottom.swiper.swiper-has-nav .swiper-button-prev,
+.back-hero-area .back-hero-slider2.swiper.swiper-has-nav .swiper-button-prev {
+  right: 77px;
+  left: auto;
+}
+
+.back-hero-area .back-hero-bottom.swiper.swiper-has-nav .swiper-button-next::after,
+.back-hero-area .back-hero-bottom.swiper.swiper-has-nav .swiper-button-prev::after,
+.back-hero-area .back-hero-slider2.swiper.swiper-has-nav .swiper-button-next::after,
+.back-hero-area .back-hero-slider2.swiper.swiper-has-nav .swiper-button-prev::after {
+  display: none;
+}
+
+.back-hero-area .back-hero-bottom.swiper.swiper-has-nav .swiper-button-next::before,
+.back-hero-area .back-hero-slider2.swiper.swiper-has-nav .swiper-button-next::before {
+  content: "\f11e" !important;
+  font-family: "uicons-regular-rounded" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  font-size: 18px !important;
+  line-height: 3px !important;
+  color: #0a0a0a !important;
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  z-index: 1 !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+.back-hero-area .back-hero-bottom.swiper.swiper-has-nav .swiper-button-prev::before,
+.back-hero-area .back-hero-slider2.swiper.swiper-has-nav .swiper-button-prev::before {
+  content: "\f11d" !important;
+  font-family: "uicons-regular-rounded" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  font-size: 18px !important;
+  line-height: 3px !important;
+  color: #0a0a0a !important;
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  z-index: 1 !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+.back-hero-area .back-hero-bottom.swiper.swiper-has-nav .swiper-button-next:hover,
+.back-hero-area .back-hero-bottom.swiper.swiper-has-nav .swiper-button-prev:hover,
+.back-hero-area .back-hero-slider2.swiper.swiper-has-nav .swiper-button-next:hover,
+.back-hero-area .back-hero-slider2.swiper.swiper-has-nav .swiper-button-prev:hover {
+  color: #ffffff !important;
+  background: #0088cb !important;
+}
+
+/* Show pagination when enabled */
+.owl-carousel.swiper.swiper-has-pagination .swiper-pagination {
+  display: block;
+}
+
+/* Ensure proper spacing and layout */
+.owl-carousel.swiper .swiper-slide > * {
+  width: 100%;
+}
+
+/* Fix for hero slider specific styles */
+.back-hero-slider.swiper,
+.back-hero-slider2.swiper {
+  display: block !important;
+}
+
+.back-hero-slider.swiper .swiper-slide,
+.back-hero-slider2.swiper .swiper-slide {
+  display: block;
+}
+
+/* Ensure list items inside slides are properly displayed */
+.owl-carousel.swiper ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.owl-carousel.swiper .swiper-slide ul li {
+  list-style: none;
+}
+
+/* Match Owl Carousel's item structure */
+.owl-carousel.swiper .swiper-slide {
+  float: none !important;
+  display: block !important;
+}
+
+/* Ensure proper width calculation for multiple items */
+.owl-carousel.swiper[data-items="1"] .swiper-slide {
+  width: 100% !important;
+}
+
+.owl-carousel.swiper[data-items="2"] .swiper-slide {
+  width: 50% !important;
+}
+
+.owl-carousel.swiper[data-items="3"] .swiper-slide {
+  width: 33.333% !important;
+}
+
+.owl-carousel.swiper[data-items="4"] .swiper-slide {
+  width: 25% !important;
+}
+
+/* Override Swiper's default flex display for better Owl Carousel compatibility */
+.owl-carousel.swiper .swiper-wrapper {
+  display: flex !important;
+  transform: translate3d(0px, 0px, 0px) !important;
+}
+
+/* Ensure images and content display correctly */
+.owl-carousel.swiper .swiper-slide .image-area {
+  width: 100% !important;
+  display: block !important;
+  position: relative !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+.owl-carousel.swiper .swiper-slide .image-area img {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+  max-width: 100% !important;
+  object-fit: cover !important;
+}
+
+/* Ensure back-btm-content displays correctly */
+.owl-carousel.swiper .swiper-slide .image-area .back-btm-content {
+  width: 100% !important;
+  display: block !important;
+}
+
+/* Fix for hero area image-area styles - match original CSS exactly */
+/* The original CSS selector is: .back-hero-area ul .image-area */
+/* With Swiper, we need to ensure this selector still works */
+/* Path: .back-hero-area ul.swiper .swiper-wrapper .swiper-slide > li .image-area */
+
+/* Make sure the original CSS selector still applies */
+.back-hero-area ul.swiper .swiper-slide > li .image-area,
+.back-hero-area ul .swiper .swiper-slide > li .image-area,
+.back-hero-area ul.swiper .image-area,
+.back-hero-area ul .image-area {
+  position: relative;
+}
+
+.back-hero-area ul.swiper .swiper-slide > li .image-area .back-btm-content,
+.back-hero-area ul .swiper .swiper-slide > li .image-area .back-btm-content,
+.back-hero-area ul.swiper .image-area .back-btm-content,
+.back-hero-area ul .image-area .back-btm-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 40px;
+  z-index: 2;
+}
+
+/* Match all original back-btm-content child styles */
+.back-hero-area ul.swiper .swiper-slide > li .image-area .back-btm-content h3,
+.back-hero-area ul .swiper .swiper-slide > li .image-area .back-btm-content h3,
+.back-hero-area ul.swiper .image-area .back-btm-content h3,
+.back-hero-area ul .image-area .back-btm-content h3 {
+  font-family: 'SpartanSemiBold';
+  font-size: 36px;
+  line-height: 46px;
+  margin: 20px 0 16px;
+}
+
+.back-hero-area ul.swiper .swiper-slide > li .image-area .back-btm-content h3 a,
+.back-hero-area ul .swiper .swiper-slide > li .image-area .back-btm-content h3 a,
+.back-hero-area ul.swiper .image-area .back-btm-content h3 a,
+.back-hero-area ul .image-area .back-btm-content h3 a {
+  color: #ffffff;
+  text-decoration: none;
+  display: inline;
+  background-image: linear-gradient(to bottom, #ffffff 0%, #ffffff 100%);
+  background-size: 0 1px;
+  background-repeat: no-repeat;
+  background-position: left 100%;
+  transition: all 0.7s;
+}
+
+.back-hero-area ul.swiper .swiper-slide > li .image-area .back-btm-content h3 a:hover,
+.back-hero-area ul .swiper .swiper-slide > li .image-area .back-btm-content h3 a:hover,
+.back-hero-area ul.swiper .image-area .back-btm-content h3 a:hover,
+.back-hero-area ul .image-area .back-btm-content h3 a:hover {
+  color: #ffffff;
+  background-size: 100% 1px;
+}
+
+.back-hero-area ul.swiper .swiper-slide > li .image-area .back-btm-content ul,
+.back-hero-area ul .swiper .swiper-slide > li .image-area .back-btm-content ul,
+.back-hero-area ul.swiper .image-area .back-btm-content ul,
+.back-hero-area ul .image-area .back-btm-content ul {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.back-hero-area ul.swiper .swiper-slide > li .image-area .back-btm-content ul li,
+.back-hero-area ul .swiper .swiper-slide > li .image-area .back-btm-content ul li,
+.back-hero-area ul.swiper .image-area .back-btm-content ul li,
+.back-hero-area ul .image-area .back-btm-content ul li {
+  color: #ffffff;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  padding-right: 30px;
+}
+
+.back-hero-area ul.swiper .swiper-slide > li .image-area .back-btm-content ul li a,
+.back-hero-area ul .swiper .swiper-slide > li .image-area .back-btm-content ul li a,
+.back-hero-area ul.swiper .image-area .back-btm-content ul li a,
+.back-hero-area ul .image-area .back-btm-content ul li a {
+  color: #ffffff;
+}
+
+.back-hero-area ul.swiper .swiper-slide > li .image-area .back-btm-content ul li a:hover,
+.back-hero-area ul .swiper .swiper-slide > li .image-area .back-btm-content ul li a:hover,
+.back-hero-area ul.swiper .image-area .back-btm-content ul li a:hover,
+.back-hero-area ul .image-area .back-btm-content ul li a:hover {
+  color: #0088cb;
+}
+
+.back-hero-area ul.swiper .swiper-slide > li .image-area .back-btm-content ul li svg,
+.back-hero-area ul .swiper .swiper-slide > li .image-area .back-btm-content ul li svg,
+.back-hero-area ul.swiper .image-area .back-btm-content ul li svg,
+.back-hero-area ul .image-area .back-btm-content ul li svg {
+  width: 18px;
+  position: relative;
+  top: -2px;
+}
+
+.back-hero-area ul.swiper .swiper-slide > li .image-area .back-btm-content ul li span,
+.back-hero-area ul .swiper .swiper-slide > li .image-area .back-btm-content ul li span,
+.back-hero-area ul.swiper .image-area .back-btm-content ul li span,
+.back-hero-area ul .image-area .back-btm-content ul li span {
+  margin-right: 10px;
+}
+
+.back-hero-area ul.swiper .swiper-slide > li .image-area .back-btm-content ul li.back-author img,
+.back-hero-area ul .swiper .swiper-slide > li .image-area .back-btm-content ul li.back-author img,
+.back-hero-area ul.swiper .image-area .back-btm-content ul li.back-author img,
+.back-hero-area ul .image-area .back-btm-content ul li.back-author img {
+  width: 30px;
+  border-radius: 50%;
+  height: 30px;
+}
+
+.back-hero-area ul.swiper .swiper-slide > li .image-area .back-btm-content ul li:last-child,
+.back-hero-area ul .swiper .swiper-slide > li .image-area .back-btm-content ul li:last-child,
+.back-hero-area ul.swiper .image-area .back-btm-content ul li:last-child,
+.back-hero-area ul .image-area .back-btm-content ul li:last-child {
+  padding-right: 0;
+}
+
+.back-hero-area ul.swiper .swiper-slide > li .image-area:before,
+.back-hero-area ul .swiper .swiper-slide > li .image-area:before,
+.back-hero-area ul.swiper .image-area:before,
+.back-hero-area ul .image-area:before {
+  content: "";
+  position: absolute;
+  background: linear-gradient(transparent, transparent, transparent, #000000, #000000);
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0.8;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Ensure Swiper doesn't break the layout - match original li structure exactly */
+.owl-carousel.swiper .swiper-slide {
+  height: auto;
+  display: block;
+  float: none;
+  width: 100%;
+}
+
+.owl-carousel.swiper .swiper-slide > li {
+  width: 100%;
+  display: block;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  float: none;
+  list-style: none;
+}
+
+/* Ensure Swiper wrapper doesn't interfere */
+.owl-carousel.swiper .swiper-wrapper {
+  display: flex;
+  width: 100%;
+}
+
+/* Make sure images display correctly */
+.back-hero-area ul.swiper .swiper-slide > li .image-area img,
+.back-hero-area ul .swiper .swiper-slide > li .image-area img,
+.back-hero-area ul.swiper .image-area img,
+.back-hero-area ul .image-area img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Fix for hero slider specific layout */
+.back-hero-slider.swiper .swiper-slide,
+.back-hero-slider2.swiper .swiper-slide {
+  display: block;
+  width: 100%;
+}
+
+.back-hero-slider.swiper .swiper-slide > li,
+.back-hero-slider2.swiper .swiper-slide > li {
+  display: block;
+  width: 100%;
+}
+
+/* CRITICAL: Fix for .back-hero-bottom.back-hero-slider2 styles */
+/* Original CSS: .back-hero-area .back-hero-bottom { padding-left: 250px; margin-top: 70px; margin-bottom: 70px; } */
+.back-hero-area .back-hero-bottom.swiper,
+.back-hero-area .back-hero-bottom.owl-carousel.swiper,
+.back-hero-area .back-hero-slider2.swiper,
+.back-hero-area .back-hero-slider2.owl-carousel.swiper {
+  padding-left: 250px !important;
+  margin-top: 70px !important;
+  margin-bottom: 70px !important;
+}
+
+/* Ensure Swiper wrapper doesn't break the layout */
+.back-hero-area .back-hero-bottom.swiper .swiper-wrapper,
+.back-hero-area .back-hero-bottom.owl-carousel.swiper .swiper-wrapper,
+.back-hero-area .back-hero-slider2.swiper .swiper-wrapper,
+.back-hero-area .back-hero-slider2.owl-carousel.swiper .swiper-wrapper {
+  display: flex;
+  width: 100%;
+}
+
+/* Original CSS: .back-hero-area .back-hero-bottom li { display: flex; flex-wrap: wrap; align-items: center; } */
+.back-hero-area .back-hero-bottom.swiper .swiper-slide > li,
+.back-hero-area .back-hero-bottom.owl-carousel.swiper .swiper-slide > li,
+.back-hero-area .back-hero-slider2.swiper .swiper-slide > li,
+.back-hero-area .back-hero-slider2.owl-carousel.swiper .swiper-slide > li {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Ensure slides have proper width for multiple items (3 items per view) */
+.back-hero-area .back-hero-bottom.swiper .swiper-slide,
+.back-hero-area .back-hero-bottom.owl-carousel.swiper .swiper-slide,
+.back-hero-area .back-hero-slider2.swiper .swiper-slide,
+.back-hero-area .back-hero-slider2.owl-carousel.swiper .swiper-slide {
+  width: auto !important;
+  flex-shrink: 0;
+  height: auto;
+}
+
+/* Original CSS: .back-hero-area .back-hero-bottom li .image-areas { flex: 0 0 35%; max-width: 35%; padding-right: 20px; } */
+.back-hero-area .back-hero-bottom.swiper .swiper-slide > li .image-areas,
+.back-hero-area .back-hero-bottom.owl-carousel.swiper .swiper-slide > li .image-areas,
+.back-hero-area .back-hero-slider2.swiper .swiper-slide > li .image-areas,
+.back-hero-area .back-hero-slider2.owl-carousel.swiper .swiper-slide > li .image-areas {
+  flex: 0 0 35% !important;
+  max-width: 35% !important;
+  padding-right: 20px !important;
+}
+
+/* Original CSS: .back-hero-area .back-hero-bottom li .back-btm-content { flex: 0 0 65%; max-width: 65%; padding-right: 20px; } */
+.back-hero-area .back-hero-bottom.swiper .swiper-slide > li .back-btm-content,
+.back-hero-area .back-hero-bottom.owl-carousel.swiper .swiper-slide > li .back-btm-content,
+.back-hero-area .back-hero-slider2.swiper .swiper-slide > li .back-btm-content,
+.back-hero-area .back-hero-slider2.owl-carousel.swiper .swiper-slide > li .back-btm-content {
+  flex: 0 0 65% !important;
+  max-width: 65% !important;
+  padding-right: 20px !important;
+  position: relative !important;
+}
+
+/* Apply all child element styles for .back-hero-bottom */
+.back-hero-area .back-hero-bottom.swiper .swiper-slide > li .back-btm-content .back-cates,
+.back-hero-area .back-hero-bottom.owl-carousel.swiper .swiper-slide > li .back-btm-content .back-cates,
+.back-hero-area .back-hero-slider2.swiper .swiper-slide > li .back-btm-content .back-cates,
+.back-hero-area .back-hero-slider2.owl-carousel.swiper .swiper-slide > li .back-btm-content .back-cates {
+  display: inline-block;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-family: 'SpartanMedium';
+  color: #777;
+}
+
+.back-hero-area .back-hero-bottom.swiper .swiper-slide > li .back-btm-content h3,
+.back-hero-area .back-hero-bottom.owl-carousel.swiper .swiper-slide > li .back-btm-content h3,
+.back-hero-area .back-hero-slider2.swiper .swiper-slide > li .back-btm-content h3,
+.back-hero-area .back-hero-slider2.owl-carousel.swiper .swiper-slide > li .back-btm-content h3 {
+  font-size: 16px;
+  line-height: 26px;
+  margin: 6px 0 9px;
+}
+
+.back-hero-area .back-hero-bottom.swiper .swiper-slide > li .back-btm-content h3 a,
+.back-hero-area .back-hero-bottom.owl-carousel.swiper .swiper-slide > li .back-btm-content h3 a,
+.back-hero-area .back-hero-slider2.swiper .swiper-slide > li .back-btm-content h3 a,
+.back-hero-area .back-hero-slider2.owl-carousel.swiper .swiper-slide > li .back-btm-content h3 a {
+  color: #000;
+  text-decoration: none;
+  display: inline;
+  background-image: linear-gradient(to bottom, #000000 0%, #000000 100%);
+  background-size: 0 1px;
+  background-repeat: no-repeat;
+  background-position: left 100%;
+  transition: all 0.7s;
+}
+
+.back-hero-area .back-hero-bottom.swiper .swiper-slide > li .back-btm-content h3 a:hover,
+.back-hero-area .back-hero-bottom.owl-carousel.swiper .swiper-slide > li .back-btm-content h3 a:hover,
+.back-hero-area .back-hero-slider2.swiper .swiper-slide > li .back-btm-content h3 a:hover,
+.back-hero-area .back-hero-slider2.owl-carousel.swiper .swiper-slide > li .back-btm-content h3 a:hover {
+  color: #000;
+  background-size: 100% 1px;
+}
+
+.back-hero-area .back-hero-bottom.swiper .swiper-slide > li .back-btm-content ul li,
+.back-hero-area .back-hero-bottom.owl-carousel.swiper .swiper-slide > li .back-btm-content ul li,
+.back-hero-area .back-hero-slider2.swiper .swiper-slide > li .back-btm-content ul li,
+.back-hero-area .back-hero-slider2.owl-carousel.swiper .swiper-slide > li .back-btm-content ul li {
+  font-size: 14px;
+  color: #777;
+}
+
+.back-hero-area .back-hero-bottom.swiper .swiper-slide > li .back-btm-content ul li svg,
+.back-hero-area .back-hero-bottom.owl-carousel.swiper .swiper-slide > li .back-btm-content ul li svg,
+.back-hero-area .back-hero-slider2.swiper .swiper-slide > li .back-btm-content ul li svg,
+.back-hero-area .back-hero-slider2.owl-carousel.swiper .swiper-slide > li .back-btm-content ul li svg {
+  width: 17px;
+  position: relative;
+  top: -2px;
+  margin-right: 8px;
+}
+
+.back-hero-area .back-hero-bottom.swiper .swiper-slide > li .back-btm-content ul li a,
+.back-hero-area .back-hero-bottom.owl-carousel.swiper .swiper-slide > li .back-btm-content ul li a,
+.back-hero-area .back-hero-slider2.swiper .swiper-slide > li .back-btm-content ul li a,
+.back-hero-area .back-hero-slider2.owl-carousel.swiper .swiper-slide > li .back-btm-content ul li a {
+  color: #000;
+}
+
+/* User Menu Avatar Styles */
+.user-menu-wrapper {
+  position: relative;
+}
+
+.user-avatar-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 50%;
+  overflow: hidden;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s;
+}
+
+.user-avatar-button:hover {
+  transform: scale(1.05);
+}
+
+.user-avatar-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.user-avatar-placeholder {
+  width: 100%;
+  height: 100%;
+  background: #030c26;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.user-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  background: transparent;
+}
+
+.user-menu-popup {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 10px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  min-width: 250px;
+  z-index: 1000;
+  overflow: hidden;
+  padding: 20px;
+}
+
+.user-menu-header {
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.user-menu-avatar-container {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.user-menu-avatar-large {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto;
+}
+
+.user-menu-info {
+  text-align: center;
+}
+
+.user-menu-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #091524;
+  margin-bottom: 5px;
+}
+
+.user-menu-email {
+  font-size: 14px;
+  color: #666;
+}
+
+.user-menu-signout {
+  width: 100%;
+  text-align: center;
+  background: #030c26;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 12px 20px;
+  font-weight: 600;
+  border-radius: 4px;
+  transition: background 0.3s;
+}
+
+.user-menu-signout:hover {
+  background: #0a1626;
+}
+
+/* Dark Mode Styles for User Menu */
+html.back-dark .user-avatar-placeholder {
+  background: #1a1a1a;
+  color: #fff;
+}
+
+html.back-dark .user-menu-popup {
+  background: #0a0a0a;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+html.back-dark .user-menu-header {
+  border-bottom: 1px solid #333;
+}
+
+html.back-dark .user-menu-name {
+  color: #f8f8f8;
+}
+
+html.back-dark .user-menu-email {
+  color: #aaa;
+}
+
+html.back-dark .user-menu-signout {
+  background: #1a1a1a;
+  color: #fff;
+}
+
+html.back-dark .user-menu-signout:hover {
+  background: #2a2a2a;
+}
+
+/* Form Message Styles */
+.error-message {
+  color: red;
+  margin-bottom: 15px;
+  padding: 10px;
+  background: #ffe6e6;
+  border-radius: 4px;
+}
+
+.success-message {
+  color: green;
+  margin-bottom: 15px;
+  padding: 10px;
+  background: #e6ffe6;
+  border-radius: 4px;
+}
+
+.signup-link {
+  display: block;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-gray {
+  color: #666;
+}
+
+/* Trending Stories Swiper Compatibility */
+/* Ensure original .back-trending-stories ul li styles work with Swiper */
+.back-trending-stories .swiper,
+.back-trending-stories .owl-carousel.swiper,
+.back-trending-stories ul.swiper {
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+}
+
+.back-trending-stories .swiper .swiper-slide > li,
+.back-trending-stories .owl-carousel.swiper .swiper-slide > li,
+.back-trending-stories ul.swiper .swiper-slide > li {
+  background: #ffffff;
+  margin: 0 15px;
+  list-style: none;
+  display: block;
+  width: 100%;
+}
+
+.back-trending-stories .swiper .swiper-slide > li .image-areas,
+.back-trending-stories .owl-carousel.swiper .swiper-slide > li .image-areas,
+.back-trending-stories ul.swiper .swiper-slide > li .image-areas {
+  position: relative;
+}
+
+.back-trending-stories .swiper .swiper-slide > li .image-areas .back-cate,
+.back-trending-stories .owl-carousel.swiper .swiper-slide > li .image-areas .back-cate,
+.back-trending-stories ul.swiper .swiper-slide > li .image-areas .back-cate {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  padding: 6px 15px 2px;
+}
+
+.back-trending-stories .swiper .swiper-slide > li .back-btm-content,
+.back-trending-stories .owl-carousel.swiper .swiper-slide > li .back-btm-content,
+.back-trending-stories ul.swiper .swiper-slide > li .back-btm-content {
+  padding: 35px 28px 35px;
+}
+
+.back-trending-stories .swiper .swiper-slide > li .back-btm-content h3,
+.back-trending-stories .owl-carousel.swiper .swiper-slide > li .back-btm-content h3,
+.back-trending-stories ul.swiper .swiper-slide > li .back-btm-content h3 {
+  font-family: 'SpartanSemiBold';
+  font-size: 16px;
+  line-height: 26px;
+  margin: 0px 0 16px;
+}
+
+.back-trending-stories .swiper .swiper-slide > li .back-btm-content h3 a,
+.back-trending-stories .owl-carousel.swiper .swiper-slide > li .back-btm-content h3 a,
+.back-trending-stories ul.swiper .swiper-slide > li .back-btm-content h3 a {
+  color: #000;
+  text-decoration: none;
+  display: inline;
+  background-image: linear-gradient(to bottom, #000000 0%, #000000 100%);
+  background-size: 0 1px;
+  background-repeat: no-repeat;
+  background-position: left 100%;
+  transition: all 0.7s;
+}
+
+.back-trending-stories .swiper .swiper-slide > li .back-btm-content h3 a:hover,
+.back-trending-stories .owl-carousel.swiper .swiper-slide > li .back-btm-content h3 a:hover,
+.back-trending-stories ul.swiper .swiper-slide > li .back-btm-content h3 a:hover {
+  color: #000;
+  background-size: 100% 1px;
+}
+
+.back-trending-stories .swiper .swiper-slide > li .back-btm-content ul,
+.back-trending-stories .owl-carousel.swiper .swiper-slide > li .back-btm-content ul,
+.back-trending-stories ul.swiper .swiper-slide > li .back-btm-content ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.back-trending-stories .swiper .swiper-slide > li .back-btm-content ul li,
+.back-trending-stories .owl-carousel.swiper .swiper-slide > li .back-btm-content ul li,
+.back-trending-stories ul.swiper .swiper-slide > li .back-btm-content ul li {
+  color: #777;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  padding-right: 10px;
+  margin: 0;
+}
+
+.back-trending-stories .swiper .swiper-slide > li .back-btm-content ul li a,
+.back-trending-stories .owl-carousel.swiper .swiper-slide > li .back-btm-content ul li a,
+.back-trending-stories ul.swiper .swiper-slide > li .back-btm-content ul li a {
+  color: #000;
+}
+
+.back-trending-stories .swiper .swiper-slide > li .back-btm-content ul li a:hover,
+.back-trending-stories .owl-carousel.swiper .swiper-slide > li .back-btm-content ul li a:hover,
+.back-trending-stories ul.swiper .swiper-slide > li .back-btm-content ul li a:hover {
+  color: #0088cb;
+}
+
+.back-trending-stories .swiper .swiper-slide > li .back-btm-content ul li svg,
+.back-trending-stories .owl-carousel.swiper .swiper-slide > li .back-btm-content ul li svg,
+.back-trending-stories ul.swiper .swiper-slide > li .back-btm-content ul li svg {
+  width: 18px;
+  position: relative;
+  top: -1px;
+}
+
+.back-trending-stories .swiper .swiper-slide > li .back-btm-content ul li span,
+.back-trending-stories .owl-carousel.swiper .swiper-slide > li .back-btm-content ul li span,
+.back-trending-stories ul.swiper .swiper-slide > li .back-btm-content ul li span {
+  margin-right: 10px;
+}
+
+.back-trending-stories .swiper .swiper-slide > li .back-btm-content ul li:last-child,
+.back-trending-stories .owl-carousel.swiper .swiper-slide > li .back-btm-content ul li:last-child,
+.back-trending-stories ul.swiper .swiper-slide > li .back-btm-content ul li:last-child {
+  padding-right: 0;
+}
+
+/* Trending Stories Navigation */
+/* Show navigation buttons for trending stories when nav is enabled */
+/* Use more specific selectors to ensure buttons are visible */
+.back-trending-stories .back-trending-slider.swiper-has-nav .swiper-button-next,
+.back-trending-stories .back-trending-slider.swiper-has-nav .swiper-button-prev,
+.back-trending-stories .back-trending-slider.owl-carousel.swiper-has-nav .swiper-button-next,
+.back-trending-stories .back-trending-slider.owl-carousel.swiper-has-nav .swiper-button-prev,
+.back-trending-stories .swiper.swiper-has-nav .swiper-button-next,
+.back-trending-stories .swiper.swiper-has-nav .swiper-button-prev,
+.back-trending-stories .owl-carousel.swiper.swiper-has-nav .swiper-button-next,
+.back-trending-stories .owl-carousel.swiper.swiper-has-nav .swiper-button-prev,
+.back-trending-stories .swiper-button-next,
+.back-trending-stories .swiper-button-prev {
+  position: absolute !important;
+  top: -88px !important;
+  width: 50px !important;
+  height: 50px !important;
+  line-height: 47px !important;
+  margin: 0 !important;
+  color: #0a0a0a !important;
+  background: #e5e5e5 !important;
+  border-radius: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.5s ease 0s !important;
+  font-size: 0 !important;
+  z-index: 10 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  cursor: pointer !important;
+}
+
+/* Hide navigation on mobile/tablet for trending stories */
+@media (max-width: 991px) {
+  .back-trending-stories .swiper-button-next,
+  .back-trending-stories .swiper-button-prev {
+    display: none !important;
+  }
+}
+
+/* Ensure Swiper navigation buttons are always visible when navigation is enabled */
+/* Override any global hiding rules for trending stories */
+.back-trending-stories .swiper.swiper-has-nav,
+.back-trending-stories .back-trending-slider.swiper-has-nav {
+  position: relative;
+}
+
+.back-trending-stories .swiper.swiper-has-nav .swiper-button-next,
+.back-trending-stories .swiper.swiper-has-nav .swiper-button-prev,
+.back-trending-stories .back-trending-slider.swiper-has-nav .swiper-button-next,
+.back-trending-stories .back-trending-slider.swiper-has-nav .swiper-button-prev {
+  display: flex !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.back-trending-stories .back-trending-slider.swiper-has-nav .swiper-button-next,
+.back-trending-stories .back-trending-slider.owl-carousel.swiper-has-nav .swiper-button-next,
+.back-trending-stories .swiper.swiper-has-nav .swiper-button-next,
+.back-trending-stories .owl-carousel.swiper.swiper-has-nav .swiper-button-next {
+  right: 12px !important;
+  left: auto !important;
+}
+
+.back-trending-stories .back-trending-slider.swiper-has-nav .swiper-button-prev,
+.back-trending-stories .back-trending-slider.owl-carousel.swiper-has-nav .swiper-button-prev,
+.back-trending-stories .swiper.swiper-has-nav .swiper-button-prev,
+.back-trending-stories .owl-carousel.swiper.swiper-has-nav .swiper-button-prev {
+  right: 77px !important;
+  left: auto !important;
+}
+
+.back-trending-stories .swiper.swiper-has-nav .swiper-button-next::after,
+.back-trending-stories .swiper.swiper-has-nav .swiper-button-prev::after,
+.back-trending-stories .owl-carousel.swiper.swiper-has-nav .swiper-button-next::after,
+.back-trending-stories .owl-carousel.swiper.swiper-has-nav .swiper-button-prev::after {
+  display: none !important;
+  content: "" !important;
+}
+
+.back-trending-stories .swiper.swiper-has-nav .swiper-button-next::before,
+.back-trending-stories .owl-carousel.swiper.swiper-has-nav .swiper-button-next::before {
+  content: "\f11e" !important;
+  font-family: "uicons-regular-rounded" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  font-size: 18px !important;
+  line-height: 3px !important;
+  color: #0a0a0a !important;
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  z-index: 2 !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+.back-trending-stories .swiper.swiper-has-nav .swiper-button-prev::before,
+.back-trending-stories .owl-carousel.swiper.swiper-has-nav .swiper-button-prev::before {
+  content: "\f11d" !important;
+  font-family: "uicons-regular-rounded" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  font-size: 18px !important;
+  line-height: 3px !important;
+  color: #0a0a0a !important;
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  z-index: 2 !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+.back-trending-stories .swiper.swiper-has-nav .swiper-button-next:hover,
+.back-trending-stories .swiper.swiper-has-nav .swiper-button-prev:hover,
+.back-trending-stories .owl-carousel.swiper.swiper-has-nav .swiper-button-next:hover,
+.back-trending-stories .owl-carousel.swiper.swiper-has-nav .swiper-button-prev:hover {
+  color: #ffffff !important;
+  background: #0088cb !important;
+}
+
+.back-trending-stories .swiper.swiper-has-nav .swiper-button-next:hover::before,
+.back-trending-stories .swiper.swiper-has-nav .swiper-button-prev:hover::before,
+.back-trending-stories .owl-carousel.swiper.swiper-has-nav .swiper-button-next:hover::before,
+.back-trending-stories .owl-carousel.swiper.swiper-has-nav .swiper-button-prev:hover::before {
+  color: #ffffff !important;
+}
+
+/* Search Form Visibility */
+.search-form-hidden {
+  display: none;
+}
+
+.search-form-visible {
+  display: block;
+}
+
+/* Scroll to Top Visibility */
+.scroll-to-top-hidden {
+  display: none;
+}
+
+.scroll-to-top-visible {
+  display: block;
+}
+
+/* Iframe Styles */
+.iframe-no-border {
+  border: 0;
+}
+
+/* Dark Mode Support for Messages */
+html.back-dark .error-message {
+  background: #3a1a1a;
+  color: #ff6b6b;
+}
+
+html.back-dark .success-message {
+  background: #1a3a1a;
+  color: #6bff6b;
+}
+
+/* Footer Top Area Styles - Ensure Swiper structure matches original */
+.back-hero-area.footer-top-area .swiper,
+.back-hero-area.footer-top-area .owl-carousel.swiper,
+.back-hero-area.footer-top-area .back-footer-top-slider.swiper {
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+}
+
+.back-hero-area.footer-top-area ul .image-area .back-btm-content h3,
+.back-hero-area.footer-top-area .swiper .swiper-slide > li .image-area .back-btm-content h3,
+.back-hero-area.footer-top-area .owl-carousel.swiper .swiper-slide > li .image-area .back-btm-content h3 {
+  font-size: 20px;
+  line-height: 30px;
+}
+
+.back-hero-area.footer-top-area ul .image-area .back-btm-content ul li svg,
+.back-hero-area.footer-top-area .swiper .swiper-slide > li .image-area .back-btm-content ul li svg,
+.back-hero-area.footer-top-area .owl-carousel.swiper .swiper-slide > li .image-area .back-btm-content ul li svg {
+  position: relative;
+  top: -3px;
+}
+
+.back-hero-area.footer-top-area ul .image-area .back-btm-content ul li.back-author img,
+.back-hero-area.footer-top-area .swiper .swiper-slide > li .image-area .back-btm-content ul li.back-author img,
+.back-hero-area.footer-top-area .owl-carousel.swiper .swiper-slide > li .image-area .back-btm-content ul li.back-author img {
+  width: 28px;
+  height: 28px;
+}
+
+/* Ensure footer-top-area slides display correctly */
+.back-hero-area.footer-top-area .swiper .swiper-slide,
+.back-hero-area.footer-top-area .owl-carousel.swiper .swiper-slide {
+  display: block;
+  width: 100%;
+}
+
+.back-hero-area.footer-top-area .swiper .swiper-slide > li,
+.back-hero-area.footer-top-area .owl-carousel.swiper .swiper-slide > li {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Ensure image-area and back-btm-content display correctly in footer-top */
+.back-hero-area.footer-top-area .swiper .swiper-slide > li .image-area,
+.back-hero-area.footer-top-area .owl-carousel.swiper .swiper-slide > li .image-area {
+  position: relative;
+  width: 100%;
+}
+
+.back-hero-area.footer-top-area .swiper .swiper-slide > li .image-area img,
+.back-hero-area.footer-top-area .owl-carousel.swiper .swiper-slide > li .image-area img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.back-hero-area.footer-top-area .swiper .swiper-slide > li .image-area .back-btm-content,
+.back-hero-area.footer-top-area .owl-carousel.swiper .swiper-slide > li .image-area .back-btm-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 40px;
+  z-index: 2;
+}
+
+/* Match all footer-top back-btm-content child styles */
+.back-hero-area.footer-top-area .swiper .swiper-slide > li .image-area .back-btm-content h3,
+.back-hero-area.footer-top-area .owl-carousel.swiper .swiper-slide > li .image-area .back-btm-content h3 {
+  font-family: 'SpartanSemiBold';
+  font-size: 20px;
+  line-height: 30px;
+  margin: 20px 0 16px;
+}
+
+.back-hero-area.footer-top-area .swiper .swiper-slide > li .image-area .back-btm-content h3 a,
+.back-hero-area.footer-top-area .owl-carousel.swiper .swiper-slide > li .image-area .back-btm-content h3 a {
+  color: #ffffff;
+  text-decoration: none;
+  display: inline;
+  background-image: linear-gradient(to bottom, #ffffff 0%, #ffffff 100%);
+  background-size: 0 1px;
+  background-repeat: no-repeat;
+  background-position: left 100%;
+  transition: all 0.7s;
+}
+
+.back-hero-area.footer-top-area .swiper .swiper-slide > li .image-area .back-btm-content h3 a:hover,
+.back-hero-area.footer-top-area .owl-carousel.swiper .swiper-slide > li .image-area .back-btm-content h3 a:hover {
+  color: #ffffff;
+  background-size: 100% 1px;
+}
+
+.back-hero-area.footer-top-area .swiper .swiper-slide > li .image-area .back-btm-content ul,
+.back-hero-area.footer-top-area .owl-carousel.swiper .swiper-slide > li .image-area .back-btm-content ul {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.back-hero-area.footer-top-area .swiper .swiper-slide > li .image-area .back-btm-content ul li,
+.back-hero-area.footer-top-area .owl-carousel.swiper .swiper-slide > li .image-area .back-btm-content ul li {
+  color: #ffffff;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  padding-right: 30px;
+}
+
+.back-hero-area.footer-top-area .swiper .swiper-slide > li .image-area .back-btm-content ul li a,
+.back-hero-area.footer-top-area .owl-carousel.swiper .swiper-slide > li .image-area .back-btm-content ul li a {
+  color: #ffffff;
+}
+
+.back-hero-area.footer-top-area .swiper .swiper-slide > li .image-area .back-btm-content ul li a:hover,
+.back-hero-area.footer-top-area .owl-carousel.swiper .swiper-slide > li .image-area .back-btm-content ul li a:hover {
+  color: #0088cb;
+}
+
+.back-hero-area.footer-top-area .swiper .swiper-slide > li .image-area .back-btm-content ul li svg,
+.back-hero-area.footer-top-area .owl-carousel.swiper .swiper-slide > li .image-area .back-btm-content ul li svg {
+  width: 18px;
+  position: relative;
+  top: -3px;
+}
+
+.back-hero-area.footer-top-area .swiper .swiper-slide > li .image-area .back-btm-content ul li span,
+.back-hero-area.footer-top-area .owl-carousel.swiper .swiper-slide > li .image-area .back-btm-content ul li span {
+  margin-right: 10px;
+}
+
+.back-hero-area.footer-top-area .swiper .swiper-slide > li .image-area .back-btm-content ul li:last-child,
+.back-hero-area.footer-top-area .owl-carousel.swiper .swiper-slide > li .image-area .back-btm-content ul li:last-child {
+  padding-right: 0;
+}
+
+/* Gradient overlay for footer-top image-area */
+.back-hero-area.footer-top-area .swiper .swiper-slide > li .image-area:before,
+.back-hero-area.footer-top-area .owl-carousel.swiper .swiper-slide > li .image-area:before {
+  content: "";
+  position: absolute;
+  background: linear-gradient(transparent, transparent, transparent, #000000, #000000);
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0.8;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ========================================
+   FOOTER TOP AREA - Override original ul-based selectors
+   Original CSS uses .back-hero-area.footer-top-area ul .image-area
+   But Swiper renders as div, so we need div-based selectors
+   Using !important to ensure override of original style.css
+   ======================================== */
+
+/* Container styles */
+.back-hero-area.footer-top-area {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Direct .image-area selector - works regardless of ul or div container */
+.back-hero-area.footer-top-area .image-area {
+  position: relative !important;
+  display: block !important;
+  width: 100% !important;
+}
+
+.back-hero-area.footer-top-area .image-area > a {
+  display: block !important;
+}
+
+.back-hero-area.footer-top-area .image-area img {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+}
+
+/* Gradient overlay - using direct .image-area selector */
+.back-hero-area.footer-top-area .image-area::before {
+  content: "" !important;
+  position: absolute !important;
+  background: linear-gradient(transparent, transparent, transparent, #000000, #000000) !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 100% !important;
+  width: 100% !important;
+  opacity: 0.8 !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
+}
+
+/* back-btm-content positioning */
+.back-hero-area.footer-top-area .image-area .back-btm-content {
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  padding: 40px !important;
+  z-index: 2 !important;
+}
+
+/* Category badge styling */
+.back-hero-area.footer-top-area .image-area .back-btm-content .back-cate {
+  display: inline-block !important;
+  padding: 8px 18px 4px !important;
+  font-size: 12px !important;
+  text-transform: uppercase !important;
+  font-family: 'SpartanMedium' !important;
+  color: #ffffff !important;
+  border-radius: 3px !important;
+}
+
+/* Heading styles - footer-top specific smaller size */
+.back-hero-area.footer-top-area .image-area .back-btm-content h3 {
+  font-family: 'SpartanSemiBold' !important;
+  font-size: 20px !important;
+  line-height: 30px !important;
+  margin: 20px 0 16px !important;
+}
+
+.back-hero-area.footer-top-area .image-area .back-btm-content h3 a {
+  color: #ffffff !important;
+  text-decoration: none !important;
+  display: inline !important;
+  background-image: linear-gradient(to bottom, #ffffff 0%, #ffffff 100%) !important;
+  background-size: 0 1px !important;
+  background-repeat: no-repeat !important;
+  background-position: left 100% !important;
+  transition: all 0.7s !important;
+}
+
+.back-hero-area.footer-top-area .image-area .back-btm-content h3 a:hover {
+  background-size: 100% 1px !important;
+}
+
+/* Meta list (author, date) */
+.back-hero-area.footer-top-area .image-area .back-btm-content ul {
+  display: flex !important;
+  gap: 10px !important;
+  flex-wrap: wrap !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+}
+
+.back-hero-area.footer-top-area .image-area .back-btm-content ul li {
+  color: #ffffff !important;
+  font-size: 14px !important;
+  display: flex !important;
+  align-items: center !important;
+  padding-right: 30px !important;
+  list-style: none !important;
+}
+
+.back-hero-area.footer-top-area .image-area .back-btm-content ul li:last-child {
+  padding-right: 0 !important;
+}
+
+.back-hero-area.footer-top-area .image-area .back-btm-content ul li a {
+  color: #ffffff !important;
+}
+
+.back-hero-area.footer-top-area .image-area .back-btm-content ul li a:hover {
+  color: #0088cb !important;
+}
+
+.back-hero-area.footer-top-area .image-area .back-btm-content ul li svg {
+  width: 18px !important;
+  position: relative !important;
+  top: -3px !important;
+}
+
+.back-hero-area.footer-top-area .image-area .back-btm-content ul li span {
+  margin-right: 10px !important;
+}
+
+.back-hero-area.footer-top-area .image-area .back-btm-content ul li.back-author img {
+  width: 28px !important;
+  height: 28px !important;
+  border-radius: 50% !important;
+}
+
+/* Ensure Swiper structure displays correctly in footer-top */
+.back-hero-area.footer-top-area .swiper-slide {
+  display: block !important;
+  width: 100% !important;
+}
+
+.back-hero-area.footer-top-area .swiper-slide > li {
+  display: block !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+}
+
+/* Footer Top Area - Multi-item slider styles */
+/* Override base styles to show multiple items side by side */
+.back-hero-area.footer-top-area .swiper-wrapper {
+  display: flex !important;
+}
+
+.back-hero-area.footer-top-area .swiper-slide {
+  flex-shrink: 0 !important;
+  width: auto !important;
+  height: auto !important;
+}
+
+/* Responsive widths for footer-top slides */
+@media (min-width: 1200px) {
+  .back-hero-area.footer-top-area .swiper-slide {
+    width: 25% !important;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .back-hero-area.footer-top-area .swiper-slide {
+    width: 33.333% !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .back-hero-area.footer-top-area .swiper-slide {
+    width: 50% !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .back-hero-area.footer-top-area .swiper-slide {
+    width: 100% !important;
+  }
+}
+
+/* Ensure images in footer-top have proper aspect ratio */
+.back-hero-area.footer-top-area .image-area img {
+  width: 100% !important;
+  height: auto !important;
+  object-fit: cover !important;
+}
+
+/* Footer top specific back-btm-content styles */
+.back-hero-area.footer-top-area .image-area .back-btm-content {
+  padding: 20px !important;
+}
+
+@media (min-width: 992px) {
+  .back-hero-area.footer-top-area .image-area .back-btm-content {
+    padding: 30px !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  .back-hero-area.footer-top-area .image-area .back-btm-content {
+    padding: 40px !important;
+  }
+}
+
+/* Slick Slider Custom Styles */
+/* Make Slick slider behave like the original UL element */
+.back-hero-area .back-hero-slider.slick-slider,
+.back-hero-area .back-hero-slider2.slick-slider,
+.back-hero-area .slick-slider {
+  position: relative;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+}
+
+.back-hero-area .slick-list {
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.back-hero-area .slick-track {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.back-hero-area .slick-slide {
+  outline: none;
+  float: left;
+}
+
+.back-hero-area .slick-slide > li {
+  width: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.back-hero-area .slick-slide > li .image-area {
+  position: relative !important;
+}
+
+.back-hero-area .slick-slide > li .image-area img,
+.back-hero-area .slick-slide > li .image-areas img {
+  width: 100% !important;
+  display: block !important;
+}
+
+/* Critical: Add gradient overlay for text readability */
+.back-hero-area .slick-slider li .image-area:before,
+.back-hero-area .slick-slide li .image-area:before {
+  content: "" !important;
+  position: absolute !important;
+  background: linear-gradient(transparent, transparent, transparent, #000000, #000000) !important;
+  bottom: 0 !important;
+  height: 100% !important;
+  width: 100% !important;
+  opacity: 0.8 !important;
+  z-index: 1 !important;
+}
+
+/* Ensure content appears above the gradient */
+/* .back-hero-area .slick-slider li .image-area .back-btm-content,
+.back-hero-area .slick-slide li .image-area .back-btm-content {
+  position: relative !important;
+  z-index: 2 !important;
+} */
+
+/* Ensure li elements inside Slick slides have no list styling */
+.back-hero-area .slick-slider li,
+.back-hero-area .slick-slide > li {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Slick Navigation Arrows for bottom slider - Match Original Owl Carousel Style */
+.back-hero-area .back-hero-slider2.slick-slider .slick-prev,
+.back-hero-area .back-hero-slider2.slick-slider .slick-next,
+.back-hero-area .back-hero-bottom.slick-slider .slick-prev,
+.back-hero-area .back-hero-bottom.slick-slider .slick-next {
+  position: absolute !important;
+  top: 30% !important;
+  transform: translateY(0) !important;
+  z-index: 10 !important;
+  width: 60px !important;
+  height: 60px !important;
+  background: #e5e5e5 !important;
+  color: #0a0a0a !important;
+  border-radius: 100% !important;
+  display: inline-block !important;
+  cursor: pointer !important;
+  transition: all 0.5s ease 0s !important;
+  font-size: 0 !important;
+}
+
+.back-hero-area .back-hero-slider2.slick-slider .slick-prev:hover,
+.back-hero-area .back-hero-slider2.slick-slider .slick-next:hover,
+.back-hero-area .back-hero-bottom.slick-slider .slick-prev:hover,
+.back-hero-area .back-hero-bottom.slick-slider .slick-next:hover {
+  background: #0088cb !important;
+  color: #ffffff !important;
+}
+
+.back-hero-area .back-hero-slider2.slick-slider .slick-prev,
+.back-hero-area .back-hero-bottom.slick-slider .slick-prev {
+  left: 20px !important;
+}
+
+.back-hero-area .back-hero-slider2.slick-slider .slick-next,
+.back-hero-area .back-hero-bottom.slick-slider .slick-next {
+  left: 100px !important;
+  right: auto !important;
+}
+
+/* Use icon font for arrows - matching original owl carousel */
+.back-hero-area .back-hero-slider2.slick-slider .slick-prev:before,
+.back-hero-area .back-hero-bottom.slick-slider .slick-prev:before {
+  content: '\f11d' !important;
+  font-family: uicons-regular-rounded !important;
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  font-size: 22px !important;
+  font-weight: 400 !important;
+  color: inherit !important;
+}
+
+.back-hero-area .back-hero-slider2.slick-slider .slick-next:before,
+.back-hero-area .back-hero-bottom.slick-slider .slick-next:before {
+  content: '\f11e' !important;
+  font-family: uicons-regular-rounded !important;
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  font-size: 22px !important;
+  font-weight: 400 !important;
+  color: inherit !important;
+}
+
+/* Hide arrows for the first slider */
+.back-hero-slider.slick-slider .slick-prev,
+.back-hero-slider.slick-slider .slick-next {
+  display: none !important;
+}
+
+/* Ensure .image-areas (plural) also gets proper styling */
+.back-hero-area .slick-slider li .image-areas,
+.back-hero-area .slick-slide > li .image-areas {
+  position: relative !important;
+}
+
+/* Bottom slider specific layout - matching original owl carousel */
+.back-hero-area .back-hero-bottom.slick-slider,
+.back-hero-area .back-hero-slider2.slick-slider {
+  padding-left: 250px !important;
+  margin-top: 70px !important;
+  margin-bottom: 70px !important;
+}
+
+.back-hero-area .back-hero-bottom.slick-slider li,
+.back-hero-area .back-hero-slider2.slick-slider li {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+}
+
+.back-hero-area .back-hero-bottom.slick-slider li .image-areas,
+.back-hero-area .back-hero-slider2.slick-slider li .image-areas {
+  flex: 0 0 35% !important;
+  max-width: 35% !important;
+  padding-right: 20px !important;
+}
+
+.back-hero-area .back-hero-bottom.slick-slider li .back-btm-content,
+.back-hero-area .back-hero-slider2.slick-slider li .back-btm-content {
+  flex: 0 0 65% !important;
+  max-width: 65% !important;
+  padding-right: 20px !important;
+  /* Override absolute positioning for bottom slider */
+  position: relative !important;
+  bottom: auto !important;
+  left: auto !important;
+  right: auto !important;
+  padding: 0 20px 0 0 !important;
+  z-index: auto !important;
+}
+
+.back-hero-area .back-hero-bottom.slick-slider li .back-btm-content .back-cates,
+.back-hero-area .back-hero-slider2.slick-slider li .back-btm-content .back-cates {
+  display: inline-block !important;
+  font-size: 12px !important;
+  text-transform: uppercase !important;
+  font-family: 'SpartanMedium' !important;
+  color: #777 !important;
+  background: transparent !important;
+  padding: 0 !important;
+}
+
+.back-hero-area .back-hero-bottom.slick-slider li .back-btm-content h3,
+.back-hero-area .back-hero-slider2.slick-slider li .back-btm-content h3 {
+  font-size: 16px !important;
+  line-height: 26px !important;
+  margin: 6px 0 9px !important;
+  color: #000 !important;
+}
+
+.back-hero-area .back-hero-bottom.slick-slider li .back-btm-content h3 a,
+.back-hero-area .back-hero-slider2.slick-slider li .back-btm-content h3 a {
+  color: #000 !important;
+}
+
+.back-hero-area .back-hero-bottom.slick-slider li .back-btm-content ul li,
+.back-hero-area .back-hero-slider2.slick-slider li .back-btm-content ul li {
+  font-size: 14px !important;
+  color: #777 !important;
+}
+
+/* No gradient overlay for bottom slider */
+.back-hero-area .back-hero-bottom.slick-slider li .image-areas:before,
+.back-hero-area .back-hero-slider2.slick-slider li .image-areas:before {
+  display: none !important;
+}
+
+/* Fix .back-btm-content child elements for Slick Slider */
+.back-hero-area .slick-slider li .image-area .back-btm-content h3,
+.back-hero-area .slick-slide li .image-area .back-btm-content h3 {
+  font-family: 'SpartanSemiBold' !important;
+  font-size: 36px !important;
+  line-height: 46px !important;
+  margin: 20px 0 16px !important;
+  color: #ffffff !important;
+}
+
+.back-hero-area.footer-top-area .back-footer-top-slider .image-area .back-btm-content h3 {
+  font-size: 20px !important;
+  line-height: 30px !important;
+}
+
+.back-hero-area .slick-slider li .image-area .back-btm-content h3 a,
+.back-hero-area .slick-slide li .image-area .back-btm-content h3 a {
+  color: #ffffff !important;
+  text-decoration: none !important;
+  display: inline !important;
+}
+
+.back-hero-area .slick-slider li .image-area .back-btm-content ul,
+.back-hero-area .slick-slide li .image-area .back-btm-content ul {
+  display: flex !important;
+  gap: 10px !important;
+  flex-wrap: wrap !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+}
+
+.back-hero-area .slick-slider li .image-area .back-btm-content ul li,
+.back-hero-area .slick-slide li .image-area .back-btm-content ul li {
+  color: #ffffff !important;
+  font-size: 14px !important;
+  display: flex !important;
+  align-items: center !important;
+  padding-right: 30px !important;
+  list-style: none !important;
+}
+
+.back-hero-area .slick-slider li .image-area .back-btm-content ul li a,
+.back-hero-area .slick-slide li .image-area .back-btm-content ul li a {
+  color: #ffffff !important;
+}
+
+.back-hero-area .slick-slider li .image-area .back-btm-content ul li span,
+.back-hero-area .slick-slide li .image-area .back-btm-content ul li span {
+  margin-right: 10px !important;
+}
+
+.back-hero-area .slick-slider li .image-area .back-btm-content ul li.back-author img,
+.back-hero-area .slick-slide li .image-area .back-btm-content ul li.back-author img {
+  width: 30px !important;
+  border-radius: 50% !important;
+  margin-right: 10px !important;
+}
+
+.back-hero-area .slick-slider li .image-area .back-btm-content ul li svg,
+.back-hero-area .slick-slide li .image-area .back-btm-content ul li svg {
+  width: 18px !important;
+  position: relative !important;
+  top: 2px !important;
+}
+
+/* Category badge inside back-btm-content */
+.back-hero-area .slick-slider li .image-area .back-btm-content .back-cate,
+.back-hero-area .slick-slide li .image-area .back-btm-content .back-cate {
+  display: inline-block !important;
+  padding: 8px 18px 4px !important;
+  font-size: 12px !important;
+  text-transform: uppercase !important;
+  font-family: 'SpartanMedium' !important;
+  color: #ffffff !important;
+}
+
+/* ==================================================
+   Trending Stories Slick Slider Styles
+   ================================================== */
+
+/* Trending Stories Container Constraints */
+.back-trending-stories .container {
+  max-width: 1350px !important;
+}
+
+/* Trending Stories Title */
+.back-trending-stories .back-title h2 {
+  padding-left: 14px !important;
+}
+
+/* Trending Stories Slider Container */
+.back-trending-stories .back-trending-slider.slick-slider,
+.back-trending-stories .slick-slider {
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+  width: 100% !important;
+}
+
+.back-trending-stories .slick-list {
+  overflow: hidden !important;
+  margin: 0 -15px !important;
+  padding: 0 !important;
+}
+
+.back-trending-stories .slick-track {
+  display: flex !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  gap: 0 !important;
+}
+
+.back-trending-stories .slick-slide {
+  outline: none !important;
+  float: left !important;
+  height: auto !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+}
+
+.back-trending-stories .slick-slide > div {
+  margin: 0 15px !important;
+  padding: 0 !important;
+  height: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Trending Stories Slide Items */
+.back-trending-stories .slick-slide > li,
+.back-trending-stories .back-trending-slider .slick-slide > li {
+  background: #ffffff !important;
+  margin: 0 15px !important;
+  list-style: none !important;
+  padding: 0 !important;
+  width: auto !important;
+  display: block !important;
+  height: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Ensure the wrapper div doesn't add extra spacing */
+.back-trending-stories .slick-slide > div > li {
+  background: #ffffff !important;
+  margin: 0 !important;
+  list-style: none !important;
+  padding: 0 !important;
+  width: 100% !important;
+  display: block !important;
+  height: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.back-trending-stories .slick-slide > li .image-areas,
+.back-trending-stories .slick-slide > div > li .image-areas {
+  position: relative !important;
+}
+
+.back-trending-stories .slick-slide > li .image-areas img,
+.back-trending-stories .slick-slide > div > li .image-areas img {
+  width: 100% !important;
+  display: block !important;
+  height: auto !important;
+}
+
+.back-trending-stories .slick-slide > li .image-areas .back-cate,
+.back-trending-stories .slick-slide > div > li .image-areas .back-cate {
+  position: absolute !important;
+  bottom: 30px !important;
+  left: 30px !important;
+  padding: 6px 15px 2px !important;
+}
+
+.back-trending-stories .slick-slide > li .back-btm-content,
+.back-trending-stories .slick-slide > div > li .back-btm-content {
+  padding: 35px 28px 35px !important;
+  background: #ffffff !important;
+}
+
+.back-trending-stories .slick-slide > li .back-btm-content h3,
+.back-trending-stories .slick-slide > div > li .back-btm-content h3 {
+  font-family: 'SpartanSemiBold' !important;
+  font-size: 16px !important;
+  line-height: 26px !important;
+  margin: 0px 0 16px !important;
+}
+
+.back-trending-stories .slick-slide > li .back-btm-content h3 a,
+.back-trending-stories .slick-slide > div > li .back-btm-content h3 a {
+  color: #000 !important;
+}
+
+.back-trending-stories .slick-slide > li .back-btm-content ul,
+.back-trending-stories .slick-slide > div > li .back-btm-content ul {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+}
+
+.back-trending-stories .slick-slide > li .back-btm-content ul li,
+.back-trending-stories .slick-slide > div > li .back-btm-content ul li {
+  color: #777 !important;
+  font-size: 13px !important;
+  display: flex !important;
+  align-items: center !important;
+  padding-right: 10px !important;
+  margin: 0 !important;
+  list-style: none !important;
+  background: transparent !important;
+}
+
+.back-trending-stories .slick-slide > li .back-btm-content ul li a,
+.back-trending-stories .slick-slide > div > li .back-btm-content ul li a {
+  color: #000 !important;
+}
+
+.back-trending-stories .slick-slide > li .back-btm-content ul li svg,
+.back-trending-stories .slick-slide > div > li .back-btm-content ul li svg {
+  width: 18px !important;
+  position: relative !important;
+  top: -1px !important;
+}
+
+.back-trending-stories .slick-slide > li .back-btm-content ul li span,
+.back-trending-stories .slick-slide > div > li .back-btm-content ul li span {
+  margin-right: 10px !important;
+}
+
+/* Trending Stories Navigation Arrows */
+.back-trending-stories {
+  position: relative !important;
+}
+
+.back-trending-stories .back-trending-slider {
+  position: relative !important;
+}
+
+.back-trending-stories .slick-prev,
+.back-trending-stories .slick-next {
+  position: absolute !important;
+  top: -88px !important;
+  z-index: 999 !important;
+  width: 50px !important;
+  height: 50px !important;
+  line-height: 47px !important;
+  background: #e5e5e5 !important;
+  color: #0a0a0a !important;
+  border-radius: 100% !important;
+  display: inline-block !important;
+  cursor: pointer !important;
+  transition: all 0.5s ease 0s !important;
+  font-size: 0 !important;
+}
+
+.back-trending-stories .slick-prev {
+  right: 77px !important;
+  left: auto !important;
+}
+
+.back-trending-stories .slick-next {
+  right: 12px !important;
+  left: auto !important;
+}
+
+.back-trending-stories .slick-prev:hover,
+.back-trending-stories .slick-next:hover {
+  background: #0088cb !important;
+  color: #ffffff !important;
+}
+
+.back-trending-stories .slick-prev:before {
+  content: '\f11d' !important;
+  font-family: uicons-regular-rounded !important;
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  font-size: 18px !important;
+  font-weight: 400 !important;
+  color: inherit !important;
+}
+
+.back-trending-stories .slick-next:before {
+  content: '\f11e' !important;
+  font-family: uicons-regular-rounded !important;
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  font-size: 18px !important;
+  font-weight: 400 !important;
+  color: inherit !important;
+}
+
+/* ============================================================
+   Footer Top Area Slider Styles
+   ============================================================ */
+
+/* Footer Top Container */
+.footer-top-area {
+  padding-top: 50px !important;
+  padding-bottom: 50px !important;
+}
+
+/* Make Slick mimic original <ul><li> structure */
+.footer-top-area .slick-slider {
+  position: relative !important;
+  display: block !important;
+  box-sizing: border-box !important;
+  user-select: none !important;
+  touch-action: pan-y !important;
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+.footer-top-area .slick-list {
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: relative !important;
+  display: block !important;
+}
+
+.footer-top-area .slick-track {
+  display: flex !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: relative !important;
+  left: 0 !important;
+  top: 0 !important;
+  gap: 0 !important;
+}
+
+/* NO GAPS between slides - margin: 0 in original */
+.footer-top-area .slick-slide {
+  float: none !important;
+  height: auto !important;
+  min-height: 1px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  align-items: stretch !important;
+}
+
+.footer-top-area .slick-slide > div {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* List items as direct children */
+.footer-top-area .slick-slide > li {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  display: block !important;
+}
+
+/* If Slick wraps in a div */
+.footer-top-area .slick-slide > div {
+  width: 100% !important;
+  height: 100% !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.footer-top-area .slick-slide > div > li {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  display: block !important;
+}
+
+/* Image Area Styling - Must be relative for absolute children */
+.footer-top-area .image-area {
+  position: relative !important;
+  overflow: hidden !important;
+  display: block !important;
+  width: 100% !important;
+}
+
+.footer-top-area .image-area img {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+  transition: all 0.5s ease 0s !important;
+}
+
+.footer-top-area .image-area:hover img {
+  transform: scale(1.1) !important;
+}
+
+/* Gradient Overlay - Must be on image-area:before (matching original) */
+.footer-top-area .image-area:before {
+  content: "" !important;
+  position: absolute !important;
+  background: linear-gradient(transparent, transparent, transparent, #000000, #000000) !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 100% !important;
+  width: 100% !important;
+  opacity: 0.8 !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
+}
+
+/* Bottom Content Overlay - Matching original .back-hero-area ul .image-area .back-btm-content */
+.footer-top-area .image-area .back-btm-content {
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  padding: 40px !important;
+  z-index: 2 !important;
+}
+
+/* Category Badge */
+.footer-top-area .image-area .back-btm-content .back-cate {
+  display: inline-block !important;
+  margin-bottom: 15px !important;
+  padding: 8px 18px 4px !important;
+  font-size: 12px !important;
+  text-transform: uppercase !important;
+  font-family: 'SpartanMedium' !important;
+  color: #ffffff !important;
+  border-radius: 3px !important;
+  text-decoration: none !important;
+  line-height: 1 !important;
+}
+
+.footer-top-area .image-area .back-btm-content h3 {
+  font-family: 'SpartanSemiBold' !important;
+  font-size: 20px !important;
+  line-height: 30px !important;
+  margin: 0 0 16px !important;
+}
+
+.footer-top-area .image-area .back-btm-content h3 a {
+  color: #ffffff !important;
+  text-decoration: none !important;
+  display: inline !important;
+  background-image: linear-gradient(to bottom, #ffffff 0%, #ffffff 100%) !important;
+  background-size: 0 1px !important;
+  background-repeat: no-repeat !important;
+  background-position: left 100% !important;
+  transition: all 0.7s !important;
+}
+
+.footer-top-area .image-area .back-btm-content h3 a:hover {
+  color: #ffffff !important;
+  background-size: 100% 1px !important;
+}
+
+.footer-top-area .image-area .back-btm-content ul {
+  display: flex !important;
+  gap: 10px !important;
+  flex-wrap: wrap !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.footer-top-area .image-area .back-btm-content ul li {
+  color: #ffffff !important;
+  font-size: 14px !important;
+  display: flex !important;
+  align-items: center !important;
+  padding-right: 30px !important;
+  list-style: none !important;
+}
+
+.footer-top-area .image-area .back-btm-content ul li:last-child {
+  padding-right: 0 !important;
+}
+
+.footer-top-area .image-area .back-btm-content ul li a {
+  color: #ffffff !important;
+}
+
+.footer-top-area .image-area .back-btm-content ul li a:hover {
+  color: #0088cb !important;
+}
+
+.footer-top-area .image-area .back-btm-content ul li svg {
+  width: 18px !important;
+  position: relative !important;
+  top: -3px !important;
+}
+
+.footer-top-area .image-area .back-btm-content ul li span {
+  margin-right: 10px !important;
+}
+
+.footer-top-area .image-area .back-btm-content ul li.back-author img {
+  width: 28px !important;
+  border-radius: 50% !important;
+  height: 28px !important;
+}
+
+/* ============================================================
+   Top Stories Section (index-two) - Fix gaps
+   ============================================================ */
+
+/* Back hero bottom3 list items need gaps */
+.back-whats-posts.back-stories-posts .back-hero-bottom.back-hero-bottom3 li {
+  margin: 0 0 28px !important;
+}
+
+/* Last item should not have bottom margin */
+.back-whats-posts.back-stories-posts .back-hero-bottom.back-hero-bottom3 li:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* Bottom stories grid section */
+.back-trending-stories.back-trending-stories-home2.back-trending-stories-home2-top {
+  background: none !important;
+  margin-left: -12px !important;
+  padding-top: 10px !important;
+}
+
+.back-trending-stories.back-trending-stories-home2.back-trending-stories-home2-top ul li {
+  background: none !important;
+  margin: 0 !important;
+}
+
+/* Ensure proper spacing between grid items (Bootstrap col-lg-4 handles horizontal gaps) */
+.back-trending-stories.back-trending-stories-home2.back-trending-stories-home2-top ul {
+  margin: 0 -12px !important;
+}
+
+.back-trending-stories.back-trending-stories-home2.back-trending-stories-home2-top ul li {
+  padding: 0 12px !important;
+}
+
+/* Top Stories - back-hero-bottom2 section margin */
+.back-whats-posts.back-stories-posts .back-hero-bottom.back-hero-bottom2 {
+  margin-bottom: 30px !important;
+}
+
+/* Latest Posts (index-three) - Additional styling fixes */
+.back-latest-posts-slider ul li .back-btm-content ul {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.back-latest-posts-slider ul li .back-btm-content ul li {
+  font-size: 14px !important;
+  color: #777 !important;
+  list-style: none !important;
+  margin-right: 20px !important;
+}
+
+.back-latest-posts-slider ul li .back-btm-content ul li.back-author {
+  margin-right: 20px !important;
+}
+
+.back-latest-posts-slider ul li .back-btm-content ul li.back-date {
+  margin-right: 0 !important;
+}
+
+.back-latest-posts-slider ul li .back-btm-content ul li a {
+  color: #000 !important;
+  text-decoration: none !important;
+}
+
+.back-latest-posts-slider ul li .back-btm-content ul li a:hover {
+  color: #0088cb !important;
+}
+
+.back-latest-posts-slider ul li .back-btm-content ul li svg {
+  width: 17px !important;
+  height: 17px !important;
+  position: relative !important;
+  top: -2px !important;
+  margin-right: 8px !important;
+}
+
+/* Latest Posts Slider - Fix section styling to match original */
+.back-trending-stories.back-trending-stories-home2.back-latest-posts-slider {
+  background: #ffffff !important;
+  padding: 70px 0 !important;
+}
+
+.back-trending-stories.back-trending-stories-home2.back-latest-posts-slider .back-title {
+  margin-bottom: 40px !important;
+}
+
+.back-trending-stories.back-trending-stories-home2.back-latest-posts-slider .back-title h2 {
+  padding-left: 14px !important;
+}
+
+/* Override previous conflicting padding rules */
+.back-latest-posts-slider {
+  padding: 70px 0 !important;
+}
+
+/* Latest Posts Slider - Navigation buttons fix */
+.back-trending-stories.back-trending-stories-home2.back-latest-posts-slider {
+  position: relative !important;
+  padding-top: 70px !important;
+}
+
+/* Update navigation buttons to match original positioning */
+.back-latest-posts-slider .slick-prev,
+.back-latest-posts-slider .slick-next {
+  top: -88px !important;
+}
+
+/* Ensure container has proper positioning context */
+.back-latest-posts-slider .container {
+  position: relative !important;
+}
+
+/* Fix section to ensure buttons are visible */
+.back-trending-stories.back-trending-stories-home2.back-latest-posts-slider .back-title {
+  position: relative !important;
+}
+
+/* Make sure slider container doesn't clip buttons */
+.back-latest-posts-slider .slick-slider {
+  position: static !important;
+}
+
+/* Latest Posts Slider - Fix to match original exactly */
+/* Override previous conflicting padding rules */
+.back-trending-stories.back-trending-stories-home2.back-latest-posts-slider {
+  background: #ffffff !important;
+  padding: 70px 0 75px !important; /* Original back-trending-stories padding */
+  position: relative !important;
+}
+
+/* Remove conflicting padding rule */
+.back-latest-posts-slider {
+  padding: 70px 0 75px !important; /* Match original back-trending-stories */
+  background: #fbf8f5 !important; /* Original back-trending-stories background */
+}
+
+/* Override back to white for home2 variant */
+.back-trending-stories.back-trending-stories-home2.back-latest-posts-slider {
+  background: #ffffff !important;
+}
+
+/* Ensure h3 has proper font styling */
+.back-latest-posts-slider ul li .back-btm-content h3 {
+  font-family: 'SpartanSemiBold' !important;
+  font-size: 16px !important;
+  line-height: 26px !important;
+  margin: 0px 0 8px !important;
+}
+
+/* Ensure h3 links have proper styling */
+.back-latest-posts-slider ul li .back-btm-content h3 a {
+  color: #000 !important;
+  text-decoration: none !important;
+  display: inline !important;
+  background-image: linear-gradient(to bottom, #000000 0%, #000000 100%) !important;
+  background-size: 0 1px !important;
+  background-repeat: no-repeat !important;
+  background-position: left 100% !important;
+  transition: all 0.7s !important;
+}
+
+.back-latest-posts-slider ul li .back-btm-content h3 a:hover {
+  color: #000 !important;
+  background-size: 100% 1px !important;
+}
+
+/* Latest Posts Slider - Fix buttons visibility */
+.back-trending-stories.back-trending-stories-home2.back-latest-posts-slider .container {
+  padding-top: 88px !important; /* Make room for navigation buttons positioned at -88px */
+}
+
+/* Ensure the section itself has enough padding */
+.back-trending-stories.back-trending-stories-home2.back-latest-posts-slider {
+  padding-top: 70px !important;
+  padding-bottom: 75px !important;
+}
+
+/* ============================================================
+   Image Modal / Lightbox Styles
+   ============================================================ */
+
+.mfp-figure {
+  line-height: 0 !important;
+}
+
+.mfp-figure figure {
+  margin: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.mfp-img {
+  display: block !important;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.3) !important;
+}
+
+.mfp-bottom-bar {
+  position: absolute !important;
+  bottom: -30px !important;
+  left: 0 !important;
+  width: 100% !important;
+  text-align: center !important;
+}
+
+.mfp-title {
+  color: #f3f3f3 !important;
+  font-size: 14px !important;
+  line-height: 18px !important;
+}
+
+.mfp-image-holder .mfp-content {
+  max-width: 100% !important;
+}
+
+.mfp-ready.mfp-wrap {
+  opacity: 1 !important;
+}
+
+/* Video Modal - Ensure proper styling */
+.video-modal-wrap {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 9999 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.video-modal-container {
+  position: relative !important;
+  width: 100% !important;
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.video-modal-content {
+  position: relative !important;
+  z-index: 10001 !important;
+  max-width: 900px !important;
+  width: 90% !important;
+}
+
+.video-modal-bg {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background-color: rgba(11, 11, 11, 0.95) !important;
+  z-index: 10000 !important;
+}
+
+.video-modal-close {
+  position: absolute !important;
+  right: -6px !important;
+  top: -40px !important;
+  width: 44px !important;
+  height: 44px !important;
+  line-height: 44px !important;
+  text-align: center !important;
+  padding: 0 !important;
+  background-color: transparent !important;
+  border: none !important;
+  cursor: pointer !important;
+  color: #fff !important;
+  font-size: 32px !important;
+  opacity: 0.85 !important;
+  z-index: 10002 !important;
+  transition: opacity 0.3s !important;
+}
+
+.video-modal-close:hover {
+  opacity: 1 !important;
+}
+
+.video-modal-iframe {
+  display: block !important;
+  width: 100% !important;
+  height: 500px !important;
+  border: none !important;
+}
+
+@media (max-width: 768px) {
+  .video-modal-iframe {
+    height: 300px !important;
+  }
+  
+  .video-modal-close {
+    right: 0 !important;
+    top: -35px !important;
+  }
+}
+
+/* ============================================================
+   Audio Post Styles
+   ============================================================ */
+
+.back-blog-page-single .blog-single-inner .blog-image audio {
+  width: 100% !important;
+  margin-bottom: 20px !important;
+}
+
+/* Modern audio player styling */
+.blog-image audio::-webkit-media-controls-panel {
+  background-color: #f8f9fa !important;
+}
+
+.blog-image audio::-webkit-media-controls-play-button {
+  background-color: #0088cb !important;
+  border-radius: 50% !important;
+}
+
+.blog-image audio::-webkit-media-controls-current-time-display,
+.blog-image audio::-webkit-media-controls-time-remaining-display {
+  color: #3e3e51 !important;
+}
+
+/* ============================================================
+   Mobile Menu / Offcanvas Menu Styles
+   ============================================================ */
+
+/* Base menu styles */
+.offcanvas-menu {
+  margin: 30px 0;
+  padding: 0;
+}
+
+.offcanvas-menu .back-menus {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.offcanvas-menu .back-menus li {
+  list-style: none;
+  position: relative;
+  background: #fff;
+  border-bottom: 1px solid #f5f3f3;
+}
+
+.offcanvas-menu .back-menus li:first-child {
+  border-top: none !important;
+}
+
+.offcanvas-menu .back-menus li > a {
+  display: block;
+  padding: 17px 50px 17px 20px;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+  color: #0a0a0a;
+  transition: all 0.3s ease;
+}
+
+.offcanvas-menu .back-menus li > a:hover {
+  background: #f5f3f3 !important;
+  color: #0d1e50 !important;
+}
+
+/* Active menu item */
+.offcanvas-menu .back-menus li.menu-active > a {
+  color: #0d1e50 !important;
+  background: #f5f3f3 !important;
+}
+
+/* Arrow for expandable menus */
+.offcanvas-menu .back-menus .has-sub .arrow {
+  width: 55px;
+  height: 54px;
+  display: block;
+  background: #fff;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 99;
+  cursor: pointer;
+  border-left: 1px solid #f5f3f3;
+  transition: background 0.3s ease;
+}
+
+.offcanvas-menu .back-menus .has-sub .arrow:hover {
+  background: #f5f3f3 !important;
+}
+
+.offcanvas-menu .back-menus .has-sub .arrow:after {
+  content: "";
+  position: absolute;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 10px solid #0d1e50;
+  display: block;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease;
+}
+
+/* Arrow when menu is active/open */
+.offcanvas-menu .back-menus .has-sub.menu-active > .arrow:after {
+  content: "";
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 10px solid #0d1e50;
+  border-top: 0px;
+  transform: translate(-50%, -50%);
+}
+
+/* Submenu styles */
+.offcanvas-menu .back-menus .sub-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background: #f9f9f9;
+  display: none;
+}
+
+.offcanvas-menu .back-menus .sub-menu.slide {
+  display: block !important;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    max-height: 1000px;
+  }
+}
+
+.offcanvas-menu .back-menus .sub-menu li {
+  border-top: 1px solid #f5f3f3;
+  border-bottom: none;
+  background: #f9f9f9;
+}
+
+.offcanvas-menu .back-menus .sub-menu li:last-child {
+  border-bottom: none !important;
+}
+
+.offcanvas-menu .back-menus .sub-menu li a {
+  padding: 12px 50px 12px 40px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #0a0a0a;
+}
+
+.offcanvas-menu .back-menus .sub-menu li a:hover {
+  background: #f5f3f3 !important;
+  color: #0d1e50 !important;
+}
+
+/* Nested submenu (3rd level) */
+.offcanvas-menu .back-menus .sub-menu .sub-menu {
+  background: #efefef;
+}
+
+.offcanvas-menu .back-menus .sub-menu .sub-menu li {
+  background: #efefef;
+}
+
+.offcanvas-menu .back-menus .sub-menu .sub-menu li a {
+  padding-left: 60px !important;
+}
+
+.offcanvas-menu .back-menus .sub-menu .sub-menu .sub-menu li a {
+  padding-left: 80px !important;
+}
+
+/* Nested submenu arrow positioning */
+.offcanvas-menu .back-menus .sub-menu .has-sub .arrow {
+  background: #f9f9f9 !important;
+  border-left: 1px solid #ececec;
+}
+
+.offcanvas-menu .back-menus .sub-menu .sub-menu .has-sub .arrow {
+  background: #efefef !important;
+}
+
+/* Ensure submenus are positioned correctly */
+.offcanvas-menu .back-menus .sub-menu {
+  position: static !important;
+  width: 100% !important;
+  box-shadow: none !important;
+}
+
+/* Mobile menu specific adjustments */
+.back-canvas .offcanvas-menu {
+  max-height: 400px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 10px;
+}
+
+/* Custom scrollbar for mobile menu */
+.back-canvas .offcanvas-menu::-webkit-scrollbar {
+  width: 6px;
+}
+
+.back-canvas .offcanvas-menu::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.back-canvas .offcanvas-menu::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+.back-canvas .offcanvas-menu::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Adjust offcanvas text spacing after menu */
+.back-canvas .offcanvas-text {
+  margin-top: 30px;
+}
+
+/* ============================================================
+   Responsive Styles for Index-Three Slider
+   ============================================================ */
+
+/* Tablet and below - Keep horizontal layout for 2 items */
+@media only screen and (max-width: 991px) {
+  /* Hide navigation arrows on mobile */
+  .back-home3-slider-area .slick-prev,
+  .back-home3-slider-area .slick-next {
+    display: none !important;
+  }
+
+  /* Adjust padding for mobile */
+  .back-home2-slider-area,
+  .back-home3-slider-area {
+    padding: 30px 0 !important;
+  }
+
+  /* Adjust image/content ratio for better mobile display */
+  .back-home2-slider-area .back-hero-bottom-two li .image-areas,
+  .back-home3-slider-area .back-hero-bottom-two li .image-areas {
+    flex: 0 0 40% !important;
+    max-width: 40% !important;
+    padding-right: 10px !important;
+  }
+
+  .back-home2-slider-area .back-hero-bottom-two li .back-btm-content,
+  .back-home3-slider-area .back-hero-bottom-two li .back-btm-content {
+    flex: 0 0 60% !important;
+    max-width: 60% !important;
+    padding-right: 10px !important;
+  }
+}
+
+/* Small mobile - Further adjustments */
+@media only screen and (max-width: 767px) {
+  .back-home2-slider-area .back-hero-bottom-two li .back-btm-content h3,
+  .back-home3-slider-area .back-hero-bottom-two li .back-btm-content h3 {
+    font-size: 12px !important;
+    line-height: 18px !important;
+    margin: 3px 0 5px !important;
+  }
+
+  .back-home2-slider-area .back-hero-bottom-two li .back-btm-content .back-cates,
+  .back-home3-slider-area .back-hero-bottom-two li .back-btm-content .back-cates {
+    font-size: 9px !important;
+  }
+
+  .back-home2-slider-area .back-hero-bottom-two li .back-btm-content ul li,
+  .back-home3-slider-area .back-hero-bottom-two li .back-btm-content ul li {
+    font-size: 10px !important;
+  }
+
+  .back-home2-slider-area .back-hero-bottom-two li .back-btm-content ul li svg,
+  .back-home3-slider-area .back-hero-bottom-two li .back-btm-content ul li svg {
+    width: 14px !important;
+    margin-right: 4px !important;
+  }
+}
+
+/* Extra small mobile - Most compact */
+@media only screen and (max-width: 480px) {
+  .back-home2-slider-area,
+  .back-home3-slider-area {
+    padding: 20px 0 !important;
+  }
+
+  /* Stack vertically on very small screens for better readability */
+  .back-home2-slider-area .back-hero-bottom-two li .image-areas,
+  .back-home3-slider-area .back-hero-bottom-two li .image-areas {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    padding-right: 0 !important;
+    margin-bottom: 10px !important;
+  }
+
+  .back-home2-slider-area .back-hero-bottom-two li .back-btm-content,
+  .back-home3-slider-area .back-hero-bottom-two li .back-btm-content {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    padding-right: 0 !important;
+  }
+
+  .back-home2-slider-area .back-hero-bottom-two li,
+  .back-home3-slider-area .back-hero-bottom-two li {
+    flex-direction: column !important;
+  }
+
+  .back-home2-slider-area .back-hero-bottom-two li .back-btm-content h3,
+  .back-home3-slider-area .back-hero-bottom-two li .back-btm-content h3 {
+    font-size: 11px !important;
+    line-height: 16px !important;
+    margin: 2px 0 4px !important;
+  }
+
+  .back-home2-slider-area .back-hero-bottom-two li .back-btm-content .back-cates,
+  .back-home3-slider-area .back-hero-bottom-two li .back-btm-content .back-cates {
+    font-size: 8px !important;
+    padding: 3px 8px 2px !important;
+  }
+}
