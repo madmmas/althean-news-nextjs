@@ -20,6 +20,7 @@ export default function Header() {
   const [isMobile, setIsMobile] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [language, setLanguage] = useState<'en' | 'bn'>('en');
   const { data: session, status } = { data: null, status: 'unauthenticated' };
   const menuRef = useRef<HTMLUListElement>(null);
   const router = useRouter();
@@ -78,6 +79,12 @@ export default function Header() {
     if (savedTheme === 'dark') {
       setIsDarkMode(true);
       document.documentElement.classList.add('back-dark');
+    }
+
+    // Check for saved language preference
+    const savedLanguage = localStorage.getItem('language') as 'en' | 'bn' | null;
+    if (savedLanguage === 'en' || savedLanguage === 'bn') {
+      setLanguage(savedLanguage);
     }
 
     // Check if mobile view
@@ -227,6 +234,13 @@ export default function Header() {
     }
   };
 
+  const toggleLanguage = () => {
+    const newLanguage = language === 'en' ? 'bn' : 'en';
+    setLanguage(newLanguage);
+    localStorage.setItem('language', newLanguage);
+    // You can add language switching logic here (e.g., using i18n library)
+  };
+
   const handleSearchSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const query = searchQuery.trim();
@@ -278,6 +292,13 @@ export default function Header() {
                   {
                     isMobile && ( <div className="searchbar-part back-search-mobile">
                       <ul>
+  
+                        <li className="back-language-toggle" onClick={toggleLanguage} title={`Switch to ${language === 'en' ? 'Bengali' : 'English'}`}>
+                          <div style={{width: '24px', height: '24px', alignItems: 'center', justifyContent: 'center', fontSize: '20px', fontWeight: '600', cursor: 'pointer', userSelect: 'none' }}>
+                            {language === 'en' ? 'En' : 'Bn'}
+                          </div>
+                        </li>
+
                         <li className="back-dark-light" onClick={toggleDarkMode}>
                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-sun back-go-light1">
                             <circle cx="12" cy="12" r="5"></circle>
@@ -539,6 +560,13 @@ export default function Header() {
                   {/* Desktop Search */}
                   {!isMobile && (<div className="searchbar-part back-search-desktop">
                     <ul>
+
+                    <li className="back-language-toggle" onClick={toggleLanguage} title={`Switch to ${language === 'en' ? 'Bengali' : 'English'}`}>
+                        <div style={{ width: '24px', height: '24px', alignItems: 'center', justifyContent: 'center', fontSize: '20px', fontWeight: '600', cursor: 'pointer', userSelect: 'none' }}>
+                          {language === 'en' ? 'En' : 'Bn'}
+                        </div>
+                      </li>
+
                       <li className="back-dark-light" onClick={toggleDarkMode}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-sun back-go-light">
                           <circle cx="12" cy="12" r="5"></circle>
