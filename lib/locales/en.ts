@@ -43,6 +43,17 @@ export const en = {
     quotePost: 'Quote Post',
     asidePost: 'Aside Post',
     linkPost: 'Link Post',
+    postSidebar: 'Post Sidebar',
+    noSidebar: 'No Sidebar',
+    multipleAuthors: 'Multiple Authors',
+  },
+  // Offcanvas
+  offcanvas: {
+    getInTouch: 'Get in Touch',
+    address: 'Address',
+    email: 'Email',
+    phone: 'Phone',
+    description: 'Education every new parents knows the feeling nothing more than for everyone to get at some sleep. But at least you\'ve got Google. start building your first prototype today!',
   },
   // Common
   common: {

@@ -43,6 +43,17 @@ export const bn = {
     quotePost: 'কোট পোস্ট',
     asidePost: 'এসাইড পোস্ট',
     linkPost: 'লিংক পোস্ট',
+    postSidebar: 'পোস্ট সাইডবার',
+    noSidebar: 'সাইডবার নেই',
+    multipleAuthors: 'একাধিক লেখক',
+  },
+  // Offcanvas
+  offcanvas: {
+    getInTouch: 'যোগাযোগ করুন',
+    address: 'ঠিকানা',
+    email: 'ইমেইল',
+    phone: 'ফোন',
+    description: 'শিক্ষা প্রতিটি নতুন বাবা-মা জানেন যে অনুভূতি সবাইকে কিছু ঘুম পেতে দেওয়ার চেয়ে বেশি কিছু নয়। কিন্তু অন্তত আপনার কাছে Google আছে। আজই আপনার প্রথম প্রোটোটাইপ তৈরি করা শুরু করুন!',
   },
   // Common
   common: {
