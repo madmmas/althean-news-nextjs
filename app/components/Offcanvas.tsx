@@ -88,15 +88,8 @@ export default function Offcanvas({ isOpen, onClose }: OffcanvasProps) {
         <nav className="offcanvas-menu">
           <ul className="back-menus mobile-menu">
             {/* Home Menu */}
-            <li className={isMenuActive('home') ? 'has-sub menu-active' : 'has-sub'}>
-              <span className="arrow" onClick={() => toggleMenu('home')}></span>
-              <a href="#" onClick={(e) => e.preventDefault()}>{t.menu.home}</a>
-              <ul className={`sub-menu ${isMenuActive('home') ? 'slide' : ''}`} style={{ display: isMenuActive('home') ? 'block' : 'none' }}>
-                <li><Link href={withBasePath("/")} onClick={handleLinkClick}>{t.menu.homeOne}</Link></li>
-                <li><Link href={withBasePath("/index-two")} onClick={handleLinkClick}>{t.menu.homeTwo}</Link></li>
-                <li><Link href={withBasePath("/index-three")} onClick={handleLinkClick}>{t.menu.homeThree}</Link></li>
-                <li><Link href={withBasePath("/index-four")} onClick={handleLinkClick}>{t.menu.homeFour}</Link></li>
-              </ul>
+            <li>
+              <Link href={withBasePath("/")} onClick={handleLinkClick}>{t.menu.home}</Link>
             </li>
 
             {/* Pages Menu */}
@@ -203,7 +196,7 @@ export default function Offcanvas({ isOpen, onClose }: OffcanvasProps) {
               </div>
               <div className="info-content">
                 <h4 className="title">{t.offcanvas.address}</h4>
-                <em>06 Mymen KR. New York City</em>
+                <em>New York City</em>
               </div>
             </div>
             <div className="address-list">
@@ -215,7 +208,7 @@ export default function Offcanvas({ isOpen, onClose }: OffcanvasProps) {
               </div>
               <div className="info-content">
                 <h4 className="title">{t.offcanvas.email}</h4>
-                <em><a href="mailto:backtheme@gmail.com">backtheme@gmail.com</a></em>
+                <em><a href="mailto:info@althean.com">info@althean.com</a></em>
               </div>
             </div>
             <div className="address-list">

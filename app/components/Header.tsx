@@ -417,23 +417,8 @@ export default function Header() {
                     ref={menuRef}
                     className={`back-menus back-sub-shadow ${isMenuOpen ? '' : 'hide-menu'}`}
                   >
-                    <li 
-                      className={`has-sub ${hasActiveChild(['/', '/index-two', '/index-three', '/index-four']) ? 'menu-active' : ''}`}
-                      onMouseEnter={(e) => handleMouseEnter(e.currentTarget)}
-                      onMouseLeave={(e) => handleMouseLeave(e.currentTarget)}
-                    >
-                      <a href="#" className="hash" onClick={(e) => {
-                        if (isResponsiveMobile) {
-                          e.preventDefault();
-                          toggleSubmenu(e.currentTarget.closest('li') as HTMLLIElement);
-                        }
-                      }}>{t.menu.home}</a>
-                      <ul className="sub-menu">
-                        <li><Link href="/" className={isActivePath('/') ? 'back-current-page' : ''}>{t.menu.homeOne}</Link></li>
-                        <li><Link href="/index-two" className={isActivePath('/index-two') ? 'back-current-page' : ''}>{t.menu.homeTwo}</Link></li>
-                        <li><Link href="/index-three" className={isActivePath('/index-three') ? 'back-current-page' : ''}>{t.menu.homeThree}</Link></li>
-                        <li><Link href="/index-four" className={isActivePath('/index-four') ? 'back-current-page' : ''}>{t.menu.homeFour}</Link></li>
-                      </ul>
+                    <li className={isActivePath('/') ? 'menu-active' : ''}>
+                      <Link href="/" className={isActivePath('/') ? 'back-current-page' : ''}>{t.menu.home}</Link>
                     </li>
                     <li 
                       className={`has-sub ${hasActiveChild(['/about', '/team', '/contact', '/author', '/login', '/registration', '/404']) ? 'menu-active' : ''}`}
