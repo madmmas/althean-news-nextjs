@@ -8,7 +8,7 @@ import Offcanvas from './Offcanvas';
 import { getBasePath, withBasePath } from '@/lib/basePath';
 import { useStickyHeader } from '@/lib/hooks/useStickyHeader';
 import { useResponsiveMenu } from '@/lib/hooks/useResponsiveMenu';
-import Slider from 'react-slick';
+import { useLocale } from '@/lib/contexts/LocaleContext';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
@@ -20,10 +20,10 @@ export default function Header() {
   const [isMobile, setIsMobile] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
-  const [language, setLanguage] = useState<'en' | 'bn'>('en');
   const { data: session, status } = { data: null, status: 'unauthenticated' };
   const menuRef = useRef<HTMLUListElement>(null);
   const router = useRouter();
+  const { locale, setLocale, t } = useLocale();
 
   const pathname = usePathname();
   const basePath = getBasePath();
@@ -79,12 +79,6 @@ export default function Header() {
     if (savedTheme === 'dark') {
       setIsDarkMode(true);
       document.documentElement.classList.add('back-dark');
-    }
-
-    // Check for saved language preference
-    const savedLanguage = localStorage.getItem('language') as 'en' | 'bn' | null;
-    if (savedLanguage === 'en' || savedLanguage === 'bn') {
-      setLanguage(savedLanguage);
     }
 
     // Check if mobile view
@@ -235,10 +229,8 @@ export default function Header() {
   };
 
   const toggleLanguage = () => {
-    const newLanguage = language === 'en' ? 'bn' : 'en';
-    setLanguage(newLanguage);
-    localStorage.setItem('language', newLanguage);
-    // You can add language switching logic here (e.g., using i18n library)
+    const newLanguage = locale === 'en' ? 'bn' : 'en';
+    setLocale(newLanguage);
   };
 
   const handleSearchSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -293,9 +285,9 @@ export default function Header() {
                     isMobile && ( <div className="searchbar-part back-search-mobile">
                       <ul>
   
-                        <li className="back-language-toggle" onClick={toggleLanguage} title={`Switch to ${language === 'en' ? 'Bengali' : 'English'}`}>
+                        <li className="back-language-toggle" onClick={toggleLanguage} title={`Switch to ${locale === 'en' ? 'Bengali' : 'English'}`}>
                           <div style={{width: '24px', height: '24px', alignItems: 'center', justifyContent: 'center', fontSize: '20px', fontWeight: '600', cursor: 'pointer', userSelect: 'none' }}>
-                            {language === 'en' ? 'En' : 'Bn'}
+                            {locale === 'en' ? 'বাং' : 'En'}
                           </div>
                         </li>
 
@@ -373,14 +365,14 @@ export default function Header() {
                                       onClick={() => {}}
                                       className="user-menu-signout"
                                     >
-                                      Sign Out
+                                      {t.header.signOut}
                                     </button>
                                   </div>
                                 </>
                               )}
                             </div>
                           ) : (
-                            <Link href="/login">Sign In</Link>
+                            <Link href="/login">{t.header.signIn}</Link>
                           )}
                         </li>
                         <li id="nav-expanders" className="nav-expander bar" onClick={(e) => { e.preventDefault(); setIsOffcanvasOpen(true); }}>
@@ -396,7 +388,7 @@ export default function Header() {
                         <input 
                           type="text" 
                           className="form-input" 
-                          placeholder="Search Here"
+                          placeholder={t.header.searchPlaceholder}
                           value={searchQuery}
                           onChange={(e) => setSearchQuery(e.target.value)}
                         />
@@ -435,12 +427,12 @@ export default function Header() {
                           e.preventDefault();
                           toggleSubmenu(e.currentTarget.closest('li') as HTMLLIElement);
                         }
-                      }}>Home</a>
+                      }}>{t.menu.home}</a>
                       <ul className="sub-menu">
-                        <li><Link href="/" className={isActivePath('/') ? 'back-current-page' : ''}>Home One</Link></li>
-                        <li><Link href="/index-two" className={isActivePath('/index-two') ? 'back-current-page' : ''}>Home Two</Link></li>
-                        <li><Link href="/index-three" className={isActivePath('/index-three') ? 'back-current-page' : ''}>Home Three</Link></li>
-                        <li><Link href="/index-four" className={isActivePath('/index-four') ? 'back-current-page' : ''}>Home Four</Link></li>
+                        <li><Link href="/" className={isActivePath('/') ? 'back-current-page' : ''}>{t.menu.homeOne}</Link></li>
+                        <li><Link href="/index-two" className={isActivePath('/index-two') ? 'back-current-page' : ''}>{t.menu.homeTwo}</Link></li>
+                        <li><Link href="/index-three" className={isActivePath('/index-three') ? 'back-current-page' : ''}>{t.menu.homeThree}</Link></li>
+                        <li><Link href="/index-four" className={isActivePath('/index-four') ? 'back-current-page' : ''}>{t.menu.homeFour}</Link></li>
                       </ul>
                     </li>
                     <li 
@@ -453,15 +445,15 @@ export default function Header() {
                           e.preventDefault();
                           toggleSubmenu(e.currentTarget.closest('li') as HTMLLIElement);
                         }
-                      }}>Pages</a>
+                      }}>{t.menu.pages}</a>
                       <ul className="sub-menu">
-                        <li><Link href="/about" className={isActivePath('/about') ? 'back-current-page' : ''}>About</Link></li>
-                        <li><Link href="/team" className={isActivePath('/team') ? 'back-current-page' : ''}>Team</Link></li>
-                        <li><Link href="/contact" className={isActivePath('/contact') ? 'back-current-page' : ''}>Contact</Link></li>
-                        <li><Link href="/author" className={isActivePath('/author') ? 'back-current-page' : ''}>Author</Link></li>
-                        <li><Link href="/login" className={isActivePath('/login') ? 'back-current-page' : ''}>Login</Link></li>
-                        <li><Link href="/registration" className={isActivePath('/registration') ? 'back-current-page' : ''}>Registration</Link></li>
-                        <li><Link href="/404" className={isActivePath('/404') ? 'back-current-page' : ''}>Error 404</Link></li>
+                        <li><Link href="/about" className={isActivePath('/about') ? 'back-current-page' : ''}>{t.menu.about}</Link></li>
+                        <li><Link href="/team" className={isActivePath('/team') ? 'back-current-page' : ''}>{t.menu.team}</Link></li>
+                        <li><Link href="/contact" className={isActivePath('/contact') ? 'back-current-page' : ''}>{t.menu.contact}</Link></li>
+                        <li><Link href="/author" className={isActivePath('/author') ? 'back-current-page' : ''}>{t.menu.author}</Link></li>
+                        <li><Link href="/login" className={isActivePath('/login') ? 'back-current-page' : ''}>{t.menu.login}</Link></li>
+                        <li><Link href="/registration" className={isActivePath('/registration') ? 'back-current-page' : ''}>{t.menu.registration}</Link></li>
+                        <li><Link href="/404" className={isActivePath('/404') ? 'back-current-page' : ''}>{t.menu.error404}</Link></li>
                       </ul>
                     </li>
                     <li 
@@ -474,14 +466,14 @@ export default function Header() {
                           e.preventDefault();
                           toggleSubmenu(e.currentTarget.closest('li') as HTMLLIElement);
                         }
-                      }}>Categories</a>
+                      }}>{t.menu.categories}</a>
                       <ul className="sub-menu">
-                        <li><Link href="/categories/politics" className={isActivePath('/categories/politics') ? 'back-current-page' : ''}>Politics</Link></li>
-                        <li><Link href="/categories/technology" className={isActivePath('/categories/technology') ? 'back-current-page' : ''}>Technology</Link></li>
-                        <li><Link href="/categories/health" className={isActivePath('/categories/health') ? 'back-current-page' : ''}>Health</Link></li>
-                        <li><Link href="/categories/travel" className={isActivePath('/categories/travel') ? 'back-current-page' : ''}>Travel</Link></li>
-                        <li><Link href="/categories/lifestyle" className={isActivePath('/categories/lifestyle') ? 'back-current-page' : ''}>Lifestyle</Link></li>
-                        <li><Link href="/categories/sports" className={isActivePath('/categories/sports') ? 'back-current-page' : ''}>Sports</Link></li>
+                        <li><Link href="/categories/politics" className={isActivePath('/categories/politics') ? 'back-current-page' : ''}>{t.menu.politics}</Link></li>
+                        <li><Link href="/categories/technology" className={isActivePath('/categories/technology') ? 'back-current-page' : ''}>{t.menu.technology}</Link></li>
+                        <li><Link href="/categories/health" className={isActivePath('/categories/health') ? 'back-current-page' : ''}>{t.menu.health}</Link></li>
+                        <li><Link href="/categories/travel" className={isActivePath('/categories/travel') ? 'back-current-page' : ''}>{t.menu.travel}</Link></li>
+                        <li><Link href="/categories/lifestyle" className={isActivePath('/categories/lifestyle') ? 'back-current-page' : ''}>{t.menu.lifestyle}</Link></li>
+                        <li><Link href="/categories/sports" className={isActivePath('/categories/sports') ? 'back-current-page' : ''}>{t.menu.sports}</Link></li>
                       </ul>
                     </li>
                     <li 
@@ -494,7 +486,7 @@ export default function Header() {
                           e.preventDefault();
                           toggleSubmenu(e.currentTarget.closest('li') as HTMLLIElement);
                         }
-                      }}>Blog</Link>
+                      }}>{t.menu.blog}</Link>
                       <ul className="sub-menu">
                         <li 
                           className="has-sub"
@@ -506,12 +498,12 @@ export default function Header() {
                               e.preventDefault();
                               toggleSubmenu(e.currentTarget.closest('li') as HTMLLIElement);
                             }
-                          }}>Blog</a>
+                          }}>{t.menu.blog}</a>
                           <ul className="sub-menu">
-                            <li><Link href="/blog" className={isActivePath('/blog') && !pathname.includes('/left-sidebar') && !pathname.includes('/right-sidebar') && !pathname.includes('/fullwidth') ? 'back-current-page' : ''}>Classic</Link></li>
-                            <li><Link href="/blog/left-sidebar" className={isActivePath('/blog/left-sidebar') ? 'back-current-page' : ''}>Left Sidebar</Link></li>
-                            <li><Link href="/blog/right-sidebar" className={isActivePath('/blog/right-sidebar') ? 'back-current-page' : ''}>Right Sidebar</Link></li>
-                            <li><Link href="/blog/fullwidth" className={isActivePath('/blog/fullwidth') ? 'back-current-page' : ''}>Full Width</Link></li>
+                            <li><Link href="/blog" className={isActivePath('/blog') && !pathname.includes('/left-sidebar') && !pathname.includes('/right-sidebar') && !pathname.includes('/fullwidth') ? 'back-current-page' : ''}>{t.menu.blogClassic}</Link></li>
+                            <li><Link href="/blog/left-sidebar" className={isActivePath('/blog/left-sidebar') ? 'back-current-page' : ''}>{t.menu.blogLeftSidebar}</Link></li>
+                            <li><Link href="/blog/right-sidebar" className={isActivePath('/blog/right-sidebar') ? 'back-current-page' : ''}>{t.menu.blogRightSidebar}</Link></li>
+                            <li><Link href="/blog/fullwidth" className={isActivePath('/blog/fullwidth') ? 'back-current-page' : ''}>{t.menu.blogFullWidth}</Link></li>
                           </ul>
                         </li>
                         <li 
@@ -524,12 +516,12 @@ export default function Header() {
                               e.preventDefault();
                               toggleSubmenu(e.currentTarget.closest('li') as HTMLLIElement);
                             }
-                          }}>Blog Single</a>
+                          }}>{t.menu.blogSingle}</a>
                           <ul className="sub-menu">
-                            <li><Link href="/blog/post-slug" className={pathname.match(/^\/blog\/[^/]+$/) ? 'back-current-page' : ''}>Classic</Link></li>
-                            <li><Link href="/blog/post-slug/left" className={pathname.match(/^\/blog\/[^/]+\/left$/) ? 'back-current-page' : ''}>Left Sidebar</Link></li>
-                            <li><Link href="/blog/post-slug/right" className={pathname.match(/^\/blog\/[^/]+\/right$/) ? 'back-current-page' : ''}>Right Sidebar</Link></li>
-                            <li><Link href="/blog/post-slug/full" className={pathname.match(/^\/blog\/[^/]+\/full$/) ? 'back-current-page' : ''}>Full Width</Link></li>
+                            <li><Link href="/blog/post-slug" className={pathname.match(/^\/blog\/[^/]+$/) ? 'back-current-page' : ''}>{t.menu.blogClassic}</Link></li>
+                            <li><Link href="/blog/post-slug/left" className={pathname.match(/^\/blog\/[^/]+\/left$/) ? 'back-current-page' : ''}>{t.menu.blogLeftSidebar}</Link></li>
+                            <li><Link href="/blog/post-slug/right" className={pathname.match(/^\/blog\/[^/]+\/right$/) ? 'back-current-page' : ''}>{t.menu.blogRightSidebar}</Link></li>
+                            <li><Link href="/blog/post-slug/full" className={pathname.match(/^\/blog\/[^/]+\/full$/) ? 'back-current-page' : ''}>{t.menu.blogFullWidth}</Link></li>
                           </ul>
                         </li>
                       </ul>
@@ -544,15 +536,15 @@ export default function Header() {
                           e.preventDefault();
                           toggleSubmenu(e.currentTarget.closest('li') as HTMLLIElement);
                         }
-                      }}>Posts</a>
+                      }}>{t.menu.posts}</a>
                       <ul className="sub-menu">
-                        <li><Link href="/posts/standard" className={isActivePath('/posts/standard') ? 'back-current-page' : ''}>Standard Post</Link></li>
-                        <li><Link href="/posts/gallery" className={isActivePath('/posts/gallery') ? 'back-current-page' : ''}>Gallery Post</Link></li>
-                        <li><Link href="/posts/video" className={isActivePath('/posts/video') ? 'back-current-page' : ''}>Video Post</Link></li>
-                        <li><Link href="/posts/audio" className={isActivePath('/posts/audio') ? 'back-current-page' : ''}>Audio Post</Link></li>
-                        <li><Link href="/posts/quote" className={isActivePath('/posts/quote') ? 'back-current-page' : ''}>Quote Post</Link></li>
-                        <li><Link href="/posts/aside" className={isActivePath('/posts/aside') ? 'back-current-page' : ''}>Aside Post</Link></li>
-                        <li><Link href="/posts/link" className={isActivePath('/posts/link') ? 'back-current-page' : ''}>Link Post</Link></li>
+                        <li><Link href="/posts/standard" className={isActivePath('/posts/standard') ? 'back-current-page' : ''}>{t.menu.standardPost}</Link></li>
+                        <li><Link href="/posts/gallery" className={isActivePath('/posts/gallery') ? 'back-current-page' : ''}>{t.menu.galleryPost}</Link></li>
+                        <li><Link href="/posts/video" className={isActivePath('/posts/video') ? 'back-current-page' : ''}>{t.menu.videoPost}</Link></li>
+                        <li><Link href="/posts/audio" className={isActivePath('/posts/audio') ? 'back-current-page' : ''}>{t.menu.audioPost}</Link></li>
+                        <li><Link href="/posts/quote" className={isActivePath('/posts/quote') ? 'back-current-page' : ''}>{t.menu.quotePost}</Link></li>
+                        <li><Link href="/posts/aside" className={isActivePath('/posts/aside') ? 'back-current-page' : ''}>{t.menu.asidePost}</Link></li>
+                        <li><Link href="/posts/link" className={isActivePath('/posts/link') ? 'back-current-page' : ''}>{t.menu.linkPost}</Link></li>
                       </ul>
                     </li>
                   </ul>
@@ -561,9 +553,9 @@ export default function Header() {
                   {!isMobile && (<div className="searchbar-part back-search-desktop">
                     <ul>
 
-                    <li className="back-language-toggle" onClick={toggleLanguage} title={`Switch to ${language === 'en' ? 'Bengali' : 'English'}`}>
+                    <li className="back-language-toggle" onClick={toggleLanguage} title={`Switch to ${locale === 'en' ? 'Bengali' : 'English'}`}>
                         <div style={{ width: '24px', height: '24px', alignItems: 'center', justifyContent: 'center', fontSize: '20px', fontWeight: '600', cursor: 'pointer', userSelect: 'none' }}>
-                          {language === 'en' ? 'En' : 'Bn'}
+                          {locale === 'en' ? 'বাং' : 'En'}
                         </div>
                       </li>
 
@@ -641,14 +633,14 @@ export default function Header() {
                                     onClick={() => {}}
                                     className="user-menu-signout"
                                   >
-                                    Sign Out
+                                    {t.header.signOut}
                                   </button>
                                 </div>
                               </>
                             )}
                           </div>
                         ) : (
-                          <Link href="/login">Sign In</Link>
+                          <Link href="/login">{t.header.signIn}</Link>
                         )}
                       </li>
                       <li id="nav-expander" className="nav-expander bar" onClick={(e) => { e.preventDefault(); setIsOffcanvasOpen(true); }}>
@@ -664,7 +656,7 @@ export default function Header() {
                       <input 
                         type="text" 
                         className="form-input" 
-                        placeholder="Search Here"
+                        placeholder={t.header.searchPlaceholder}
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                       />
