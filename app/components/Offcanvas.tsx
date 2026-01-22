@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { withBasePath } from '@/lib/basePath';
+import { useLocale } from '@/lib/contexts/LocaleContext';
 
 interface OffcanvasProps {
   isOpen: boolean;
@@ -14,6 +15,7 @@ interface OffcanvasProps {
 export default function Offcanvas({ isOpen, onClose }: OffcanvasProps) {
   const [activeMenus, setActiveMenus] = useState<string[]>([]);
   const pathname = usePathname();
+  const { t } = useLocale();
 
   // Close menu when route changes
   useEffect(() => {
@@ -86,69 +88,62 @@ export default function Offcanvas({ isOpen, onClose }: OffcanvasProps) {
         <nav className="offcanvas-menu">
           <ul className="back-menus mobile-menu">
             {/* Home Menu */}
-            <li className={isMenuActive('home') ? 'has-sub menu-active' : 'has-sub'}>
-              <span className="arrow" onClick={() => toggleMenu('home')}></span>
-              <a href="#" onClick={(e) => e.preventDefault()}>Home</a>
-              <ul className={`sub-menu ${isMenuActive('home') ? 'slide' : ''}`} style={{ display: isMenuActive('home') ? 'block' : 'none' }}>
-                <li><Link href={withBasePath("/")} onClick={handleLinkClick}>Home One</Link></li>
-                <li><Link href={withBasePath("/index-two")} onClick={handleLinkClick}>Home Two</Link></li>
-                <li><Link href={withBasePath("/index-three")} onClick={handleLinkClick}>Home Three</Link></li>
-                <li><Link href={withBasePath("/index-four")} onClick={handleLinkClick}>Home Four</Link></li>
-              </ul>
+            <li>
+              <Link href={withBasePath("/")} onClick={handleLinkClick}>{t.menu.home}</Link>
             </li>
 
             {/* Pages Menu */}
             <li className={isMenuActive('pages') ? 'has-sub menu-active' : 'has-sub'}>
               <span className="arrow" onClick={() => toggleMenu('pages')}></span>
-              <a href="#" onClick={(e) => e.preventDefault()}>Pages</a>
+              <a href="#" onClick={(e) => e.preventDefault()}>{t.menu.pages}</a>
               <ul className={`sub-menu ${isMenuActive('pages') ? 'slide' : ''}`} style={{ display: isMenuActive('pages') ? 'block' : 'none' }}>
-                <li><Link href={withBasePath("/about")} onClick={handleLinkClick}>About</Link></li>
-                <li><Link href={withBasePath("/team")} onClick={handleLinkClick}>Team</Link></li>
-                <li><Link href={withBasePath("/contact")} onClick={handleLinkClick}>Contact</Link></li>
-                <li><Link href={withBasePath("/author")} onClick={handleLinkClick}>Author</Link></li>
-                <li><Link href={withBasePath("/login")} onClick={handleLinkClick}>Login</Link></li>
-                <li><Link href={withBasePath("/registration")} onClick={handleLinkClick}>Registration</Link></li>
-                <li><Link href={withBasePath("/404")} onClick={handleLinkClick}>Error 404</Link></li>
+                <li><Link href={withBasePath("/about")} onClick={handleLinkClick}>{t.menu.about}</Link></li>
+                <li><Link href={withBasePath("/team")} onClick={handleLinkClick}>{t.menu.team}</Link></li>
+                <li><Link href={withBasePath("/contact")} onClick={handleLinkClick}>{t.menu.contact}</Link></li>
+                <li><Link href={withBasePath("/author")} onClick={handleLinkClick}>{t.menu.author}</Link></li>
+                <li><Link href={withBasePath("/login")} onClick={handleLinkClick}>{t.menu.login}</Link></li>
+                <li><Link href={withBasePath("/registration")} onClick={handleLinkClick}>{t.menu.registration}</Link></li>
+                <li><Link href={withBasePath("/404")} onClick={handleLinkClick}>{t.menu.error404}</Link></li>
               </ul>
             </li>
 
             {/* Categories Menu */}
             <li className={isMenuActive('categories') ? 'has-sub menu-active' : 'has-sub'}>
               <span className="arrow" onClick={() => toggleMenu('categories')}></span>
-              <a href="#" onClick={(e) => e.preventDefault()}>Categories</a>
+              <a href="#" onClick={(e) => e.preventDefault()}>{t.menu.categories}</a>
               <ul className={`sub-menu ${isMenuActive('categories') ? 'slide' : ''}`} style={{ display: isMenuActive('categories') ? 'block' : 'none' }}>
-                <li><Link href={withBasePath("/categories/politics")} onClick={handleLinkClick}>Politics</Link></li>
-                <li><Link href={withBasePath("/categories/technology")} onClick={handleLinkClick}>Technology</Link></li>
-                <li><Link href={withBasePath("/categories/health")} onClick={handleLinkClick}>Health</Link></li>
-                <li><Link href={withBasePath("/categories/travel")} onClick={handleLinkClick}>Travel</Link></li>
-                <li><Link href={withBasePath("/categories/lifestyle")} onClick={handleLinkClick}>Lifestyle</Link></li>
-                <li><Link href={withBasePath("/categories/sports")} onClick={handleLinkClick}>Sports</Link></li>
+                <li><Link href={withBasePath("/categories/politics")} onClick={handleLinkClick}>{t.menu.politics}</Link></li>
+                <li><Link href={withBasePath("/categories/technology")} onClick={handleLinkClick}>{t.menu.technology}</Link></li>
+                <li><Link href={withBasePath("/categories/health")} onClick={handleLinkClick}>{t.menu.health}</Link></li>
+                <li><Link href={withBasePath("/categories/travel")} onClick={handleLinkClick}>{t.menu.travel}</Link></li>
+                <li><Link href={withBasePath("/categories/lifestyle")} onClick={handleLinkClick}>{t.menu.lifestyle}</Link></li>
+                <li><Link href={withBasePath("/categories/sports")} onClick={handleLinkClick}>{t.menu.sports}</Link></li>
               </ul>
             </li>
 
             {/* Blog Menu */}
             <li className={isMenuActive('blog') ? 'has-sub menu-active' : 'has-sub'}>
               <span className="arrow" onClick={() => toggleMenu('blog')}></span>
-              <a href="#" onClick={(e) => e.preventDefault()}>Blog</a>
+              <a href="#" onClick={(e) => e.preventDefault()}>{t.menu.blog}</a>
               <ul className={`sub-menu ${isMenuActive('blog') ? 'slide' : ''}`} style={{ display: isMenuActive('blog') ? 'block' : 'none' }}>
                 <li className={isMenuActive('blog-listing') ? 'has-sub menu-active' : 'has-sub'}>
                   <span className="arrow" onClick={() => toggleMenu('blog-listing')}></span>
-                  <a href="#" onClick={(e) => e.preventDefault()}>Blog</a>
+                  <a href="#" onClick={(e) => e.preventDefault()}>{t.menu.blog}</a>
                   <ul className={`sub-menu ${isMenuActive('blog-listing') ? 'slide' : ''}`} style={{ display: isMenuActive('blog-listing') ? 'block' : 'none' }}>
-                    <li><Link href={withBasePath("/blog")} onClick={handleLinkClick}>Classic</Link></li>
-                    <li><Link href={withBasePath("/blog-left-sidebar")} onClick={handleLinkClick}>Left Sidebar</Link></li>
-                    <li><Link href={withBasePath("/blog-right-sidebar")} onClick={handleLinkClick}>Right Sidebar</Link></li>
-                    <li><Link href={withBasePath("/blog-fullwidth")} onClick={handleLinkClick}>Full Width</Link></li>
+                    <li><Link href={withBasePath("/blog")} onClick={handleLinkClick}>{t.menu.blogClassic}</Link></li>
+                    <li><Link href={withBasePath("/blog-left-sidebar")} onClick={handleLinkClick}>{t.menu.blogLeftSidebar}</Link></li>
+                    <li><Link href={withBasePath("/blog-right-sidebar")} onClick={handleLinkClick}>{t.menu.blogRightSidebar}</Link></li>
+                    <li><Link href={withBasePath("/blog-fullwidth")} onClick={handleLinkClick}>{t.menu.blogFullWidth}</Link></li>
                   </ul>
                 </li>
                 <li className={isMenuActive('blog-single') ? 'has-sub menu-active' : 'has-sub'}>
                   <span className="arrow" onClick={() => toggleMenu('blog-single')}></span>
-                  <a href="#" onClick={(e) => e.preventDefault()}>Blog Single</a>
+                  <a href="#" onClick={(e) => e.preventDefault()}>{t.menu.blogSingle}</a>
                   <ul className={`sub-menu ${isMenuActive('blog-single') ? 'slide' : ''}`} style={{ display: isMenuActive('blog-single') ? 'block' : 'none' }}>
-                    <li><Link href={withBasePath("/blog/those-other-collage-expenses")} onClick={handleLinkClick}>Classic</Link></li>
-                    <li><Link href={withBasePath("/blog-details-left")} onClick={handleLinkClick}>Left Sidebar</Link></li>
-                    <li><Link href={withBasePath("/blog-details-right")} onClick={handleLinkClick}>Right Sidebar</Link></li>
-                    <li><Link href={withBasePath("/blog-details-full")} onClick={handleLinkClick}>Full Width</Link></li>
+                    <li><Link href={withBasePath("/blog/those-other-collage-expenses")} onClick={handleLinkClick}>{t.menu.blogClassic}</Link></li>
+                    <li><Link href={withBasePath("/blog-details-left")} onClick={handleLinkClick}>{t.menu.blogLeftSidebar}</Link></li>
+                    <li><Link href={withBasePath("/blog-details-right")} onClick={handleLinkClick}>{t.menu.blogRightSidebar}</Link></li>
+                    <li><Link href={withBasePath("/blog-details-full")} onClick={handleLinkClick}>{t.menu.blogFullWidth}</Link></li>
                   </ul>
                 </li>
               </ul>
@@ -157,25 +152,25 @@ export default function Offcanvas({ isOpen, onClose }: OffcanvasProps) {
             {/* Posts Menu */}
             <li className={isMenuActive('posts') ? 'has-sub menu-active' : 'has-sub'}>
               <span className="arrow" onClick={() => toggleMenu('posts')}></span>
-              <a href="#" onClick={(e) => e.preventDefault()}>Posts</a>
+              <a href="#" onClick={(e) => e.preventDefault()}>{t.menu.posts}</a>
               <ul className={`sub-menu ${isMenuActive('posts') ? 'slide' : ''}`} style={{ display: isMenuActive('posts') ? 'block' : 'none' }}>
-                <li><Link href={withBasePath("/posts/standard")} onClick={handleLinkClick}>Standard Post</Link></li>
-                <li><Link href={withBasePath("/posts/gallery")} onClick={handleLinkClick}>Gallery Post</Link></li>
-                <li><Link href={withBasePath("/posts/video")} onClick={handleLinkClick}>Video Post</Link></li>
-                <li><Link href={withBasePath("/posts/audio")} onClick={handleLinkClick}>Audio Post</Link></li>
-                <li><Link href={withBasePath("/posts/quote")} onClick={handleLinkClick}>Quote Post</Link></li>
-                <li><Link href={withBasePath("/posts/aside")} onClick={handleLinkClick}>Aside Post</Link></li>
-                <li><Link href={withBasePath("/posts/link")} onClick={handleLinkClick}>Link Post</Link></li>
+                <li><Link href={withBasePath("/posts/standard")} onClick={handleLinkClick}>{t.menu.standardPost}</Link></li>
+                <li><Link href={withBasePath("/posts/gallery")} onClick={handleLinkClick}>{t.menu.galleryPost}</Link></li>
+                <li><Link href={withBasePath("/posts/video")} onClick={handleLinkClick}>{t.menu.videoPost}</Link></li>
+                <li><Link href={withBasePath("/posts/audio")} onClick={handleLinkClick}>{t.menu.audioPost}</Link></li>
+                <li><Link href={withBasePath("/posts/quote")} onClick={handleLinkClick}>{t.menu.quotePost}</Link></li>
+                <li><Link href={withBasePath("/posts/aside")} onClick={handleLinkClick}>{t.menu.asidePost}</Link></li>
+                <li><Link href={withBasePath("/posts/link")} onClick={handleLinkClick}>{t.menu.linkPost}</Link></li>
                 <li className={isMenuActive('posts-sidebar') ? 'has-sub menu-active' : 'has-sub'}>
                   <span className="arrow" onClick={() => toggleMenu('posts-sidebar')}></span>
-                  <a href="#" onClick={(e) => e.preventDefault()}>Post Sidebar</a>
+                  <a href="#" onClick={(e) => e.preventDefault()}>{t.menu.postSidebar}</a>
                   <ul className={`sub-menu ${isMenuActive('posts-sidebar') ? 'slide' : ''}`} style={{ display: isMenuActive('posts-sidebar') ? 'block' : 'none' }}>
-                    <li><Link href={withBasePath("/blog-details-left")} onClick={handleLinkClick}>Left Sidebar</Link></li>
-                    <li><Link href={withBasePath("/blog-details-right")} onClick={handleLinkClick}>Right Sidebar</Link></li>
-                    <li><Link href={withBasePath("/blog-details-full")} onClick={handleLinkClick}>No Sidebar</Link></li>
+                    <li><Link href={withBasePath("/blog-details-left")} onClick={handleLinkClick}>{t.menu.blogLeftSidebar}</Link></li>
+                    <li><Link href={withBasePath("/blog-details-right")} onClick={handleLinkClick}>{t.menu.blogRightSidebar}</Link></li>
+                    <li><Link href={withBasePath("/blog-details-full")} onClick={handleLinkClick}>{t.menu.noSidebar}</Link></li>
                   </ul>
                 </li>
-                <li><Link href={withBasePath("/multiple-authors")} onClick={handleLinkClick}>Multiple Authors</Link></li>
+                <li><Link href={withBasePath("/multiple-authors")} onClick={handleLinkClick}>{t.menu.multipleAuthors}</Link></li>
               </ul>
             </li>
           </ul>
@@ -183,13 +178,12 @@ export default function Offcanvas({ isOpen, onClose }: OffcanvasProps) {
 
         <div className="offcanvas-text">
           <p>
-            Education every new parents knows the feeling nothing more than for everyone to get at some sleep.
-            But at least you've got Google. start building your first prototype today!
+            {t.offcanvas.description}
           </p>
         </div>
 
         <div className="back-title back-small-title">
-          <h2>Get in Touch</h2>
+          <h2>{t.offcanvas.getInTouch}</h2>
         </div>
         <div className="canvas-contact">
           <div className="address-area">
@@ -201,8 +195,8 @@ export default function Offcanvas({ isOpen, onClose }: OffcanvasProps) {
                 </svg>
               </div>
               <div className="info-content">
-                <h4 className="title">Address</h4>
-                <em>06 Mymen KR. New York City</em>
+                <h4 className="title">{t.offcanvas.address}</h4>
+                <em>New York City</em>
               </div>
             </div>
             <div className="address-list">
@@ -213,8 +207,8 @@ export default function Offcanvas({ isOpen, onClose }: OffcanvasProps) {
                 </svg>
               </div>
               <div className="info-content">
-                <h4 className="title">Email</h4>
-                <em><a href="mailto:backtheme@gmail.com">backtheme@gmail.com</a></em>
+                <h4 className="title">{t.offcanvas.email}</h4>
+                <em><a href="mailto:info@althean.com">info@althean.com</a></em>
               </div>
             </div>
             <div className="address-list">
@@ -224,7 +218,7 @@ export default function Offcanvas({ isOpen, onClose }: OffcanvasProps) {
                 </svg>
               </div>
               <div className="info-content">
-                <h4 className="title">Phone</h4>
+                <h4 className="title">{t.offcanvas.phone}</h4>
                 <em>+02596 5874 59857</em>
               </div>
             </div>

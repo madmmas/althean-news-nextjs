@@ -8,7 +8,12 @@
 
 /* Custom styles will be added here */
 body {
-  font-family: 'SpartanRegular', sans-serif;
+  font-family: 'Noto Sans Bengali', 'SpartanRegular', sans-serif;
+}
+
+/* Apply Noto Sans Bengali to all elements */
+* {
+  font-family: 'Noto Sans Bengali', 'SpartanRegular', sans-serif;
 }
 
 /* ============================================================

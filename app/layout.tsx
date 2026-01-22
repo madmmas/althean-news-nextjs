@@ -25,6 +25,10 @@ export default function RootLayout({
       <head>
         <link rel="apple-touch-icon" href={`${basePath}/assets/images/fav.png`} />
         <link rel="shortcut icon" type="image/x-icon" href={`${basePath}/assets/images/fav.png`} />
+        {/* Google Fonts - Noto Sans Bengali for all content */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
         {/* Template CSS Files */}
         <link rel="stylesheet" type="text/css" href={`${basePath}/assets/css/style.css`} />
         <link rel="stylesheet" type="text/css" href={`${basePath}/assets/css/all.min.css`} />
