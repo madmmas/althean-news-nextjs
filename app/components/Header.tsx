@@ -286,7 +286,7 @@ export default function Header() {
                       <ul>
   
                         <li className="back-language-toggle" onClick={toggleLanguage} title={`Switch to ${locale === 'en' ? 'Bengali' : 'English'}`}>
-                          <div style={{width: '24px', height: '24px', alignItems: 'center', justifyContent: 'center', fontSize: '20px', fontWeight: '600', cursor: 'pointer', userSelect: 'none' }}>
+                          <div style={{width: '24px', height: '28px', alignItems: 'center', justifyContent: 'center', fontSize: '20px', fontWeight: '600', cursor: 'pointer', userSelect: 'none' }}>
                             {locale === 'en' ? 'বাং' : 'En'}
                           </div>
                         </li>
@@ -554,7 +554,7 @@ export default function Header() {
                     <ul>
 
                     <li className="back-language-toggle" onClick={toggleLanguage} title={`Switch to ${locale === 'en' ? 'Bengali' : 'English'}`}>
-                        <div style={{ width: '24px', height: '24px', alignItems: 'center', justifyContent: 'center', fontSize: '20px', fontWeight: '600', cursor: 'pointer', userSelect: 'none' }}>
+                        <div className={locale === 'en' ? 'bangla-text' : ''} style={{ width: '24px', height: '28px', alignItems: 'center', justifyContent: 'center', fontSize: '20px', fontWeight: '600', cursor: 'pointer', userSelect: 'none' }}>
                           {locale === 'en' ? 'বাং' : 'En'}
                         </div>
                       </li>
