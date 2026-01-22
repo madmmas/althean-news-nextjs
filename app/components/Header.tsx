@@ -401,7 +401,6 @@ export default function Header() {
                       </form>
                     </div>)
                   }
-                 
 
                   <button type="button" id="menu-btn" onClick={() => setIsMenuOpen(!isMenuOpen)}>
                     <span className="icon-bar"></span>
@@ -433,11 +432,7 @@ export default function Header() {
                       }}>{t.menu.pages}</a>
                       <ul className="sub-menu">
                         <li><Link href="/about" className={isActivePath('/about') ? 'back-current-page' : ''}>{t.menu.about}</Link></li>
-                        <li><Link href="/team" className={isActivePath('/team') ? 'back-current-page' : ''}>{t.menu.team}</Link></li>
                         <li><Link href="/contact" className={isActivePath('/contact') ? 'back-current-page' : ''}>{t.menu.contact}</Link></li>
-                        <li><Link href="/author" className={isActivePath('/author') ? 'back-current-page' : ''}>{t.menu.author}</Link></li>
-                        <li><Link href="/login" className={isActivePath('/login') ? 'back-current-page' : ''}>{t.menu.login}</Link></li>
-                        <li><Link href="/registration" className={isActivePath('/registration') ? 'back-current-page' : ''}>{t.menu.registration}</Link></li>
                         <li><Link href="/404" className={isActivePath('/404') ? 'back-current-page' : ''}>{t.menu.error404}</Link></li>
                       </ul>
                     </li>
@@ -461,7 +456,7 @@ export default function Header() {
                         <li><Link href="/categories/sports" className={isActivePath('/categories/sports') ? 'back-current-page' : ''}>{t.menu.sports}</Link></li>
                       </ul>
                     </li>
-                    <li 
+                    {/* <li 
                       className={`has-sub ${isActivePath('/blog') || pathname.startsWith('/blog/') ? 'menu-active' : ''}`}
                       onMouseEnter={(e) => handleMouseEnter(e.currentTarget)}
                       onMouseLeave={(e) => handleMouseLeave(e.currentTarget)}
@@ -510,7 +505,7 @@ export default function Header() {
                           </ul>
                         </li>
                       </ul>
-                    </li>
+                    </li> */}
                     <li 
                       className={`has-sub ${hasActiveChild(['/posts/standard', '/posts/gallery', '/posts/video', '/posts/audio', '/posts/quote', '/posts/aside', '/posts/link']) ? 'menu-active' : ''}`}
                       onMouseEnter={(e) => handleMouseEnter(e.currentTarget)}
