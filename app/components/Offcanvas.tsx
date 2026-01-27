@@ -118,7 +118,7 @@ export default function Offcanvas({ isOpen, onClose }: OffcanvasProps) {
             </li>
 
             {/* Blog Menu */}
-            {/* <li className={isMenuActive('blog') ? 'has-sub menu-active' : 'has-sub'}>
+            <li className={isMenuActive('blog') ? 'has-sub menu-active' : 'has-sub'}>
               <span className="arrow" onClick={() => toggleMenu('blog')}></span>
               <a href="#" onClick={(e) => e.preventDefault()}>{t.menu.blog}</a>
               <ul className={`sub-menu ${isMenuActive('blog') ? 'slide' : ''}`} style={{ display: isMenuActive('blog') ? 'block' : 'none' }}>
@@ -143,10 +143,10 @@ export default function Offcanvas({ isOpen, onClose }: OffcanvasProps) {
                   </ul>
                 </li>
               </ul>
-            </li> */}
+            </li>
 
             {/* Posts Menu */}
-            <li className={isMenuActive('posts') ? 'has-sub menu-active' : 'has-sub'}>
+            {/* <li className={isMenuActive('posts') ? 'has-sub menu-active' : 'has-sub'}>
               <span className="arrow" onClick={() => toggleMenu('posts')}></span>
               <a href="#" onClick={(e) => e.preventDefault()}>{t.menu.posts}</a>
               <ul className={`sub-menu ${isMenuActive('posts') ? 'slide' : ''}`} style={{ display: isMenuActive('posts') ? 'block' : 'none' }}>
@@ -168,7 +168,7 @@ export default function Offcanvas({ isOpen, onClose }: OffcanvasProps) {
                 </li>
                 <li><Link href={withBasePath("/multiple-authors")} onClick={handleLinkClick}>{t.menu.multipleAuthors}</Link></li>
               </ul>
-            </li>
+            </li> */}
           </ul>
         </nav>
 

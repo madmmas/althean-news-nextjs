@@ -1,0 +1,24 @@
+import Breadcrumbs from '../../../components/Breadcrumbs';
+import BlogDetailContent from '../../components/BlogDetailContent';
+import BlogSidebar from '../../components/BlogSidebar';
+
+export default function BlogDetailRightPage() {
+  return (
+    <>
+      <Breadcrumbs title="Blog Single Right Sidebar" />
+      <div className="back__blog__area back-blog-page back-blog-page-single pt-70 pb-60">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-8">
+              <BlogDetailContent />
+            </div>
+            <div className="col-lg-4">
+              <BlogSidebar />
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
+

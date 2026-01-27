@@ -456,7 +456,7 @@ export default function Header() {
                         <li><Link href="/categories/sports" className={isActivePath('/categories/sports') ? 'back-current-page' : ''}>{t.menu.sports}</Link></li>
                       </ul>
                     </li>
-                    {/* <li 
+                    <li 
                       className={`has-sub ${isActivePath('/blog') || pathname.startsWith('/blog/') ? 'menu-active' : ''}`}
                       onMouseEnter={(e) => handleMouseEnter(e.currentTarget)}
                       onMouseLeave={(e) => handleMouseLeave(e.currentTarget)}
@@ -505,8 +505,8 @@ export default function Header() {
                           </ul>
                         </li>
                       </ul>
-                    </li> */}
-                    <li 
+                    </li>
+                    {/* <li 
                       className={`has-sub ${hasActiveChild(['/posts/standard', '/posts/gallery', '/posts/video', '/posts/audio', '/posts/quote', '/posts/aside', '/posts/link']) ? 'menu-active' : ''}`}
                       onMouseEnter={(e) => handleMouseEnter(e.currentTarget)}
                       onMouseLeave={(e) => handleMouseLeave(e.currentTarget)}
@@ -526,7 +526,7 @@ export default function Header() {
                         <li><Link href="/posts/aside" className={isActivePath('/posts/aside') ? 'back-current-page' : ''}>{t.menu.asidePost}</Link></li>
                         <li><Link href="/posts/link" className={isActivePath('/posts/link') ? 'back-current-page' : ''}>{t.menu.linkPost}</Link></li>
                       </ul>
-                    </li>
+                    </li> */}
                   </ul>
 
                   {/* Desktop Search */}
