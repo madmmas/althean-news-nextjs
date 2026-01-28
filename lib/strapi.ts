@@ -5,7 +5,7 @@ const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes in milliseconds
 const CACHE_KEYS = {
   ARTICLES: 'strapi_articles_cache',
   ARTICLE_PREFIX: 'strapi_article_',
-};
+} as const;
 
 /**
  * Check if we're in the browser environment
@@ -13,16 +13,128 @@ const CACHE_KEYS = {
 const isBrowser = typeof window !== 'undefined';
 
 /**
+ * Cache entry structure
+ */
+interface CacheEntry<T> {
+  data: T;
+  timestamp: number;
+}
+
+/**
+ * Strapi image format structure
+ */
+interface StrapiImageFormat {
+  url: string;
+  width?: number;
+  height?: number;
+}
+
+/**
+ * Strapi image structure
+ */
+interface StrapiImage {
+  url?: string;
+  formats?: {
+    large?: StrapiImageFormat;
+    medium?: StrapiImageFormat;
+    small?: StrapiImageFormat;
+    thumbnail?: StrapiImageFormat;
+  };
+  cover?: {
+    url?: string;
+    formats?: {
+      large?: StrapiImageFormat;
+      medium?: StrapiImageFormat;
+      small?: StrapiImageFormat;
+      thumbnail?: StrapiImageFormat;
+    };
+  };
+  data?: {
+    attributes?: {
+      url: string;
+    };
+  };
+  attributes?: {
+    url: string;
+  };
+}
+
+/**
+ * Strapi article structure
+ */
+export interface StrapiArticle {
+  id: number;
+  slug: string;
+  title: string;
+  description?: string;
+  excerpt?: string;
+  content?: string;
+  publishedAt?: string;
+  createdAt?: string;
+  cover?: StrapiImage;
+  thumbnail?: StrapiImage;
+  category?: {
+    id?: number;
+    name?: string;
+    slug?: string;
+  } | string;
+  author?: {
+    id?: number;
+    name?: string;
+    username?: string;
+    avatar?: StrapiImage;
+  };
+  comments?: Array<unknown>;
+}
+
+/**
+ * Strapi API response structure
+ */
+interface StrapiResponse<T> {
+  data: T;
+  meta?: {
+    pagination?: {
+      page?: number;
+      pageSize?: number;
+      pageCount?: number;
+      total?: number;
+    };
+  };
+}
+
+/**
+ * Pagination structure
+ */
+export interface Pagination {
+  total: number;
+  totalPages: number;
+  page: number;
+  pageSize: number;
+  hasNext: boolean;
+  hasPrev: boolean;
+}
+
+/**
+ * Cache info structure
+ */
+export interface CacheInfo {
+  hasCache: boolean;
+  age?: number; // seconds
+  remaining?: number; // seconds
+  expiresIn?: number; // milliseconds
+}
+
+/**
  * Get cached data with expiration check
  */
-function getCachedData(key) {
+function getCachedData<T>(key: string): T | null {
   if (!isBrowser) return null;
   
   try {
     const cached = localStorage.getItem(key);
     if (!cached) return null;
     
-    const { data, timestamp } = JSON.parse(cached);
+    const { data, timestamp }: CacheEntry<T> = JSON.parse(cached);
     const now = Date.now();
     
     // Check if cache is still valid
@@ -42,21 +154,25 @@ function getCachedData(key) {
 /**
  * Set cached data with timestamp
  */
-function setCachedData(key, data) {
+function setCachedData<T>(key: string, data: T): void {
   if (!isBrowser) return;
   
   try {
-    const cacheObject = {
+    const cacheObject: CacheEntry<T> = {
       data,
       timestamp: Date.now(),
     };
     localStorage.setItem(key, JSON.stringify(cacheObject));
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Error setting cache:', error);
     // If storage is full, try to clear old cache
-    if (error.name === 'QuotaExceededError') {
+    if (error instanceof Error && error.name === 'QuotaExceededError') {
       clearExpiredCache();
       try {
+        const cacheObject: CacheEntry<T> = {
+          data,
+          timestamp: Date.now(),
+        };
         localStorage.setItem(key, JSON.stringify(cacheObject));
       } catch (retryError) {
         console.error('Failed to set cache after cleanup:', retryError);
@@ -68,7 +184,7 @@ function setCachedData(key, data) {
 /**
  * Clear expired cache entries
  */
-function clearExpiredCache() {
+function clearExpiredCache(): void {
   if (!isBrowser) return;
   
   try {
@@ -78,7 +194,7 @@ function clearExpiredCache() {
         try {
           const cached = localStorage.getItem(key);
           if (cached) {
-            const { timestamp } = JSON.parse(cached);
+            const { timestamp }: CacheEntry<unknown> = JSON.parse(cached);
             if (Date.now() - timestamp >= CACHE_DURATION) {
               localStorage.removeItem(key);
             }
@@ -97,9 +213,9 @@ function clearExpiredCache() {
 /**
  * Fetch articles from Strapi with client-side caching
  */
-export async function getArticles() {
+export async function getArticles(): Promise<StrapiArticle[]> {
   // Check cache first
-  const cachedArticles = getCachedData(CACHE_KEYS.ARTICLES);
+  const cachedArticles = getCachedData<StrapiArticle[]>(CACHE_KEYS.ARTICLES);
   if (cachedArticles) {
     console.log('Using cached articles');
     return cachedArticles;
@@ -115,7 +231,7 @@ export async function getArticles() {
       throw new Error('Failed to fetch articles');
     }
     
-    const data = await response.json();
+    const data: StrapiResponse<StrapiArticle[]> = await response.json();
     const articles = data.data || [];
     
     // Cache the articles
@@ -130,7 +246,7 @@ export async function getArticles() {
       try {
         const staleCache = localStorage.getItem(CACHE_KEYS.ARTICLES);
         if (staleCache) {
-          const { data } = JSON.parse(staleCache);
+          const { data }: CacheEntry<StrapiArticle[]> = JSON.parse(staleCache);
           console.log('Using stale cache due to fetch error');
           return data;
         }
@@ -146,13 +262,13 @@ export async function getArticles() {
 /**
  * Fetch a single article by slug with client-side caching
  */
-export async function getArticleBySlug(slug) {
+export async function getArticleBySlug(slug: string | null | undefined): Promise<StrapiArticle | null> {
   if (!slug) return null;
   
   const cacheKey = `${CACHE_KEYS.ARTICLE_PREFIX}${slug}`;
   
   // Check cache first
-  const cachedArticle = getCachedData(cacheKey);
+  const cachedArticle = getCachedData<StrapiArticle>(cacheKey);
   if (cachedArticle) {
     console.log(`Using cached article: ${slug}`);
     return cachedArticle;
@@ -171,7 +287,7 @@ export async function getArticleBySlug(slug) {
       throw new Error('Failed to fetch article');
     }
     
-    const data = await response.json();
+    const data: StrapiResponse<StrapiArticle[]> = await response.json();
     const article = data.data && data.data.length > 0 ? data.data[0] : null;
     
     if (article) {
@@ -188,7 +304,7 @@ export async function getArticleBySlug(slug) {
       try {
         const staleCache = localStorage.getItem(cacheKey);
         if (staleCache) {
-          const { data } = JSON.parse(staleCache);
+          const { data }: CacheEntry<StrapiArticle> = JSON.parse(staleCache);
           console.log(`Using stale cache for article: ${slug}`);
           return data;
         }
@@ -204,7 +320,7 @@ export async function getArticleBySlug(slug) {
 /**
  * Clear all article cache (useful for manual refresh)
  */
-export function clearArticlesCache() {
+export function clearArticlesCache(): void {
   if (!isBrowser) return;
   
   try {
@@ -223,13 +339,13 @@ export function clearArticlesCache() {
 /**
  * Get cache info (for debugging)
  */
-export function getCacheInfo() {
+export function getCacheInfo(): CacheInfo | null {
   if (!isBrowser) return null;
   
   try {
     const articlesCache = localStorage.getItem(CACHE_KEYS.ARTICLES);
     if (articlesCache) {
-      const { timestamp } = JSON.parse(articlesCache);
+      const { timestamp }: CacheEntry<unknown> = JSON.parse(articlesCache);
       const age = Date.now() - timestamp;
       const remaining = CACHE_DURATION - age;
       return {
@@ -249,7 +365,7 @@ export function getCacheInfo() {
  * Get placeholder/dummy image URL
  * Returns a simple SVG placeholder as data URI
  */
-export function getPlaceholderImageUrl(width = 800, height = 600) {
+export function getPlaceholderImageUrl(width: number = 800, height: number = 600): string {
   // Create a simple SVG placeholder as data URI
   const svg = `
     <svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">
@@ -268,41 +384,44 @@ export function getPlaceholderImageUrl(width = 800, height = 600) {
  * Get image URL from Strapi, with fallback to placeholder
  * Supports: cover.url (direct), cover.formats (large/medium/small), and standard Strapi image structures
  */
-export function getStrapiImageUrl(image, usePlaceholder = true) {
-  let imageUrl = null;
+export function getStrapiImageUrl(
+  image: StrapiImage | string | null | undefined,
+  usePlaceholder: boolean = true
+): string | null {
+  let imageUrl: string | null = null;
   
   if (image) {
     // Handle cover object directly (Strapi v4 format from your API)
-    if (image.url) {
+    if (typeof image === 'object' && 'url' in image && image.url) {
       // Direct URL in cover object
       imageUrl = image.url.startsWith('http') ? image.url : `${STRAPI_API_URL.replace('/api', '')}${image.url}`;
     }
     // Handle cover.formats (prefer large, then medium, then small, then thumbnail)
-    else if (image.formats) {
-      if (image.formats.large && image.formats.large.url) {
+    else if (typeof image === 'object' && 'formats' in image && image.formats) {
+      if (image.formats.large?.url) {
         imageUrl = image.formats.large.url;
-      } else if (image.formats.medium && image.formats.medium.url) {
+      } else if (image.formats.medium?.url) {
         imageUrl = image.formats.medium.url;
-      } else if (image.formats.small && image.formats.small.url) {
+      } else if (image.formats.small?.url) {
         imageUrl = image.formats.small.url;
-      } else if (image.formats.thumbnail && image.formats.thumbnail.url) {
+      } else if (image.formats.thumbnail?.url) {
         imageUrl = image.formats.thumbnail.url;
       }
     }
     // Handle cover.url directly (if cover is passed as the image parameter)
-    else if (image.cover && image.cover.url) {
+    else if (typeof image === 'object' && 'cover' in image && image.cover?.url) {
       const url = image.cover.url;
       imageUrl = url.startsWith('http') ? url : `${STRAPI_API_URL.replace('/api', '')}${url}`;
     }
     // Handle cover.formats
-    else if (image.cover && image.cover.formats) {
-      if (image.cover.formats.large && image.cover.formats.large.url) {
+    else if (typeof image === 'object' && 'cover' in image && image.cover?.formats) {
+      if (image.cover.formats.large?.url) {
         imageUrl = image.cover.formats.large.url;
-      } else if (image.cover.formats.medium && image.cover.formats.medium.url) {
+      } else if (image.cover.formats.medium?.url) {
         imageUrl = image.cover.formats.medium.url;
-      } else if (image.cover.formats.small && image.cover.formats.small.url) {
+      } else if (image.cover.formats.small?.url) {
         imageUrl = image.cover.formats.small.url;
-      } else if (image.cover.formats.thumbnail && image.cover.formats.thumbnail.url) {
+      } else if (image.cover.formats.thumbnail?.url) {
         imageUrl = image.cover.formats.thumbnail.url;
       }
     }
@@ -311,10 +430,10 @@ export function getStrapiImageUrl(image, usePlaceholder = true) {
       imageUrl = image.startsWith('http') ? image : `${STRAPI_API_URL.replace('/api', '')}${image}`;
     }
     // Handle nested structures (legacy support)
-    else if (image.data && image.data.attributes) {
+    else if (typeof image === 'object' && 'data' in image && image.data?.attributes) {
       const url = image.data.attributes.url;
       imageUrl = url.startsWith('http') ? url : `${STRAPI_API_URL.replace('/api', '')}${url}`;
-    } else if (image.attributes) {
+    } else if (typeof image === 'object' && 'attributes' in image && image.attributes?.url) {
       const url = image.attributes.url;
       imageUrl = url.startsWith('http') ? url : `${STRAPI_API_URL.replace('/api', '')}${url}`;
     }
@@ -332,7 +451,11 @@ export function getStrapiImageUrl(image, usePlaceholder = true) {
  * Server-side: fetch paginated articles for blog listing with optional search
  * Use in Server Components only (no localStorage).
  */
-export async function fetchArticlesForBlog(page = 1, pageSize = 8, searchQuery = '') {
+export async function fetchArticlesForBlog(
+  page: number = 1,
+  pageSize: number = 8,
+  searchQuery: string = ''
+): Promise<{ articles: StrapiArticle[]; pagination: Pagination }> {
   const base = STRAPI_API_URL.replace(/\/$/, '');
   const params = new URLSearchParams();
   params.set('populate', '*');
@@ -351,7 +474,7 @@ export async function fetchArticlesForBlog(page = 1, pageSize = 8, searchQuery =
       next: { revalidate: 60 } // Revalidate every 60 seconds
     });
     if (!res.ok) throw new Error('Failed to fetch articles');
-    const json = await res.json();
+    const json: StrapiResponse<StrapiArticle[]> = await res.json();
     const articles = json.data ?? [];
     const meta = json.meta?.pagination ?? {};
     const total = meta.total ?? 0;
@@ -370,7 +493,17 @@ export async function fetchArticlesForBlog(page = 1, pageSize = 8, searchQuery =
     };
   } catch (e) {
     console.error('fetchArticlesForBlog:', e);
-    return { articles: [], pagination: { total: 0, totalPages: 0, page: 1, pageSize, hasNext: false, hasPrev: false } };
+    return { 
+      articles: [], 
+      pagination: { 
+        total: 0, 
+        totalPages: 0, 
+        page: 1, 
+        pageSize, 
+        hasNext: false, 
+        hasPrev: false 
+      } 
+    };
   }
 }
 
@@ -378,7 +511,7 @@ export async function fetchArticlesForBlog(page = 1, pageSize = 8, searchQuery =
  * Server-side: fetch a single article by slug.
  * Use in Server Components only.
  */
-export async function fetchArticleBySlugServer(slug) {
+export async function fetchArticleBySlugServer(slug: string | null | undefined): Promise<StrapiArticle | null> {
   if (!slug) return null;
   const base = STRAPI_API_URL.replace(/\/$/, '');
   try {
@@ -389,7 +522,7 @@ export async function fetchArticleBySlugServer(slug) {
       }
     );
     if (!res.ok) throw new Error('Failed to fetch article');
-    const json = await res.json();
+    const json: StrapiResponse<StrapiArticle[]> = await res.json();
     const list = json.data ?? [];
     return list.length ? list[0] : null;
   } catch (e) {

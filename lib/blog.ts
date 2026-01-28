@@ -1,5 +1,5 @@
 import { withBasePath } from '@/lib/basePath';
-import { getStrapiImageUrl } from '@/lib/strapi';
+import { getStrapiImageUrl, type StrapiArticle } from '@/lib/strapi';
 
 export interface BlogPost {
   id: number | string;
@@ -26,7 +26,7 @@ function formatDate(dateInput: string | null | undefined): string {
   }
 }
 
-export function mapStrapiArticleToBlogPost(article: any): BlogPost {
+export function mapStrapiArticleToBlogPost(article: StrapiArticle): BlogPost {
   const category = article.category?.name ?? article.category ?? 'Uncategorized';
   const categorySlug = article.category?.slug ?? category.toLowerCase().replace(/\s+/g, '-');
   const imageUrl = getStrapiImageUrl(article.cover ?? article.thumbnail) ?? withBasePath('/assets/images/blog-grid/1.jpg');
