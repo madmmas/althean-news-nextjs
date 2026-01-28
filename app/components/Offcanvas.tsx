@@ -98,11 +98,7 @@ export default function Offcanvas({ isOpen, onClose }: OffcanvasProps) {
               <a href="#" onClick={(e) => e.preventDefault()}>{t.menu.pages}</a>
               <ul className={`sub-menu ${isMenuActive('pages') ? 'slide' : ''}`} style={{ display: isMenuActive('pages') ? 'block' : 'none' }}>
                 <li><Link href={withBasePath("/about")} onClick={handleLinkClick}>{t.menu.about}</Link></li>
-                <li><Link href={withBasePath("/team")} onClick={handleLinkClick}>{t.menu.team}</Link></li>
                 <li><Link href={withBasePath("/contact")} onClick={handleLinkClick}>{t.menu.contact}</Link></li>
-                <li><Link href={withBasePath("/author")} onClick={handleLinkClick}>{t.menu.author}</Link></li>
-                <li><Link href={withBasePath("/login")} onClick={handleLinkClick}>{t.menu.login}</Link></li>
-                <li><Link href={withBasePath("/registration")} onClick={handleLinkClick}>{t.menu.registration}</Link></li>
                 <li><Link href={withBasePath("/404")} onClick={handleLinkClick}>{t.menu.error404}</Link></li>
               </ul>
             </li>
@@ -150,7 +146,7 @@ export default function Offcanvas({ isOpen, onClose }: OffcanvasProps) {
             </li>
 
             {/* Posts Menu */}
-            <li className={isMenuActive('posts') ? 'has-sub menu-active' : 'has-sub'}>
+            {/* <li className={isMenuActive('posts') ? 'has-sub menu-active' : 'has-sub'}>
               <span className="arrow" onClick={() => toggleMenu('posts')}></span>
               <a href="#" onClick={(e) => e.preventDefault()}>{t.menu.posts}</a>
               <ul className={`sub-menu ${isMenuActive('posts') ? 'slide' : ''}`} style={{ display: isMenuActive('posts') ? 'block' : 'none' }}>
@@ -172,7 +168,7 @@ export default function Offcanvas({ isOpen, onClose }: OffcanvasProps) {
                 </li>
                 <li><Link href={withBasePath("/multiple-authors")} onClick={handleLinkClick}>{t.menu.multipleAuthors}</Link></li>
               </ul>
-            </li>
+            </li> */}
           </ul>
         </nav>
 
