@@ -5,6 +5,7 @@ const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes in milliseconds
 const CACHE_KEYS = {
   ARTICLES: 'strapi_articles_cache',
   ARTICLE_PREFIX: 'strapi_article_',
+  SUMMARIES: 'strapi_summaries_cache',
 } as const;
 
 /**
@@ -85,6 +86,32 @@ export interface StrapiArticle {
     avatar?: StrapiImage;
   };
   comments?: Array<unknown>;
+}
+
+/**
+ * Strapi source component structure
+ */
+export interface StrapiSource {
+  id?: number;
+  source_name: string;
+  url: string;
+}
+
+/**
+ * Strapi summary structure
+ * Based on Strapi content type: summaries
+ */
+export interface StrapiSummary {
+  id: number;
+  documentId: string; // documentId field from Strapi
+  title: string;
+  excerpt?: string;
+  content: string; // richtext, required
+  sources?: StrapiSource[]; // component, repeatable
+  publishAt?: string; // datetime
+  publishedAt?: string; // datetime (alternative field name)
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 /**
@@ -527,6 +554,141 @@ export async function fetchArticleBySlugServer(slug: string | null | undefined):
     return list.length ? list[0] : null;
   } catch (e) {
     console.error('fetchArticleBySlugServer:', e);
+    return null;
+  }
+}
+
+/**
+ * Fetch summaries from Strapi with client-side caching
+ * Sorted by publishAt descending (most recent first)
+ */
+export async function getSummaries(): Promise<StrapiSummary[]> {
+  // Check cache first
+  const cachedSummaries = getCachedData<StrapiSummary[]>(CACHE_KEYS.SUMMARIES);
+  if (cachedSummaries) {
+    console.log('Using cached summaries');
+    return cachedSummaries;
+  }
+  
+  try {
+    console.log('Fetching fresh summaries from API');
+    // Sort by publishAt descending, or createdAt if publishAt is not available
+    const response = await fetch(`${STRAPI_API_URL}/summaries?populate=*&sort=publishAt:desc`, {
+      cache: 'no-store',
+    });
+    
+    if (!response.ok) {
+      throw new Error('Failed to fetch summaries');
+    }
+    
+    const data: StrapiResponse<StrapiSummary[]> = await response.json();
+    const summaries = data.data || [];
+    
+    // Cache the summaries
+    setCachedData(CACHE_KEYS.SUMMARIES, summaries);
+    
+    return summaries;
+  } catch (error) {
+    console.error('Error fetching summaries:', error);
+    
+    // If fetch fails, try to return stale cache if available
+    if (isBrowser) {
+      try {
+        const staleCache = localStorage.getItem(CACHE_KEYS.SUMMARIES);
+        if (staleCache) {
+          const { data }: CacheEntry<StrapiSummary[]> = JSON.parse(staleCache);
+          console.log('Using stale cache due to fetch error');
+          return data;
+        }
+      } catch (e) {
+        // Ignore stale cache errors
+      }
+    }
+    
+    return [];
+  }
+}
+
+/**
+ * Fetch a single summary by documentId with client-side caching
+ */
+export async function getSummaryByDocumentId(documentId: string): Promise<StrapiSummary | null> {
+  if (!documentId) return null;
+  
+  const cacheKey = `${CACHE_KEYS.ARTICLE_PREFIX}summary_${documentId}`;
+  
+  // Check cache first
+  const cachedSummary = getCachedData<StrapiSummary>(cacheKey);
+  if (cachedSummary) {
+    console.log(`Using cached summary: ${documentId}`);
+    return cachedSummary;
+  }
+  
+  try {
+    console.log(`Fetching fresh summary from API: ${documentId}`);
+    // Use documentId in the URL - Strapi might need a filter or different endpoint
+    // Try filtering by documentId first
+    const response = await fetch(
+      `${STRAPI_API_URL}/summaries?filters[documentId][$eq]=${encodeURIComponent(documentId)}&populate=*`,
+      {
+        cache: 'no-store',
+      }
+    );
+    
+    if (!response.ok) {
+      throw new Error('Failed to fetch summary');
+    }
+    
+    const data: StrapiResponse<StrapiSummary[]> = await response.json();
+    const summary = data.data && data.data.length > 0 ? data.data[0] : null;
+    
+    if (summary) {
+      // Cache the summary
+      setCachedData(cacheKey, summary);
+    }
+    
+    return summary || null;
+  } catch (error) {
+    console.error('Error fetching summary:', error);
+    
+    // If fetch fails, try to return stale cache if available
+    if (isBrowser) {
+      try {
+        const staleCache = localStorage.getItem(cacheKey);
+        if (staleCache) {
+          const { data }: CacheEntry<StrapiSummary> = JSON.parse(staleCache);
+          console.log(`Using stale cache for summary: ${documentId}`);
+          return data;
+        }
+      } catch (e) {
+        // Ignore stale cache errors
+      }
+    }
+    
+    return null;
+  }
+}
+
+/**
+ * Server-side: fetch a single summary by documentId.
+ * Use in Server Components only.
+ */
+export async function fetchSummaryByDocumentIdServer(documentId: string | null | undefined): Promise<StrapiSummary | null> {
+  if (!documentId) return null;
+  const base = STRAPI_API_URL.replace(/\/$/, '');
+  try {
+    // Filter by documentId
+    const res = await fetch(
+      `${base}/summaries?filters[documentId][$eq]=${encodeURIComponent(documentId)}&populate=*`,
+      { 
+        next: { revalidate: 60 } // Revalidate every 60 seconds
+      }
+    );
+    if (!res.ok) throw new Error('Failed to fetch summary');
+    const json: StrapiResponse<StrapiSummary[]> = await res.json();
+    return json.data && json.data.length > 0 ? json.data[0] : null;
+  } catch (e) {
+    console.error('fetchSummaryByDocumentIdServer:', e);
     return null;
   }
 }
