@@ -119,8 +119,8 @@ althean-news-nextjs/
 │   ├── Navbar.js       # Navigation bar
 │   └── Skeleton.js     # Loading skeleton
 ├── lib/                # Utility functions
-│   ├── strapi.js      # Strapi API client
-│   └── utils.js        # Utility functions
+│   ├── strapi.ts      # Strapi API client (TypeScript)
+│   └── utils.ts        # Utility functions (TypeScript)
 ├── pages/              # Next.js pages
 │   ├── _app.js        # App wrapper
 │   ├── index.js       # Home page
