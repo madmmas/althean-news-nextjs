@@ -1,7 +1,10 @@
+'use client';
+
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { withBasePath } from "@/lib/basePath";
 import Link from "next/link";
-import { getStrapiImageUrl } from "@/lib/strapi";
+import { getStrapiImageUrl, getArticles } from "@/lib/strapi";
 
 // Helper function to get category class based on category name
 function getCategoryClass(categoryName: string): string {
@@ -38,31 +41,26 @@ function formatDate(dateString: string | null | undefined): string {
   }
 }
 
-// Server-side function to fetch articles
-async function fetchArticles() {
-  const STRAPI_API_URL = process.env.NEXT_PUBLIC_STRAPI_API_URL || 'https://brilliant-dream-c3f2fe8788.strapiapp.com/api';
-  
-  try {
-    const response = await fetch(`${STRAPI_API_URL}/articles?populate=*&sort=publishedAt:desc`, {
-      cache: 'no-store',
-    });
-    
-    if (!response.ok) {
-      throw new Error('Failed to fetch articles');
-    }
-    
-    const data = await response.json();
-    return data.data || [];
-  } catch (error) {
-    console.error('Error fetching articles:', error);
-    return [];
-  }
-}
+export default function FeaturePosts() {
+  const [articles, setArticles] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
 
-export default async function FeaturePosts() {
-  // Fetch articles from Strapi (server-side)
-  const articles = await fetchArticles();
-  
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const data = await getArticles();
+        setArticles(data);
+      } catch (error) {
+        console.error('Error fetching articles:', error);
+        setArticles([]);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchData();
+  }, []);
+
   // Get first 5 articles for feature posts
   const featurePosts = articles.slice(0, 5).map((article: any) => {
     const category = article.category?.name || article.category || 'Uncategorized';
@@ -79,7 +77,7 @@ export default async function FeaturePosts() {
       category: category,
       categorySlug: categorySlug,
       title: article.title || 'Untitled',
-      excerpt: article.description || article.excerpt || article.content?.substring(0, 100) + '...' || '',
+      excerpt: article.description || article.excerpt || (typeof article.content === 'string' ? article.content.substring(0, 100) + '...' : '') || '',
       date: formatDate(article.publishedAt || article.createdAt),
       authorName: authorName,
       authorImage: authorImage,
@@ -115,6 +113,23 @@ export default async function FeaturePosts() {
       title: article.title || 'Untitled',
     };
   });
+
+  if (loading) {
+    return (
+      <div className="back-hero-area back-latest-posts back-whats-posts back-feature-posts">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-8 md-pb-70">
+              <div className="back-title">
+                <h2>Feature Posts</h2>
+              </div>
+              <p>Loading...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="back-hero-area back-latest-posts back-whats-posts back-feature-posts">
@@ -204,21 +219,25 @@ export default async function FeaturePosts() {
               <h2>Categories</h2>
             </div>
             <ul className="back-category-area">
-              {categories.map((item, index) => (
-                <li key={index}>
-                  <div>
-                    <Image src={withBasePath(item.image)} alt="Category Image"
+              {categories.length > 0 ? (
+                categories.map((item, index) => (
+                  <li key={index}>
+                    <div>
+                      <Image src={withBasePath(item.image)} alt="Category Image"
                   width={800}
                   height={600}
                 />
-                    <Link href={`/categories/${item.label.toLowerCase().replace(/\s+/g, "-").replace(/&/g, "and")}`}>
-                      <span>
-                        <em>{item.total}</em> {item.label}
-                      </span>
-                    </Link>
-                  </div>
-                </li>
-              ))}
+                      <Link href={`/categories/${item.slug}`}>
+                        <span>
+                          <em>{item.total}</em> {item.label}
+                        </span>
+                      </Link>
+                    </div>
+                  </li>
+                ))
+              ) : (
+                <li><p>No categories available.</p></li>
+              )}
             </ul>
             <div className="back-title back-small-title pt-30">
               <h2>Most Read</h2>

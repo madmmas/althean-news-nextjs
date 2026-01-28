@@ -6,7 +6,29 @@ import { mapStrapiArticleToBlogPost } from '@/lib/blog';
 import { fetchArticlesForBlog } from '@/lib/strapi';
 import { notFound } from 'next/navigation';
 
-export const dynamic = 'force-dynamic';
+// Generate static params for static export (S3)
+export async function generateStaticParams() {
+  try {
+    const STRAPI_API_URL = process.env.NEXT_PUBLIC_STRAPI_API_URL || 'https://brilliant-dream-c3f2fe8788.strapiapp.com/api';
+    const res = await fetch(`${STRAPI_API_URL}/articles?fields[0]=slug&pagination[limit]=1000`, {
+      next: { revalidate: 3600 },
+    });
+    
+    if (!res.ok) {
+      console.warn('Failed to fetch articles for generateStaticParams');
+      return [];
+    }
+    
+    const json = await res.json();
+    const articles = json.data || [];
+    return articles.map((article: any) => ({
+      slug: article.slug || String(article.id),
+    }));
+  } catch (error) {
+    console.error('Error in generateStaticParams:', error);
+    return [];
+  }
+}
 
 interface PageProps {
   params: Promise<{ slug: string }>;
