@@ -16,7 +16,7 @@ export function getBasePath(): string {
  * Prepend base path to an asset path
  * Use this for img src, link href, etc. that need basePath
  * @param path - The asset path (e.g., '/assets/images/logo.png')
- * @returns Path with basePath prepended (e.g., '/neoton-nextjs/assets/images/logo.png')
+ * @returns Path with basePath prepended (e.g., '/althean-nextjs/assets/images/logo.png')
  */
 export function withBasePath(path: string): string {
   const basePath = getBasePath();

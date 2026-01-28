@@ -11,8 +11,8 @@ import { getBasePath } from "@/lib/basePath";
 const basePath = getBasePath();
 
 export const metadata: Metadata = {
-  title: "Neoton - Blog News & Magazine",
-  description: "Neoton - Modern Blog News & Magazine HTML Template",
+  title: "Althean - Blog News & Magazine",
+  description: "Althean - Modern Blog News & Magazine HTML Template",
 };
 
 export default function RootLayout({
