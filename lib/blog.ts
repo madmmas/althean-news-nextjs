@@ -26,9 +26,27 @@ function formatDate(dateInput: string | null | undefined): string {
   }
 }
 
+// Type guard to check if category is an object
+function isCategoryObject(category: string | { id?: number; name?: string; slug?: string; } | undefined): category is { id?: number; name?: string; slug?: string; } {
+  return typeof category === 'object' && category !== null;
+}
+
 export function mapStrapiArticleToBlogPost(article: StrapiArticle): BlogPost {
-  const category = article.category?.name ?? article.category ?? 'Uncategorized';
-  const categorySlug = article.category?.slug ?? category.toLowerCase().replace(/\s+/g, '-');
+  // Handle category - can be string or object
+  let category: string;
+  let categorySlug: string;
+  
+  if (typeof article.category === 'string') {
+    category = article.category;
+    categorySlug = category.toLowerCase().replace(/\s+/g, '-');
+  } else if (isCategoryObject(article.category)) {
+    category = article.category.name ?? 'Uncategorized';
+    categorySlug = article.category.slug ?? category.toLowerCase().replace(/\s+/g, '-');
+  } else {
+    category = 'Uncategorized';
+    categorySlug = 'uncategorized';
+  }
+  
   const imageUrl = getStrapiImageUrl(article.cover ?? article.thumbnail) ?? withBasePath('/assets/images/blog-grid/1.jpg');
   const authorName = article.author?.name ?? article.author?.username ?? 'Admin';
   const authorImage = getStrapiImageUrl(article.author?.avatar) ?? withBasePath('/assets/images/author/1.jpg');
