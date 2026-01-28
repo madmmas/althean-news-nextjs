@@ -1,36 +1,33 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { withBasePath } from '@/lib/basePath';
-import { BlogPost } from '@/lib/blogPosts';
+import type { BlogPost } from '@/lib/blog';
 
 interface BlogContentProps {
   posts: BlogPost[];
 }
 
+function imgSrc(src: string) {
+  return src.startsWith('http') || src.startsWith('data:') ? src : withBasePath(src);
+}
+
 export default function BlogContent({ posts }: BlogContentProps) {
-  const blogPosts = posts;
   return (
     <div className="blog-grid">
-      {blogPosts.map((post) => {
+      {posts.map((post) => {
         const postUrl = post.slug ? `/blog/${post.slug}` : '#';
         return (
           <div key={post.id} className="single-blog">
             <div className="inner-blog">
               <div className="blog-img">
                 <Link href={postUrl}>
-                  <Image src={withBasePath(post.image)} alt="Blog Image"
-                  width={800}
-                  height={600}
-                />
+                  <Image src={imgSrc(post.image)} alt={post.title} width={800} height={600} />
                 </Link>
               </div>
               <div className="blog-content">
                 <ul className="top-part">
                   <li>
-                    <Image src={withBasePath(post.authorImage)} alt="image"
-                  width={800}
-                  height={600}
-                /> {post.author}
+                    <Image src={imgSrc(post.authorImage)} alt={post.author} width={40} height={40} /> {post.author}
                   </li>
                   <li className="date-part">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-clock">
@@ -41,7 +38,7 @@ export default function BlogContent({ posts }: BlogContentProps) {
                   <li>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-message-circle">
                       <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
-                    </svg> {post.comments}
+                    </svg> {post.comments ?? 0}
                   </li>
                 </ul>
                 <h3 className="blog-title">
@@ -56,8 +53,6 @@ export default function BlogContent({ posts }: BlogContentProps) {
           </div>
         );
       })}
-      <blockquote>So I said tosser boot twit lurgy eaton bloke public school arse bleeding chimney pot lost. <em>Hanson Deck</em></blockquote>
-      <blockquote className="block__link_q">What a plonker the full monty it&apos;s your round matie boy jolly good my lady Jeffrey pukka hunky.</blockquote>
     </div>
   );
 }

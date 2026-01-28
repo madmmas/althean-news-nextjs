@@ -1,63 +1,27 @@
 import Image from 'next/image';
 import { withBasePath } from "@/lib/basePath";
-// import { getBlogPosts } from "@/lib/blogPosts";
 import Link from "next/link";
-import BlogPagination from "../components/BlogPagination";
+import BlogPagination from '../components/BlogPagination';
 import Breadcrumbs from "../components/Breadcrumbs";
 import BlogContent from "./components/BlogContent";
+import BlogSearchForm from "./components/BlogSearchForm";
+import { fetchArticlesForBlog } from "@/lib/strapi";
+import { mapStrapiArticleToBlogPost } from "@/lib/blog";
 
-// Force dynamic rendering to ensure search params are always read
 export const dynamic = "force-dynamic";
 
-const latestNews = [
-  {
-    image: "/assets/images/dont/1.jpg",
-    category: "Politics",
-    title: "Time can never stop for anyone",
-    author: "Jon Deo",
-  },
-  {
-    image: "/assets/images/dont/2.jpg",
-    category: "Music",
-    title: "Everyone loves to listen to music",
-    author: "Jon Deo",
-  },
-  {
-    image: "/assets/images/dont/3.jpg",
-    category: "Lifestyle",
-    title: "10 easy habits to make your life",
-    author: "Jon Deo",
-  },
-  {
-    image: "/assets/images/dont/4.jpg",
-    category: "Travel",
-    title: "World tranding best 10 website",
-    author: "Jon Deo",
-  },
+const latestNewsPlaceholder = [
+  { image: "/assets/images/dont/1.jpg", category: "Politics", title: "Time can never stop for anyone", author: "Jon Deo", slug: "/blog" },
+  { image: "/assets/images/dont/2.jpg", category: "Music", title: "Everyone loves to listen to music", author: "Jon Deo", slug: "/blog" },
+  { image: "/assets/images/dont/3.jpg", category: "Lifestyle", title: "10 easy habits to make your life", author: "Jon Deo", slug: "/blog" },
+  { image: "/assets/images/dont/4.jpg", category: "Travel", title: "World tranding best 10 website", author: "Jon Deo", slug: "/blog" },
 ];
 
 const recentComments = [
-  {
-    image: "/assets/images/author/1.jpg",
-    name: "John Doe",
-    date: "14 January, 2022",
-    text: "Having no content in  post should have adverse..",
-  },
-  {
-    image: "/assets/images/author/2.jpg",
-    name: "Jane Smith",
-    date: "15 January, 2022",
-    text: "Great article! Thanks for sharing this...",
-  },
-  {
-    image: "/assets/images/author/3.jpg",
-    name: "Mike Johnson",
-    date: "16 January, 2022",
-    text: "I found this very helpful and informative.",
-  },
+  { image: "/assets/images/author/1.jpg", name: "John Doe", date: "14 January, 2022", text: "Having no content in  post should have adverse.." },
+  { image: "/assets/images/author/2.jpg", name: "Jane Smith", date: "15 January, 2022", text: "Great article! Thanks for sharing this..." },
+  { image: "/assets/images/author/3.jpg", name: "Mike Johnson", date: "16 January, 2022", text: "I found this very helpful and informative." },
 ];
-
-import BlogSearchForm from "./components/BlogSearchForm";
 
 interface BlogPageProps {
   searchParams: Promise<{ page?: string; q?: string }>;
@@ -65,13 +29,22 @@ interface BlogPageProps {
 
 export default async function BlogPage({ searchParams }: BlogPageProps) {
   const params = await searchParams;
-  const page = parseInt(params.page || "1");
+  const page = Math.max(1, parseInt(params.page || "1", 10));
   const searchQuery = params.q || "";
-  const { posts: blogPosts, pagination } = { posts: [], pagination: { total: 0 } }; // await getBlogPosts(
-  //   page,
-  //   4,
-  //   searchQuery
-  // );
+  const pageSize = 8;
+
+  const { articles, pagination } = await fetchArticlesForBlog(page, pageSize, searchQuery);
+  const blogPosts = articles.map(mapStrapiArticleToBlogPost);
+  const latestNews = blogPosts.length > 0
+    ? blogPosts.slice(0, 4).map((p) => ({
+        image: p.image,
+        category: p.category ?? "Uncategorized",
+        title: p.title,
+        author: p.author,
+        slug: `/blog/${p.slug}`,
+      }))
+    : latestNewsPlaceholder;
+
   return (
     <>
       <Breadcrumbs title="Blog" />
@@ -93,7 +66,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                   <p>
                     {searchQuery
                       ? `No posts found matching "${searchQuery}". Please try a different search term.`
-                      : "No posts found. Please run the seed migration: npm run db:seed"}
+                      : "No posts found yet."}
                   </p>
                 </div>
               ) : (
@@ -178,12 +151,14 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                   {latestNews.map((news, index) => (
                     <li key={index}>
                       <div className="image-areas">
-                        <a href="#">
-                          <Image src={withBasePath(news.image)} alt="image"
-                  width={800}
-                  height={600}
-                />
-                        </a>
+                        <Link href={news.slug}>
+                          <Image
+                            src={news.image.startsWith("http") || news.image.startsWith("data:") ? news.image : withBasePath(news.image)}
+                            alt={news.title}
+                            width={800}
+                            height={600}
+                          />
+                        </Link>
                       </div>
                       <div className="back-btm-content">
                         <Link
@@ -196,11 +171,11 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                           {news.category}
                         </Link>
                         <h3>
-                          <a href="#">{news.title}</a>
+                          <Link href={news.slug}>{news.title}</Link>
                         </h3>
                         <ul>
                           <li className="back-date">
-                            by <a href="#">{news.author}</a>
+                            by <Link href={news.slug}>{news.author}</Link>
                           </li>
                         </ul>
                       </div>
